@@ -1,0 +1,450 @@
+NNLOJET_RUNCARD
+RRb                   ! Job name id
+VFH                   ! Process name
+100000              ! Number of events
+10                     ! Number of iterations
+1                     ! Seed number
+.true.                ! Warmup
+.false.                 ! Production
+PDF4LHC15_nnlo_30             ! PDF set
+0                     ! PDF member
+antikt                ! Jet algorithm, accepts 'none', 'kt', 'cam' or 'antikt'
+0.4d0                 ! Rcut default will also use 0.3 up to 1.0 with 0.1 step
+.false.	              ! exclusive
+3	                  ! Heavy particle decay type
+1d-7                  ! Technical cutoff y0
+.true.                ! angular averaging of the phase space, default to true
+2                     ! Virtual Integration method, use 2 if you are not sure
+b                     ! RR a/b region flag. Accepts 'a','b'          
+0                     ! set to zero for MC, 2 for point test, 3 spikes, 4 fully_inclusive
+.false.               ! print max weight flag
+.true.               ! momentum mapping and PDF storage flag
+.false.               ! colour sampling flag
+.false.               ! explicit pole check flag, stops integration when set to true
+
+PHYSICAL_PARAMETERS
+13000d0	              ! roots
+125d0                 ! Mass of the Higgs Boson
+0.004088d0      ! Width of the Higgs Boson !Higgs values from https://twiki.cern.ch/twiki/bin/view/LHCPhysics/CERNYellowReportPageBR#TotalWidthAnchor
+91.1876d0             ! Mass of the Z Boson
+2.4952d0              ! Width of the Z Boson
+80.379d0              ! Mass of the W Boson
+2.085d0              ! Width of the W Boson !Vector boson values from http://pdg.lbl.gov/2019/download/db2018.pdf
+173.2d0               ! Mass of the Top Quark
+1.41d0                ! Width of the Top Quark
+4.18d0                ! Mass of the Bottom Quark
+0d0                   ! Width of the Bottom Quark
+1.275d0               ! Mass of the Charm Quark
+0d0                   ! Width of the Charm Quark
+1.777d0               ! Mass of the Tau lepton
+0d0                   ! Width of the Tau lepton
+!AH amz = 7.56239563669733588d-3  ! G_mu scheme
+
+SELECTORS
+        select njets      min = 2
+  	select jets_pt    min = 30
+  	select jets_abs_y max = 4.4
+! Same jet definition as in ATLAS_CONF_2019_025 and ATLAS_CONF_2019_029
+END_SELECTORS
+
+
+
+HISTOGRAMS
+
+        cross > cross_full
+        cross > cross_light_center
+        HISTOGRAM_SELECTORS
+           select m12        min=0 max=350 
+           select deltay_j12 min=0 max=2
+        END_HISTOGRAM_SELECTORS
+        cross > cross_heavy_center 
+        HISTOGRAM_SELECTORS
+           select m12        min=350 
+           select deltay_j12 min=0 max=2
+        END_HISTOGRAM_SELECTORS
+        cross > cross_light_middle 
+        HISTOGRAM_SELECTORS
+           select m12        min=0 max=350 
+           select deltay_j12 min=2 max=4
+        END_HISTOGRAM_SELECTORS
+        cross > cross_heavy_middle 
+        HISTOGRAM_SELECTORS
+           select m12        min=350 
+           select deltay_j12 min=2 max=4
+        END_HISTOGRAM_SELECTORS
+        cross > cross_light_forward 
+        HISTOGRAM_SELECTORS
+           select m12        min=0 max=350 
+           select deltay_j12 min=4
+        END_HISTOGRAM_SELECTORS
+        cross > cross_heavy_forward 
+        HISTOGRAM_SELECTORS
+           select m12        min=350 
+           select deltay_j12 min=4
+        END_HISTOGRAM_SELECTORS
+        cross > cross_ATLAS 
+        HISTOGRAM_SELECTORS
+           select m12        min=400 
+           select deltay_j12 min=3
+           select dphi_hj12 min=2.8
+        END_HISTOGRAM_SELECTORS
+
+        m12          > mjj_STXS                      [0,100,200,350,700,1000,1500,2000,2500,3000] 
+! 350 GeV is an interesting point mentioned in STXS stage 1.1
+        m12          > mjj_ATLAS_CONF_029            [0,160,500,1500]
+! Need to check what is the ? value in ATLAS_CONF_2019_029 Figure 8 (b)
+        m12          > mjj_100GeVbin                 nbins = 20    min = 0d0    max = 2000d0
+        m12          > mjj_100GeVbin_center          nbins = 20    min = 0d0    max = 2000d0
+        HISTOGRAM_SELECTORS
+           select deltay_j12 min=0 max=2
+        END_HISTOGRAM_SELECTORS
+        m12          > mjj_100GeVbin_middle          nbins = 20    min = 0d0    max = 2000d0
+        HISTOGRAM_SELECTORS
+           select deltay_j12 min=2 max=4
+        END_HISTOGRAM_SELECTORS
+        m12          > mjj_100GeVbin_forward         nbins = 20    min = 0d0    max = 2000d0
+        HISTOGRAM_SELECTORS
+           select deltay_j12 min=4
+        END_HISTOGRAM_SELECTORS
+        m12          > mjj_100GeVbin_ATLAS         nbins = 20    min = 0d0    max = 2000d0
+        HISTOGRAM_SELECTORS
+           select m12        min=400 
+           select deltay_j12 min=3
+           select dphi_hj12 min=2.8
+        END_HISTOGRAM_SELECTORS
+
+        deltay_j12   > deltay_jj                nbins = 10    min = 0d0    max = 10d0
+        deltay_j12   > deltay_jj_light          nbins = 10    min = 0d0    max = 10d0
+        HISTOGRAM_SELECTORS
+           select m12        min=0 max=350 
+        END_HISTOGRAM_SELECTORS
+        deltay_j12   > deltay_jj_heavy          nbins = 10    min = 0d0    max = 10d0
+        HISTOGRAM_SELECTORS
+           select m12        min=350 
+        END_HISTOGRAM_SELECTORS
+
+        deltaphi_j12 > deltaphi_jj              nbins = 6 min = 0d0 max = 3.141592654
+        deltaphi_j12 > deltaphi_jj_light_center nbins = 6 min = 0d0 max = 3.141592654
+        HISTOGRAM_SELECTORS
+           select m12        min=0 max=350 
+           select deltay_j12 min=0 max=2
+        END_HISTOGRAM_SELECTORS
+        deltaphi_j12 > deltaphi_jj_heavy_center nbins = 6 min = 0d0 max = 3.141592654
+        HISTOGRAM_SELECTORS
+           select m12        min=350 
+           select deltay_j12 min=0 max=2
+        END_HISTOGRAM_SELECTORS
+        deltaphi_j12 > deltaphi_jj_light_middle nbins = 6 min = 0d0 max = 3.141592654
+        HISTOGRAM_SELECTORS
+           select m12        min=0 max=350 
+           select deltay_j12 min=2 max=4
+        END_HISTOGRAM_SELECTORS
+        deltaphi_j12 > deltaphi_jj_heavy_middle nbins = 6 min = 0d0 max = 3.141592654
+        HISTOGRAM_SELECTORS
+           select m12        min=350 
+           select deltay_j12 min=2 max=4
+        END_HISTOGRAM_SELECTORS
+        deltaphi_j12 > deltaphi_jj_light_forward nbins = 6 min = 0d0 max = 3.141592654
+        HISTOGRAM_SELECTORS
+           select m12        min=0 max=350 
+           select deltay_j12 min=4
+        END_HISTOGRAM_SELECTORS
+        deltaphi_j12 > deltaphi_jj_heavy_forward nbins = 6 min = 0d0 max = 3.141592654
+        HISTOGRAM_SELECTORS
+           select m12        min=350 
+           select deltay_j12 min=4
+        END_HISTOGRAM_SELECTORS
+        deltay_j12   > deltay_jj_ATLAS          nbins = 10    min = 0d0    max = 10d0
+        HISTOGRAM_SELECTORS
+           select m12        min=400 
+           select deltay_j12 min=3
+           select dphi_hj12 min=2.8
+        END_HISTOGRAM_SELECTORS
+
+        y_j12 > y_j12_02bin                [0,0.2,0.4,0.6,0.8,1.0,1.2,1.4,1.6,1.8,2.0,2.2,2.4,2.6,2.8,3.0,3.2,3.4,3.6,3.8,4.0,4.5,5.0,5.5,6.0,6.5,7.0,8.0,9.0,10.0]
+        y_j12 > y_j12_02bin_light_center   [0,0.2,0.4,0.6,0.8,1.0,1.2,1.4,1.6,1.8,2.0,2.2,2.4,2.6,2.8,3.0,3.2,3.4,3.6,3.8,4.0,4.5,5.0,5.5,6.0,6.5,7.0,8.0,9.0,10.0]
+        HISTOGRAM_SELECTORS
+           select m12        min=0 max=350 
+           select deltay_j12 min=0 max=2
+        END_HISTOGRAM_SELECTORS
+        y_j12 > y_j12_02bin_heavy_center   [0,0.2,0.4,0.6,0.8,1.0,1.2,1.4,1.6,1.8,2.0,2.2,2.4,2.6,2.8,3.0,3.2,3.4,3.6,3.8,4.0,4.5,5.0,5.5,6.0,6.5,7.0,8.0,9.0,10.0]
+        HISTOGRAM_SELECTORS
+           select m12        min=350 
+           select deltay_j12 min=0 max=2
+        END_HISTOGRAM_SELECTORS
+        y_j12 > y_j12_02bin_light_middle   [0,0.2,0.4,0.6,0.8,1.0,1.2,1.4,1.6,1.8,2.0,2.2,2.4,2.6,2.8,3.0,3.2,3.4,3.6,3.8,4.0,4.5,5.0,5.5,6.0,6.5,7.0,8.0,9.0,10.0]
+        HISTOGRAM_SELECTORS
+           select m12        min=0 max=350 
+           select deltay_j12 min=2 max=4
+        END_HISTOGRAM_SELECTORS
+        y_j12 > y_j12_02bin_heavy_middle   [0,0.2,0.4,0.6,0.8,1.0,1.2,1.4,1.6,1.8,2.0,2.2,2.4,2.6,2.8,3.0,3.2,3.4,3.6,3.8,4.0,4.5,5.0,5.5,6.0,6.5,7.0,8.0,9.0,10.0]
+        HISTOGRAM_SELECTORS
+           select m12        min=350 
+           select deltay_j12 min=2 max=4
+        END_HISTOGRAM_SELECTORS
+        y_j12 > y_j12_02bin_light_forward   [0,0.2,0.4,0.6,0.8,1.0,1.2,1.4,1.6,1.8,2.0,2.2,2.4,2.6,2.8,3.0,3.2,3.4,3.6,3.8,4.0,4.5,5.0,5.5,6.0,6.5,7.0,8.0,9.0,10.0]
+        HISTOGRAM_SELECTORS
+           select m12        min=0 max=350 
+           select deltay_j12 min=4
+        END_HISTOGRAM_SELECTORS
+        y_j12 > y_j12_02bin_heavy_forward   [0,0.2,0.4,0.6,0.8,1.0,1.2,1.4,1.6,1.8,2.0,2.2,2.4,2.6,2.8,3.0,3.2,3.4,3.6,3.8,4.0,4.5,5.0,5.5,6.0,6.5,7.0,8.0,9.0,10.0]
+        HISTOGRAM_SELECTORS
+           select m12        min=350 
+           select deltay_j12 min=4
+        END_HISTOGRAM_SELECTORS
+        y_j12 > y_j12_02bin_ATLAS   [0,0.2,0.4,0.6,0.8,1.0,1.2,1.4,1.6,1.8,2.0,2.2,2.4,2.6,2.8,3.0,3.2,3.4,3.6,3.8,4.0,4.5,5.0,5.5,6.0,6.5,7.0,8.0,9.0,10.0]
+        HISTOGRAM_SELECTORS
+           select m12        min=400 
+           select deltay_j12 min=3
+           select dphi_hj12 min=2.8
+        END_HISTOGRAM_SELECTORS
+
+        pth          > pth_largebin              [0,25,50,75,100,150,200,250,300,350,400,450,500,600,800,1000]
+        pth          > pth_largebin_light_center [0,25,50,75,100,150,200,250,300,350,400,450,500,600,800,1000]
+        HISTOGRAM_SELECTORS
+           select m12        min=0 max=350 
+           select deltay_j12 min=0 max=2
+        END_HISTOGRAM_SELECTORS
+        pth          > pth_largebin_heavy_center [0,25,50,75,100,150,200,250,300,350,400,450,500,600,800,1000]
+        HISTOGRAM_SELECTORS
+           select m12        min=350 
+           select deltay_j12 min=0 max=2
+        END_HISTOGRAM_SELECTORS
+        pth          > pth_largebin_light_middle [0,25,50,75,100,150,200,250,300,350,400,450,500,600,800,1000]
+        HISTOGRAM_SELECTORS
+           select m12        min=0 max=350 
+           select deltay_j12 min=2 max=4
+        END_HISTOGRAM_SELECTORS
+        pth          > pth_largebin_heavy_middle [0,25,50,75,100,150,200,250,300,350,400,450,500,600,800,1000]
+        HISTOGRAM_SELECTORS
+           select m12        min=350 
+           select deltay_j12 min=2 max=4
+        END_HISTOGRAM_SELECTORS
+        pth          > pth_largebin_light_forward [0,25,50,75,100,150,200,250,300,350,400,450,500,600,800,1000]
+        HISTOGRAM_SELECTORS
+           select m12        min=0 max=350 
+           select deltay_j12 min=4
+        END_HISTOGRAM_SELECTORS
+        pth          > pth_largebin_heavy_forward [0,25,50,75,100,150,200,250,300,350,400,450,500,600,800,1000]
+        HISTOGRAM_SELECTORS
+           select m12        min=350 
+           select deltay_j12 min=4
+        END_HISTOGRAM_SELECTORS
+        pth          > pth_largebin_ATLAS [0,25,50,75,100,150,200,250,300,350,400,450,500,600,800,1000]
+        HISTOGRAM_SELECTORS
+           select m12        min=400 
+           select deltay_j12 min=3
+           select dphi_hj12 min=2.8
+        END_HISTOGRAM_SELECTORS
+
+
+        pth          > pth_finebin              [0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100,110,120,130,140,150,160,170,180,190,200,225,250,275,300,325,350,375,400,425,450,475,500,525,550,575,600]
+        pth          > pth_finebin_light_center [0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100,110,120,130,140,150,160,170,180,190,200,225,250,275,300,325,350,375,400,425,450,475,500,525,550,575,600]
+        HISTOGRAM_SELECTORS
+           select m12        min=0 max=350 
+           select deltay_j12 min=0 max=2
+        END_HISTOGRAM_SELECTORS
+        pth          > pth_finebin_heavy_center [0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100,110,120,130,140,150,160,170,180,190,200,225,250,275,300,325,350,375,400,425,450,475,500,525,550,575,600]
+        HISTOGRAM_SELECTORS
+           select m12        min=350 
+           select deltay_j12 min=0 max=2
+        END_HISTOGRAM_SELECTORS
+        pth          > pth_finebin_light_middle [0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100,110,120,130,140,150,160,170,180,190,200,225,250,275,300,325,350,375,400,425,450,475,500,525,550,575,600]
+        HISTOGRAM_SELECTORS
+           select m12        min=0 max=350 
+           select deltay_j12 min=2 max=4
+        END_HISTOGRAM_SELECTORS
+        pth          > pth_finebin_heavy_middle [0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100,110,120,130,140,150,160,170,180,190,200,225,250,275,300,325,350,375,400,425,450,475,500,525,550,575,600]
+        HISTOGRAM_SELECTORS
+           select m12        min=350 
+           select deltay_j12 min=2 max=4
+        END_HISTOGRAM_SELECTORS
+        pth          > pth_finebin_light_forward [0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100,110,120,130,140,150,160,170,180,190,200,225,250,275,300,325,350,375,400,425,450,475,500,525,550,575,600]
+        HISTOGRAM_SELECTORS
+           select m12        min=0 max=350 
+           select deltay_j12 min=4
+        END_HISTOGRAM_SELECTORS
+        pth          > pth_finebin_heavy_forward [0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100,110,120,130,140,150,160,170,180,190,200,225,250,275,300,325,350,375,400,425,450,475,500,525,550,575,600]
+        HISTOGRAM_SELECTORS
+           select m12        min=350 
+           select deltay_j12 min=4
+        END_HISTOGRAM_SELECTORS
+        pth          > pth_finebin_ATLAS [0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100,110,120,130,140,150,160,170,180,190,200,225,250,275,300,325,350,375,400,425,450,475,500,525,550,575,600]
+        HISTOGRAM_SELECTORS
+           select m12        min=400 
+           select deltay_j12 min=3
+           select dphi_hj12 min=2.8
+        END_HISTOGRAM_SELECTORS
+
+
+        njets                         nbins = 5      min = -0.5     max = 4.5
+        njets >  njets_light_center   nbins = 5      min = -0.5     max = 4.5
+        HISTOGRAM_SELECTORS
+           select m12        min=0 max=350 
+           select deltay_j12 min=0 max=2
+        END_HISTOGRAM_SELECTORS
+        njets >  njets_heavy_center   nbins = 5      min = -0.5     max = 4.5
+        HISTOGRAM_SELECTORS
+           select m12        min=350 
+           select deltay_j12 min=0 max=2
+        END_HISTOGRAM_SELECTORS
+        njets >  njets_light_middle   nbins = 5      min = -0.5     max = 4.5
+        HISTOGRAM_SELECTORS
+           select m12        min=0 max=350 
+           select deltay_j12 min=2 max=4
+        END_HISTOGRAM_SELECTORS
+        njets >  njets_heavy_middle   nbins = 5      min = -0.5     max = 4.5
+        HISTOGRAM_SELECTORS
+           select m12        min=350 
+           select deltay_j12 min=2 max=4
+        END_HISTOGRAM_SELECTORS
+        njets >  njets_light_forward  nbins = 5      min = -0.5     max = 4.5
+        HISTOGRAM_SELECTORS
+           select m12        min=0 max=350 
+           select deltay_j12 min=4
+        END_HISTOGRAM_SELECTORS
+        njets >  njets_heavy_forward  nbins = 5      min = -0.5     max = 4.5
+        HISTOGRAM_SELECTORS
+           select m12        min=350 
+           select deltay_j12 min=4
+        END_HISTOGRAM_SELECTORS
+        njets >  njets_ATLAS  nbins = 5      min = -0.5     max = 4.5
+        HISTOGRAM_SELECTORS
+           select m12        min=400 
+           select deltay_j12 min=3
+           select dphi_hj12 min=2.8
+        END_HISTOGRAM_SELECTORS
+
+        ht_full >  HT                [0,100,200,300,400,500,600,700,800,900,1000,1200,1400,1600,1800,2000]
+        ht_full >  HT_light_center   [0,100,200,300,400,500,600,700,800,900,1000,1200,1400,1600,1800,2000]
+        HISTOGRAM_SELECTORS
+           select m12        min=0 max=350 
+           select deltay_j12 min=0 max=2
+        END_HISTOGRAM_SELECTORS
+        ht_full >  HT_heavy_center   [0,100,200,300,400,500,600,700,800,900,1000,1200,1400,1600,1800,2000]
+        HISTOGRAM_SELECTORS
+           select m12        min=350 
+           select deltay_j12 min=0 max=2
+        END_HISTOGRAM_SELECTORS
+        ht_full >  HT_light_middle   [0,100,200,300,400,500,600,700,800,900,1000,1200,1400,1600,1800,2000]
+        HISTOGRAM_SELECTORS
+           select m12        min=0 max=350 
+           select deltay_j12 min=2 max=4
+        END_HISTOGRAM_SELECTORS
+        ht_full >  HT_heavy_middle   [0,100,200,300,400,500,600,700,800,900,1000,1200,1400,1600,1800,2000]
+        HISTOGRAM_SELECTORS
+           select m12        min=350 
+           select deltay_j12 min=2 max=4
+        END_HISTOGRAM_SELECTORS
+        ht_full >  HT_light_forward  [0,100,200,300,400,500,600,700,800,900,1000,1200,1400,1600,1800,2000]
+        HISTOGRAM_SELECTORS
+           select m12        min=0 max=350 
+           select deltay_j12 min=4
+        END_HISTOGRAM_SELECTORS
+        ht_full >  HT_heavy_forward  [0,100,200,300,400,500,600,700,800,900,1000,1200,1400,1600,1800,2000]
+        HISTOGRAM_SELECTORS
+           select m12        min=350 
+           select deltay_j12 min=4
+        END_HISTOGRAM_SELECTORS
+        ht_full >  HT_ATLAS  [0,100,200,300,400,500,600,700,800,900,1000,1200,1400,1600,1800,2000]
+        HISTOGRAM_SELECTORS
+           select m12        min=400 
+           select deltay_j12 min=3
+           select dphi_hj12 min=2.8
+        END_HISTOGRAM_SELECTORS
+
+        pthjj          > pthjj_largebin              [0,25,50,75,100,150,200,250,300,350,400,450,500,600,800,1000]
+        pthjj          > pthjj_largebin_light_center [0,25,50,75,100,150,200,250,300,350,400,450,500,600,800,1000]
+        HISTOGRAM_SELECTORS
+           select m12        min=0 max=350 
+           select deltay_j12 min=0 max=2
+        END_HISTOGRAM_SELECTORS
+        pthjj          > pthjj_largebin_heavy_center [0,25,50,75,100,150,200,250,300,350,400,450,500,600,800,1000]
+        HISTOGRAM_SELECTORS
+           select m12        min=350 
+           select deltay_j12 min=0 max=2
+        END_HISTOGRAM_SELECTORS
+        pthjj          > pthjj_largebin_light_middle [0,25,50,75,100,150,200,250,300,350,400,450,500,600,800,1000]
+        HISTOGRAM_SELECTORS
+           select m12        min=0 max=350 
+           select deltay_j12 min=2 max=4
+        END_HISTOGRAM_SELECTORS
+        pthjj          > pthjj_largebin_heavy_middle [0,25,50,75,100,150,200,250,300,350,400,450,500,600,800,1000]
+        HISTOGRAM_SELECTORS
+           select m12        min=350 
+           select deltay_j12 min=2 max=4
+        END_HISTOGRAM_SELECTORS
+        pthjj          > pthjj_largebin_light_forward [0,25,50,75,100,150,200,250,300,350,400,450,500,600,800,1000]
+        HISTOGRAM_SELECTORS
+           select m12        min=0 max=350 
+           select deltay_j12 min=4
+        END_HISTOGRAM_SELECTORS
+        pthjj          > pthjj_largebin_heavy_forward [0,25,50,75,100,150,200,250,300,350,400,450,500,600,800,1000]
+        HISTOGRAM_SELECTORS
+           select m12        min=350 
+           select deltay_j12 min=4
+        END_HISTOGRAM_SELECTORS
+        pthjj          > pthjj_largebin_ATLAS [0,25,50,75,100,150,200,250,300,350,400,450,500,600,800,1000]
+        HISTOGRAM_SELECTORS
+           select m12        min=400 
+           select deltay_j12 min=3
+           select dphi_hj12 min=2.8
+        END_HISTOGRAM_SELECTORS
+
+        pt_j12          > ptjj_largebin              [0,25,50,75,100,150,200,250,300,350,400,450,500,600,800,1000]
+        pt_j12          > ptjj_largebin_light_center [0,25,50,75,100,150,200,250,300,350,400,450,500,600,800,1000]
+        HISTOGRAM_SELECTORS
+           select m12        min=0 max=350 
+           select deltay_j12 min=0 max=2
+        END_HISTOGRAM_SELECTORS
+        pt_j12          > ptjj_largebin_heavy_center [0,25,50,75,100,150,200,250,300,350,400,450,500,600,800,1000]
+        HISTOGRAM_SELECTORS
+           select m12        min=350 
+           select deltay_j12 min=0 max=2
+        END_HISTOGRAM_SELECTORS
+        pt_j12          > ptjj_largebin_light_middle [0,25,50,75,100,150,200,250,300,350,400,450,500,600,800,1000]
+        HISTOGRAM_SELECTORS
+           select m12        min=0 max=350 
+           select deltay_j12 min=2 max=4
+        END_HISTOGRAM_SELECTORS
+        pt_j12          > ptjj_largebin_heavy_middle [0,25,50,75,100,150,200,250,300,350,400,450,500,600,800,1000]
+        HISTOGRAM_SELECTORS
+           select m12        min=350 
+           select deltay_j12 min=2 max=4
+        END_HISTOGRAM_SELECTORS
+        pt_j12          > ptjj_largebin_light_forward [0,25,50,75,100,150,200,250,300,350,400,450,500,600,800,1000]
+        HISTOGRAM_SELECTORS
+           select m12        min=0 max=350 
+           select deltay_j12 min=4
+        END_HISTOGRAM_SELECTORS
+        pt_j12          > ptjj_largebin_heavy_forward [0,25,50,75,100,150,200,250,300,350,400,450,500,600,800,1000]
+        HISTOGRAM_SELECTORS
+           select m12        min=350 
+           select deltay_j12 min=4
+        END_HISTOGRAM_SELECTORS
+        pt_j12          > ptjj_largebin_ATLAS [0,25,50,75,100,150,200,250,300,350,400,450,500,600,800,1000]
+        HISTOGRAM_SELECTORS
+           select m12        min=400 
+           select deltay_j12 min=3
+           select dphi_hj12 min=2.8
+        END_HISTOGRAM_SELECTORS
+
+
+END_HISTOGRAMS
+
+SCALES
+	muf =  0.5 * ht_parton     mur =  0.5 * ht_parton
+	muf =        ht_parton     mur =        ht_parton
+	muf = 0.25 * ht_parton     mur = 0.25 * ht_parton
+	muf =  0.5 * ht_parton     mur =        ht_parton
+	muf =        ht_parton     mur =  0.5 * ht_parton
+	muf =  0.5 * ht_parton     mur = 0.25 * ht_parton
+	muf = 0.25 * ht_parton     mur =  0.5 * ht_parton
+END_SCALES
+
+CHANNELS
+RR
+END_CHANNELS
+
+
+
