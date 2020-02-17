@@ -47,8 +47,8 @@ namespace Rivet {
       book(_h_mjj["mjj_ATLAS_CONF_029"], "mjj_ATLAS_CONF_029", {0.,160.,500.,1500.});
       book(_h_mjj["mjj_100GeVbin"], "mjj_100GeVbin", 20, 0, 2000);
       book(_h_mjj["mjj_100GeVbin_center"], "mjj_100GeVbin_center", 20, 0, 2000);
-      book(_h_mjj["mjj_100GeVbin_middle"], "mjj_100GeVbin_center", 20, 0, 2000);
-      book(_h_mjj["mjj_100GeVbin_forward"], "mjj_100GeVbin_center", 20, 0, 2000);
+      book(_h_mjj["mjj_100GeVbin_middle"], "mjj_100GeVbin_middle", 20, 0, 2000);
+      book(_h_mjj["mjj_100GeVbin_forward"], "mjj_100GeVbin_forward", 20, 0, 2000);
       book(_h_mjj["mjj_100GeVbin_ATLAS"], "mjj_100GeVbin_ATLAS", 20, 0, 2000);
       // Now the dy12 histograms, with various m12 cuts
       book(_h_dyjj["deltay_jj"], "deltay_jj", 10, 0, 10);
@@ -93,7 +93,7 @@ namespace Rivet {
         if (m12 >= M12CUTS[i][1]*GeV) continue;
         if (dy12 < DY12CUTS[i][0]) continue;
         if (dy12 >= DY12CUTS[i][1]) continue;
-        if (dphijH < DPHIJHCUTS[i]) continue;
+        if (dphijjH < DPHIJHCUTS[i]) continue;
         _c_xs[i]->fill();
         _h[i]["deltaphi_jj"]->fill(dphi12);
         _h[i]["y_j12_02bin"]->fill(y12);
@@ -115,7 +115,7 @@ namespace Rivet {
         _h_mjj["mjj_100GeVbin_middle"]->fill(m12/GeV);
       if (dy12 > 4)
         _h_mjj["mjj_100GeVbin_forward"]->fill(m12/GeV);
-      if (dy12 > 3 && m12 > 400*GeV && dphijH > 2.8)
+      if (dy12 > 3 && m12 > 400*GeV && dphijjH > 2.8)
         _h_mjj["mjj_100GeVbin_ATLAS"]->fill(m12/GeV);
 
       // Now the dy12 histograms, with various m12 cuts
