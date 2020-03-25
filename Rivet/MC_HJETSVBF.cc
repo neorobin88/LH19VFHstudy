@@ -3,7 +3,7 @@
 #include "Rivet/Projections/FastJets.hh"
 #include "Rivet/Projections/PromptFinalState.hh"
 #include "Rivet/Projections/NonPromptFinalState.hh"
-
+using namespace std;
 namespace Rivet {
 
 
