@@ -54,7 +54,7 @@ def extractNNJETHisto(fname, ynorm=1.0) :
         return histo
         
 os.system("mkdir -p plots/MC_HJETSVBF")
-NNLOJETprefix='NNLOJETdataplot/LH19VFHNNLOdata/R07NNLO.'
+NNLOJETprefix='NNLOJETdataplot/LH19VFHNNLOdata/R04NNLO.'
 suffix='.dat'
 yodaFiles=['PWG-HW-PY8/PWG-HW7','PWG-HW-PY8/PWG-PY8-powheghooks', 'PWG-HW-PY8/HW7-dipole', 'PWG-HW-PY8/HW7-AO','PWG-HW-PY8/HW7-dipole-HJETS' ]
 
