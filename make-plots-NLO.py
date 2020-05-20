@@ -53,19 +53,24 @@ def extractNNJETHisto(fname, ynorm=1.0) :
         histo=np.array(histo)
         return histo
         
-os.system("mkdir -p plots/MC_HJETSVBF")
-NNLOJETprefix='NNLOJETdataplot/LH19VFHNNLOdata/R04NNLO.'
+os.system("mkdir -p plots-NLO/MC_HJETSVBF")
+NNLOJETprefix='NNLOJETdataplot/LH19VFHNLOdata/R04NLO.'
 suffix='.dat'
-yodaFiles=['yodafiles/PWG-HW7','yodafiles/PWG-PY8-powheghooks', 'yodafiles/HW7-dipole', 'yodafiles/HW7-AO','yodafiles/HW7-dipole-HJETS' ]
+yodaFiles=['yodafiles/fNLO-HW7-new' ]
 
 yodaData =[ yoda.read(yodafile+'.yoda') for yodafile in yodaFiles]
 
 color=['blue', 'limegreen', 'violet', 'orange', 'darkgreen']
 for key in yodaData[0].keys():
-        if ('RAW' in key) or (not 'MC_HJETSVBF' in key) or ('cross' in key) or ('deltaphi_jj_ATLAS' in key):
+        if ('RAW' in key) or (not 'MC_HJETSVBF' in key) or ('cross' in key) or ('deltaphi_jj_ATLAS' in key) or ('[W1]' in key):
                 continue
         NNLOJETkey=key[13:]
-        NNLOJETfname=NNLOJETprefix+NNLOJETkey+'.dat'
+
+        #for nnlojet ht -> htpt, not yet done at NLO        
+        if('HT' in NNLOJETkey):
+                continue
+        else:
+                NNLOJETfname=NNLOJETprefix+NNLOJETkey+'.dat'
         os.system("ls "+NNLOJETfname)
         nnj = extractNNJETHisto(NNLOJETfname)
 
@@ -87,9 +92,12 @@ for key in yodaData[0].keys():
                 binsize = xmax - xmin 
                 yval = np.array([bin.area for bin in histo.bins])/binsize
                 yerr = np.array([bin.relErr for bin in histo.bins])*yval
-                ax1.errorbar(xav, yval, yerr=yerr, xerr=binsize/2, color=color[yd], ls='-', label=yodaFiles[yd][10:])
+                ax1.errorbar(xav, yval, yerr=yerr, xerr=binsize/2, color=color[yd], ls='-', label=yodaFiles[yd][11:])
                 ax2.errorbar(xav, yval/nnj[:,3], yerr=yerr/nnj[:,3], xerr=binsize/2, color=color[yd], ls='-', label='')
 
+        ylims=ax2.get_ylim()
+        ylims=[max(ylims[0],0.9), min(ylims[1],1.1)]
+        ax2.set_ylim(ylims)
         ax1.legend()
-        plt.savefig('plots/'+key+'.pdf')
+        plt.savefig('plots-NLO/'+key+'.pdf')
         plt.close()
