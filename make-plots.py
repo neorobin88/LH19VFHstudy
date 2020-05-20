@@ -87,7 +87,7 @@ for key in yodaData[0].keys():
                 binsize = xmax - xmin 
                 yval = np.array([bin.area for bin in histo.bins])/binsize
                 yerr = np.array([bin.relErr for bin in histo.bins])*yval
-                ax1.errorbar(xav, yval, yerr=yerr, xerr=binsize/2, color=color[yd], ls='-', label=yodaFiles[yd][11:])
+                ax1.errorbar(xav, yval, yerr=yerr, xerr=binsize/2, color=color[yd], ls='-', label=yodaFiles[yd][10:])
                 ax2.errorbar(xav, yval/nnj[:,3], yerr=yerr/nnj[:,3], xerr=binsize/2, color=color[yd], ls='-', label='')
 
         ax1.legend()
