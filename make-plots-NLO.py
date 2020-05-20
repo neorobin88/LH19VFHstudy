@@ -53,10 +53,10 @@ def extractNNJETHisto(fname, ynorm=1.0) :
         histo=np.array(histo)
         return histo
         
-os.system("mkdir -p plots-LO/MC_HJETSVBF")
-NNLOJETprefix=['NNLOJETdataplot/LH19VFHLOdata/R04LO.', 'NNLOJETdataplot/LH19VFHLOdata/R03LO.']
+os.system("mkdir -p plots-NLO/MC_HJETSVBF")
+NNLOJETprefix='NNLOJETdataplot/LH19VFHNLOdata/R04NLO.'
 suffix='.dat'
-yodaFiles=['yodafiles/fLO-HW7-new' ]
+yodaFiles=['yodafiles/fNLO-HW7-new' ]
 
 yodaData =[ yoda.read(yodafile+'.yoda') for yodafile in yodaFiles]
 
@@ -66,12 +66,11 @@ for key in yodaData[0].keys():
                 continue
         NNLOJETkey=key[13:]
 
-        #for nnlojet ht -> htpt        
+        #for nnlojet ht -> htpt, not yet done at NLO        
         if('HT' in NNLOJETkey):
-                NNLOJETkey='HTpt'+NNLOJETkey[2:]
-                NNLOJETfname=NNLOJETprefix[0]+NNLOJETkey+'.dat'
+                continue
         else:
-                NNLOJETfname=NNLOJETprefix[1]+NNLOJETkey+'.dat'
+                NNLOJETfname=NNLOJETprefix+NNLOJETkey+'.dat'
         os.system("ls "+NNLOJETfname)
         nnj = extractNNJETHisto(NNLOJETfname)
 
@@ -95,9 +94,10 @@ for key in yodaData[0].keys():
                 yerr = np.array([bin.relErr for bin in histo.bins])*yval
                 ax1.errorbar(xav, yval, yerr=yerr, xerr=binsize/2, color=color[yd], ls='-', label=yodaFiles[yd][11:])
                 ax2.errorbar(xav, yval/nnj[:,3], yerr=yerr/nnj[:,3], xerr=binsize/2, color=color[yd], ls='-', label='')
+
         ylims=ax2.get_ylim()
         ylims=[max(ylims[0],0.9), min(ylims[1],1.1)]
         ax2.set_ylim(ylims)
         ax1.legend()
-        plt.savefig('plots-LO/'+key+'.pdf')
+        plt.savefig('plots-NLO/'+key+'.pdf')
         plt.close()
