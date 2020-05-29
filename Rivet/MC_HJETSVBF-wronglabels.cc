@@ -163,8 +163,7 @@ namespace Rivet {
   // Static const initializers
   const vector<string>  MC_HJETSVBF::SELNAMES = {"", "_light_center", "_heavy_center", "_light_middle", "_heavy_middle", "_light_forward", "_heavy_forward", "_ATLAS"};
   const vector<doubles> MC_HJETSVBF::M12CUTS = {{0., HUGE_VAL}, {0., 350.}, {350., HUGE_VAL}, {0., 350.}, {350., HUGE_VAL}, {0., 350.}, {350., HUGE_VAL}, {400., HUGE_VAL}};
-  // WRONG: const vector<doubles> MC_HJETSVBF::DY12CUTS = {{0., HUGE_VAL}, {0., 2.}, {2., 4.}, {4., HUGE_VAL}, {0., 2.}, {2., 4.}, {4., HUGE_VAL}, {3., HUGE_VAL}};
-  const vector<doubles> MC_HJETSVBF::DY12CUTS = {{0., HUGE_VAL}, {0., 2.}, {0., 2.}, {2., 4.}, {2., 4.}, {4., HUGE_VAL},  {4., HUGE_VAL}, {3., HUGE_VAL}};
+  const vector<doubles> MC_HJETSVBF::DY12CUTS = {{0., HUGE_VAL}, {0., 2.}, {2., 4.}, {4., HUGE_VAL}, {0., 2.}, {2., 4.}, {4., HUGE_VAL}, {3., HUGE_VAL}};
   const vector<double>  MC_HJETSVBF::DPHIJHCUTS = {0., 0., 0., 0., 0., 0., 0., 2.8};
 
 
