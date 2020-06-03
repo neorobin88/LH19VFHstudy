@@ -54,7 +54,7 @@ def extractNNJETHisto(fname, ynorm=1.0) :
         return histo
         
 os.system("mkdir -p plots-LO/MC_HJETSVBF")
-NNLOJETprefix=['NNLOJETdataplot/LH19VFHLOdata/R04LO.', 'NNLOJETdataplot/LH19VFHLOdata/R03LO.']
+NNLOJETprefix=['NNLOJETdataplot/LH19VFHLOdata/R04LO.']
 suffix='.dat'
 yodaFiles=['yodafiles/fLO-HW7-new' ]
 
@@ -71,7 +71,7 @@ for key in yodaData[0].keys():
                 NNLOJETkey='HTpt'+NNLOJETkey[2:]
                 NNLOJETfname=NNLOJETprefix[0]+NNLOJETkey+'.dat'
         else:
-                NNLOJETfname=NNLOJETprefix[1]+NNLOJETkey+'.dat'
+                NNLOJETfname=NNLOJETprefix[0]+NNLOJETkey+'.dat'
         os.system("ls "+NNLOJETfname)
         nnj = extractNNJETHisto(NNLOJETfname)
 

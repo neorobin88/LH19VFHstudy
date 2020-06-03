@@ -65,12 +65,10 @@ for key in yodaData[0].keys():
         if ('RAW' in key) or (not 'MC_HJETSVBF' in key) or ('cross' in key) or ('deltaphi_jj_ATLAS' in key) or ('[W1]' in key):
                 continue
         NNLOJETkey=key[13:]
-
         #for nnlojet ht -> htpt, not yet done at NLO        
         if('HT' in NNLOJETkey):
-                continue
-        else:
-                NNLOJETfname=NNLOJETprefix+NNLOJETkey+'.dat'
+                NNLOJETkey='HTpt'+NNLOJETkey[2:] 
+        NNLOJETfname=NNLOJETprefix+NNLOJETkey+'.dat'
         os.system("ls "+NNLOJETfname)
         nnj = extractNNJETHisto(NNLOJETfname)
 

@@ -60,11 +60,15 @@ yodaFiles=['yodafiles/PWG-HW7','yodafiles/PWG-PY8-powheghooks', 'yodafiles/HW7-d
 
 yodaData =[ yoda.read(yodafile+'.yoda') for yodafile in yodaFiles]
 
+refYoda='yodafiles/PWG-HW7'
 color=['blue', 'limegreen', 'violet', 'orange', 'darkgreen']
 for key in yodaData[0].keys():
         if ('RAW' in key) or (not 'MC_HJETSVBF' in key) or ('cross' in key) or ('deltaphi_jj_ATLAS' in key):
                 continue
         NNLOJETkey=key[13:]
+        #for nnlojet ht -> htpt, not yet done at NLO        
+        #if('HT' in NNLOJETkey):
+                #NNLOJETkey='HTpt'+NNLOJETkey[2:] 
         NNLOJETfname=NNLOJETprefix+NNLOJETkey+'.dat'
         os.system("ls "+NNLOJETfname)
         nnj = extractNNJETHisto(NNLOJETfname)
@@ -72,9 +76,17 @@ for key in yodaData[0].keys():
         plt.suptitle(NNLOJETkey)
         ax1 = plt.subplot(211)
         ax2 = plt.subplot(212)
+
+        # yvalRef = nnj[:,3]
+        histo=yoda.read(refYoda+'.yoda')[key]
+        xmin = np.array([bin.xMin for bin in histo.bins])
+        xmax = np.array([bin.xMax for bin in histo.bins])
+        binsize = xmax - xmin 
+        yvalRef = np.array([bin.area for bin in histo.bins])/binsize
         
+
         ax1.errorbar(nnj[:,1], nnj[:,3], yerr=nnj[:,4], xerr=nnj[:,1]-nnj[:,0], color='r', ls='-', label='NNLOJET')
-        ax2.errorbar(nnj[:,1], nnj[:,3]/nnj[:,3], yerr=nnj[:,4]/nnj[:,3], xerr=nnj[:,1]-nnj[:,0], color='r', ls='-', label='')
+        ax2.errorbar(nnj[:,1], nnj[:,3]/yvalRef, yerr=nnj[:,4]/yvalRef, xerr=nnj[:,1]-nnj[:,0], color='r', ls='-', label='')
         # nplot[-1][0].set_linestyle('-')
         # nplot[-1][-1].set_linestyle('-')
 
@@ -88,8 +100,11 @@ for key in yodaData[0].keys():
                 yval = np.array([bin.area for bin in histo.bins])/binsize
                 yerr = np.array([bin.relErr for bin in histo.bins])*yval
                 ax1.errorbar(xav, yval, yerr=yerr, xerr=binsize/2, color=color[yd], ls='-', label=yodaFiles[yd][10:])
-                ax2.errorbar(xav, yval/nnj[:,3], yerr=yerr/nnj[:,3], xerr=binsize/2, color=color[yd], ls='-', label='')
+                ax2.errorbar(xav, yval/yvalRef, yerr=yerr/yvalRef, xerr=binsize/2, color=color[yd], ls='-', label='')
 
+        ylims=ax2.get_ylim()
+        ylims=[max(ylims[0],0.2), min(ylims[1],3)]
+        ax2.set_ylim(ylims)
         ax1.legend()
         plt.savefig('plots/'+key+'.pdf')
         plt.close()
