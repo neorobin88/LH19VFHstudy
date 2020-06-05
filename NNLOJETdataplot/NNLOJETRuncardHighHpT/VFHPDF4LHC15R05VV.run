@@ -1,0 +1,141 @@
+NNLOJET_RUNCARD
+VV0              ! Run name id
+VFH                   ! Process name
+400000               ! Number of events
+10                ! Number of iterations
+15               ! Seed number
+.true.              ! Warmup
+.false.              ! Production
+PDF4LHC15_nnlo_30               ! PDF set
+0                    ! PDF member
+antikt               ! Jet algorithm, accepts 'kt', 'cam' or 'antikt'
+0.3                    ! Rcut
+.false.              ! exclusive
+3                    ! Heavy particle decay type (3: on-shell production)
+1d-7              ! Technical cutoff y0
+.false.                ! angular averaging of the phase space, default to true
+2                    ! Virtual Integration method, use 2 if you're not sure
+all             ! RR a/b region flag. Accepts 'a','b' or 'all'.
+0                    ! set to zero for MC, 2 for point test
+.false.              ! print max weight flag
+.true.               ! momentum mapping and PDF storage flag
+.false.              ! colour sampling
+.false.              ! explicit pole check flag, stops integration when set to true
+
+PHYSICAL_PARAMETERS
+13000d0	              ! roots
+125d0                 ! Mass of the Higgs Boson
+0.004088d0      ! Width of the Higgs Boson !Higgs values from https://twiki.cern.ch/twiki/bin/view/LHCPhysics/CERNYellowReportPageBR#TotalWidthAnchor
+91.1876d0             ! Mass of the Z Boson
+2.4952d0              ! Width of the Z Boson
+80.379d0              ! Mass of the W Boson
+2.085d0              ! Width of the W Boson !Vector boson values from http://pdg.lbl.gov/2019/download/db2018.pdf
+173.2d0               ! Mass of the Top Quark
+1.41d0                ! Width of the Top Quark
+4.18d0                ! Mass of the Bottom Quark
+0d0                   ! Width of the Bottom Quark
+1.275d0               ! Mass of the Charm Quark
+0d0                   ! Width of the Charm Quark
+1.777d0               ! Mass of the Tau lepton
+0d0                   ! Width of the Tau lepton
+!amz = 7.56239563669733588d-3  ! G_mu scheme
+!sin^2(thw)=0.22301322532678336
+
+SELECTORS
+
+        select njets      min = 2
+  	select jets_pt    min = 30
+  	select jets_abs_y max = 4.4
+! Same jet definition as in ATLAS_CONF_2019_025 and ATLAS_CONF_2019_029
+END_SELECTORS
+
+
+HISTOGRAMS
+
+        m12          > mjj_abovepth750          nbins = 20    min = 0d0    max = 4000d0
+        HISTOGRAM_SELECTORS
+           select pth min=750
+        END_HISTOGRAM_SELECTORS
+
+        m12          > mjj_abovepth750_fine     nbins = 40    min = 0d0    max = 4000d0
+        HISTOGRAM_SELECTORS
+           select pth min=750
+        END_HISTOGRAM_SELECTORS
+
+        m12          > mjj_abovepth650          nbins = 20    min = 0d0    max = 4000d0
+        HISTOGRAM_SELECTORS
+           select pth min=650
+        END_HISTOGRAM_SELECTORS
+
+        m12          > mjj_abovepth650_fine     nbins = 40    min = 0d0    max = 4000d0
+        HISTOGRAM_SELECTORS
+           select pth min=650
+        END_HISTOGRAM_SELECTORS
+
+        m12          > mjj_abovepth550          nbins = 20    min = 0d0    max = 4000d0
+        HISTOGRAM_SELECTORS
+           select pth min=550
+        END_HISTOGRAM_SELECTORS
+
+        m12          > mjj_abovepth550_fine     nbins = 40    min = 0d0    max = 4000d0
+        HISTOGRAM_SELECTORS
+           select pth min=550
+        END_HISTOGRAM_SELECTORS
+
+
+
+        deltay_j12   > deltay_jj_abovepth750         nbins = 10    min = 0d0    max = 10d0
+        HISTOGRAM_SELECTORS
+           select pth min=750
+        END_HISTOGRAM_SELECTORS
+
+        deltay_j12   > deltay_jj_abovepth750_fine    nbins = 20    min = 0d0    max = 10d0
+        HISTOGRAM_SELECTORS
+           select pth min=750
+        END_HISTOGRAM_SELECTORS
+
+        deltay_j12   > deltay_jj_abovepth650         nbins = 10    min = 0d0    max = 10d0
+        HISTOGRAM_SELECTORS
+           select pth min=650
+        END_HISTOGRAM_SELECTORS
+
+        deltay_j12   > deltay_jj_abovepth650_fine    nbins = 20    min = 0d0    max = 10d0
+        HISTOGRAM_SELECTORS
+           select pth min=650
+        END_HISTOGRAM_SELECTORS
+
+        deltay_j12   > deltay_jj_abovepth550         nbins = 10    min = 0d0    max = 10d0
+        HISTOGRAM_SELECTORS
+           select pth min=550
+        END_HISTOGRAM_SELECTORS
+
+        deltay_j12   > deltay_jj_abovepth550_fine    nbins = 20    min = 0d0    max = 10d0
+        HISTOGRAM_SELECTORS
+           select pth min=550
+        END_HISTOGRAM_SELECTORS
+
+
+END_HISTOGRAMS
+
+
+SCALES
+
+	!----- HJ paper setup
+	muf =  0.5 * ht_parton     mur =  0.5 * ht_parton
+	muf =        ht_parton     mur =        ht_parton 
+	muf = 0.25 * ht_parton     mur = 0.25 * ht_parton
+	muf =  0.5 * ht_parton     mur =        ht_parton
+	muf =        ht_parton     mur =  0.5 * ht_parton
+	muf =  0.5 * ht_parton     mur = 0.25 * ht_parton
+	muf = 0.25 * ht_parton     mur =  0.5 * ht_parton
+
+END_SCALES
+
+
+CHANNELS
+
+  VV
+
+END_CHANNELS
+
+
