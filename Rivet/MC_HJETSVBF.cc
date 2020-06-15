@@ -73,14 +73,14 @@ namespace Rivet {
 	sprintf(&dr[1], "%0.1f", DRS[j]);
       // Get Higgs
       const Particles higgses = apply<ParticleFinder>(event, "Higgses").particles();
-      if (higgses.empty()) vetoEvent;
-      if (higgses.size() > 1) vetoEvent;
+      if (higgses.empty()) continue;
+      if (higgses.size() > 1) continue;
       const Particle higgs = higgses[0];
       const double ptH = higgs.pT();
 
       // Get jets and leading dijet system
       const Jets jets = apply<FastJets>(event, "Jets"+dr).jetsByPt(Cuts::pT > 30*GeV && Cuts::absrap < 4.4);
-      if (jets.size() < 2) vetoEvent;
+      if (jets.size() < 2) continue;
       const int njets = jets.size();
       const double htj = sum(jets, Kin::pT, 0.0);
       const double ht = htj + higgs.pT();
