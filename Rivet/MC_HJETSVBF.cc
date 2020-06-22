@@ -51,17 +51,17 @@ namespace Rivet {
         book(_h[j][i]["ptjj_largebin"], "ptjj_largebin"+sn, linspace(4, 0, 100)+linspace(7, 150, 500)+linspace(2, 600, 1000));
       }
       // Now the m12 histograms, with various binnings and dy12 cuts
-      book(_h_mjj[j]["mjj_STXS"], "mjj_STXS", {0.,100.,200.,350.,700.,1000.,1500.,2000.,2500.,3000.});
-      book(_h_mjj[j]["mjj_ATLAS_CONF_029"], "mjj_ATLAS_CONF_029", {0.,160.,500.,1500.});
-      book(_h_mjj[j]["mjj_100GeVbin"], "mjj_100GeVbin", 20, 0, 2000);
-      book(_h_mjj[j]["mjj_100GeVbin_center"], "mjj_100GeVbin_center", 20, 0, 2000);
-      book(_h_mjj[j]["mjj_100GeVbin_middle"], "mjj_100GeVbin_middle", 20, 0, 2000);
-      book(_h_mjj[j]["mjj_100GeVbin_forward"], "mjj_100GeVbin_forward", 20, 0, 2000);
-      book(_h_mjj[j]["mjj_100GeVbin_ATLAS"], "mjj_100GeVbin_ATLAS", 20, 0, 2000);
+      book(_h_mjj[j]["mjj_STXS"], "mjj_STXS"+dr, {0.,100.,200.,350.,700.,1000.,1500.,2000.,2500.,3000.});
+      book(_h_mjj[j]["mjj_ATLAS_CONF_029"], "mjj_ATLAS_CONF_029"+dr, {0.,160.,500.,1500.});
+      book(_h_mjj[j]["mjj_100GeVbin"], "mjj_100GeVbin"+dr, 20, 0, 2000);
+      book(_h_mjj[j]["mjj_100GeVbin_center"], "mjj_100GeVbin_center"+dr, 20, 0, 2000);
+      book(_h_mjj[j]["mjj_100GeVbin_middle"], "mjj_100GeVbin_middle"+dr, 20, 0, 2000);
+      book(_h_mjj[j]["mjj_100GeVbin_forward"], "mjj_100GeVbin_forward"+dr, 20, 0, 2000);
+      book(_h_mjj[j]["mjj_100GeVbin_ATLAS"], "mjj_100GeVbin_ATLAS"+dr, 20, 0, 2000);
       // Now the dy12 histograms, with various m12 cuts
-      book(_h_dyjj[j]["deltay_jj"], "deltay_jj", 10, 0, 10);
-      book(_h_dyjj[j]["deltay_jj_light"], "deltay_jj_light", 10, 0, 10);
-      book(_h_dyjj[j]["deltay_jj_heavy"], "deltay_jj_heavy", 10, 0, 10);
+      book(_h_dyjj[j]["deltay_jj"], "deltay_jj"+dr, 10, 0, 10);
+      book(_h_dyjj[j]["deltay_jj_light"], "deltay_jj_light"+dr, 10, 0, 10);
+      book(_h_dyjj[j]["deltay_jj_heavy"], "deltay_jj_heavy"+dr, 10, 0, 10);
       }
     }
 
