@@ -49,6 +49,13 @@ namespace Rivet {
         book(_h[j][i]["pthjj_largebin"], "pthjj_largebin"+sn, linspace(4, 0, 100)+linspace(7, 150, 500)+linspace(2, 600, 1000));
         book(_h[j][i]["logpthjj_largebin"], "logpthjj_largebin"+sn, linspace(100, 0., 4.));
         book(_h[j][i]["ptjj_largebin"], "ptjj_largebin"+sn, linspace(4, 0, 100)+linspace(7, 150, 500)+linspace(2, 600, 1000));
+	for (size_t c = 0; c < HPTCUTS.size(); ++c) {
+	  std::string pt = "_xxx";
+	  sprintf(&pt[1], "%0.0f", HPTCUTS[c]);
+	  book(_h[j][i]["deltay_jj"+pt], "deltay_jj"+sn+pt, 100, 0, 10);
+	  book(_h[j][i]["deltaR_jj"+pt], "deltaR_jj"+sn+pt, 100, 0, 10);
+	  book(_h[j][i]["m_jj"+pt], "m_jj"+sn+pt, 40, 0, 2000);
+	}
       }
       // Now the m12 histograms, with various binnings and dy12 cuts
       book(_h_mjj[j]["mjj_STXS"], "mjj_STXS"+dr, {0.,100.,200.,350.,700.,1000.,1500.,2000.,2500.,3000.});
@@ -115,6 +122,15 @@ namespace Rivet {
         _h[j][i]["pthjj_largebin"]->fill(ptjjH/GeV);
         _h[j][i]["logpthjj_largebin"]->fill(log10(ptjjH/GeV));
         _h[j][i]["ptjj_largebin"]->fill(pt12/GeV);
+	for (size_t c = 0; c < HPTCUTS.size(); ++c) {
+	  if (ptH/GeV>HPTCUTS[c]) {
+	    std::string pt = "_xxx";
+	    sprintf(&pt[1], "%0.0f", HPTCUTS[c]);
+	    _h[j][i]["deltay_jj"+pt]->fill(dy12);
+	    _h[j][i]["deltaR_jj"+pt]->fill(sqrt(dy12*dy12+dphi12*dphi12));
+	    _h[j][i]["m_jj"+pt]->fill(m12);
+	  }
+	}
       }
 
       // Fill dijet mass histograms
@@ -163,7 +179,7 @@ namespace Rivet {
     map<string,Histo1DPtr> _h_mjj[15], _h_dyjj[15];
     //@}
 
-    static const vector<double> DRS;
+    static const vector<double> DRS, HPTCUTS;
 
     /// Cut values for standard histogram sets (other than m12 and dy12)
     //@{
@@ -182,6 +198,7 @@ namespace Rivet {
   const vector<doubles> MC_HJETSVBF::M12CUTS  = {{0., HUGE_VAL}, {0., 350.}, {350., HUGE_VAL}, {0., 350.}, {350., HUGE_VAL}, {0., 350.}, {350., HUGE_VAL}, {400., HUGE_VAL}};
   const vector<doubles> MC_HJETSVBF::DY12CUTS = {{0., HUGE_VAL}, {0., 2.}, {0., 2.}, {2., 4.}, {2., 4.}, {4., HUGE_VAL}, {4., HUGE_VAL}, {3., HUGE_VAL}};
   const vector<double>  MC_HJETSVBF::DPHIJHCUTS = {0., 0., 0., 0., 0., 0., 0., 2.8};
+  const vector<double> MC_HJETSVBF::HPTCUTS  = {100.,200.,300.,400.,500.,600.};
 
 
   DECLARE_RIVET_PLUGIN(MC_HJETSVBF);
