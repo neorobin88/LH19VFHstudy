@@ -77,9 +77,9 @@ namespace Rivet {
 	  book(_hh[j]["deltaR_jj"+pt], "deltaR_jj"+dr+pt, 100, 0, 10);
 	  book(_hh[j]["deltaphi_jj"+pt], "deltaphi_jj"+dr+pt, 24, 0, M_PI);
 	  book(_hh[j]["y_h"+pt], "y_h"+dr+pt, 70, -3.5, 3.5);
-	  book(_hh[j]["y_j1"+pt], "y_h"+dr+pt, 70, -3.5, 3.5);
-	  book(_hh[j]["y_j2"+pt], "y_h"+dr+pt, 70, -3.5, 3.5);
-	  book(_hh[j]["y_j3"+pt], "y_h"+dr+pt, 70, -3.5, 3.5);
+	  book(_hh[j]["y_j1"+pt], "y_j1"+dr+pt, 70, -3.5, 3.5);
+	  book(_hh[j]["y_j2"+pt], "y_j2"+dr+pt, 70, -3.5, 3.5);
+	  book(_hh[j]["y_j3"+pt], "y_j3"+dr+pt, 70, -3.5, 3.5);
 	  book(_hh[j]["m_jj"+pt], "m_jj"+dr+pt, 80, 0, 4000);
 	}
 
@@ -93,9 +93,9 @@ namespace Rivet {
 	    book(_hh[j]["deltaR_jj"+mpt], "deltaR_jj"+dr+mpt, 100, 0, 10);
 	    book(_hh[j]["deltaphi_jj"+mpt], "deltaphi_jj"+dr+mpt, 24, 0, M_PI);
 	    book(_hh[j]["y_h"+mpt], "y_h"+dr+mpt, 70, -3.5, 3.5);
-	    book(_hh[j]["y_j1"+mpt], "y_h"+dr+mpt, 70, -3.5, 3.5);
-	    book(_hh[j]["y_j2"+mpt], "y_h"+dr+mpt, 70, -3.5, 3.5);
-	    book(_hh[j]["y_j3"+mpt], "y_h"+dr+mpt, 70, -3.5, 3.5);
+	    book(_hh[j]["y_j1"+mpt], "y_j1"+dr+mpt, 70, -3.5, 3.5);
+	    book(_hh[j]["y_j2"+mpt], "y_j2"+dr+mpt, 70, -3.5, 3.5);
+	    book(_hh[j]["y_j3"+mpt], "y_j3"+dr+mpt, 70, -3.5, 3.5);
 	  }
 	}
 
