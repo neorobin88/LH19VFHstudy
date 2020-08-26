@@ -1,0 +1,40 @@
+LO runs:
+
+full-LO.yoda    = using the HJETS matrix elements integrated in HW7
+VBF-LO.yoda     = using the VBF matrix elements integrated in HW7   
+HV-LO.yoda      = generating LO events from the powheg box generators HW and HZ
+
+
+NLO+PS:
+
+full.yoda      = HW7 standalone, HJETS ME, dipole shower, MC@NLO matching
+full-AO.yoda   = HW7 standalone, HJETS ME, AO shower, MC@NLO matching
+VBF.yoda       = HW7 standalone, VBF ME, dipole shower, MC@NLO matching
+VBF-AO.yoda    = HW7 standalone, VBF ME, AO shower, MC@NLO matching
+VBF-PWG.yoda   = POWHEG BOX VBF + HW7 AO shower
+HV-PWG.yoda    = POWHEG BOX HW&HZ + HW7 AO shower
+
+
+HV runs are obtained modifying the HZ and the HW POWHEG BOX generators,
+which implement only the leptonic decay of the boson.
+
+-     at the event generation, electrons become down quarks, and
+      neutrinos up quarks.
+
+- HW: we generate 2 samples, one for HW+ -> H dbar u, one for HW- -> H d
+      ubar. We add a factor 3, for SU(3), and a factor 2 to take into account
+      all the hadronic W decays (we don't do flavour tagging).
+      
+
+- HZ: we generate 2 samples, one Z-> d dbar, one for Z-> u ubar.
+      The Z coupling is modifyied according to the quark flavour.
+      We add a factor 3, for SU(3), and a factor 3 (for ddbar) or 2 (for uubar)
+      to take into account all the hadronic W decays
+      (we don't do flavour tagging).
+
+- on the accuracy of the boson decay: The NLO QCD correction to the W decay
+  is given by alphas/pi * born. We include this factor in the event weight,
+  by adding it to the virtual amplitude. Since the PS contains MEC for the
+  boson decay, and NLO QCD correction in the decay of a white object are
+  fully factorize from the one in production, this is equivalent to have a
+  full NLO generator.
