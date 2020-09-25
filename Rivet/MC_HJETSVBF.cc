@@ -37,6 +37,14 @@ namespace Rivet {
       for (size_t j = 0; j < DRS.size(); ++j) {
 	std::string dr = "_xxx";
 	sprintf(&dr[1], "%0.1f", DRS[j]);
+	book(_hvh[j]["deltay_vh"], "deltay_vh"+dr, 100, 0, 10);
+	book(_hvh[j]["deltaR_vh"], "deltaR_vh"+dr, 100, 0, 10);
+	book(_hvh[j]["deltaphi_vh"], "deltaR_vh"+dr, 30, 0, M_PI);
+	book(_hvh[j]["mjj_vh"], "mjj_vh"+dr, 40, 0, 2000.);
+	book(_hvh[j]["ratioPt_vh"], "ratioPt_vh"+dr,50, 0., 1.); 
+	
+	
+	
 	for (size_t i = 0; i < SELNAMES.size(); ++i) {
 	  const string sn = dr+SELNAMES[i];
 	  book(_c_xs[j][i], "cross"+sn);
@@ -168,6 +176,46 @@ namespace Rivet {
 	const double ptjjH = jjH.pT();
 	const double dphijjH = deltaPhi(higgs, dijet); //min(deltaPhi(higgs, jets[0]), deltaPhi(higgs, jets[1]));
 
+	const double minmasswindow = 50.;
+	const double maxmasswindow = 150.;
+	
+	bool novh = ( (m12 < minmasswindow) || (m12 > maxmasswindow)); 
+
+	if(novh){
+	  const double m1 = jets[0].mom().mass();
+	  const double m2 = jets[1].mom().mass();
+	  if (m1 > minmasswindow && m1 < maxmasswindow) novh = false;
+	  if (m2 > minmasswindow && m2 < maxmasswindow) novh = false;
+	}
+	
+	if(njets > 2 and novh){
+	  const double m3 = jets[2].mom().mass();
+	  const double m13 = (jets[0].mom() + jets[2].mom()).mass();
+	  const double m23 = (jets[1].mom() + jets[2].mom()).mass();
+	  const double m123 = (jets[0].mom() +jets[1].mom() + jets[2].mom()).mass();
+  
+	  if (m3 > minmasswindow && m3 < maxmasswindow) novh = false;
+	  if (m13 > minmasswindow && m13 < maxmasswindow) novh = false;
+	  if (m23 > minmasswindow && m23 < maxmasswindow) novh = false;
+	  if (m123 > minmasswindow && m123 < maxmasswindow) novh = false;
+
+	}
+
+	
+	if(novh){
+
+	  _hvh[j]["deltay_vh"]->fill(dy12);
+	  _hvh[j]["deltaR_vh"]->fill(dR12);
+	  _hvh[j]["deltaphi_vh"]->fill(dphi12);
+	  _hvh[j]["mjj_vh"]->fill(m12/GeV);
+	  _hvh[j]["ratioPt_vh"]->fill(jets[1].mom().pT()/jets[0].mom().pT() );
+
+	}
+							  
+        
+	
+
+	
 	// Fill standard cut-combination histograms
 	for (size_t i = 0; i < SELNAMES.size(); ++i) {
 	  if (m12 < M12CUTS[i][0]*GeV) continue;
@@ -311,6 +359,8 @@ namespace Rivet {
 	  scale(kv.second, crossSection()/femtobarn/sumOfWeights());
 	for (auto kv : _hh[j])
 	  scale(kv.second, crossSection()/femtobarn/sumOfWeights());
+	for (auto kv : _hvh[j])
+	  scale(kv.second, crossSection()/femtobarn/sumOfWeights());	
 	
 	/* for (auto kv : _h_dyjj[j])
 	   scale(kv.second, crossSection()/femtobarn/sumOfWeights());*/
@@ -320,7 +370,7 @@ namespace Rivet {
 
     /// @name Histograms
     //@{
-    map<string, Histo1DPtr> _h[15][8], _hh[15];
+    map<string, Histo1DPtr> _h[15][8], _hh[15], _hvh[15];
     CounterPtr _c_xs[15][8];
     map<string,Histo1DPtr> _h_mjj[15]; //, _h_dyjj[15];
     //@}
