@@ -80,7 +80,7 @@ namespace Rivet {
         // Per-dR, per-rescuts histograms
         // [delta_y_jj12, m_jj12, delta_phi_jj12, delta_y_jjfb]
         for (size_t iv = 0; iv < 2; ++iv) {
-          const string res = RESS[iv]; //< @todo string??
+          const string res = RESNAMES[iv];
           const string pre = "drres_" + dr + "_" + pth + "_" + res + "_";
           const string suff = "";
           book(_h_dr_res[ir][ih][iy]["delta_y_jj12"], pre+"delta_y_jj12"+suff, ...);
@@ -105,7 +105,7 @@ namespace Rivet {
       const double yh  = higgs.rap();
 
       for (size_t ir = 0; ir < DRS.size(); ++j) {
-        std::string dr = "xxx";
+        string dr = "xxx";
         sprintf(&dr[0], "%0.1f", DRS[ir]);
 
         // Get jets, require dijet, and compute HTs
@@ -151,7 +151,7 @@ namespace Rivet {
         const double dphijjH = deltaPhi(higgs, dijet);
         //min(deltaPhi(higgs, jets[0]), deltaPhi(higgs, jets[1]));
 
-        // VH resonance cut
+        // Get VH resonance-cut status
         const double minmasswindow = 50*GeV, maxmasswindow = 150*GeV;
         bool novh = !inRange(m12, minmasswindow, maxmasswindow);
         if (novh) {
@@ -191,7 +191,6 @@ namespace Rivet {
           if (pTH < PTHCUTS[ih]*GeV) continue;
           for (size_t iy = 0; iy < 2; ++iy) {
             if (dy12 < DY12CUTS[iy]) continue;
-
             // _c_xs[j][i]->fill();
             _h_incl[ir][ih][iy]["njets"]->fill(njets);
             _h_incl[ir][ih][iy]["delta_y_jj12"]->fill(dy12);
@@ -211,10 +210,9 @@ namespace Rivet {
           }
         }
 
-        // VH resonance cut
+        // Histograms with/without the VH resonance cut
         for (size_t iv = 0; iv < 2; ++iv) {
           if (bool(iv) == novh) continue; // if passed, 0 = !res, 1 = res
-
           _h_dr_res[ir][iv]["delta_y_jj12"]->fill(dy12);
           _h_dr_res[ir][iv]["deltaphi_jj12"]->fill(dphi12);
           _h_dr_res[ir][iv]["m_jj12"]->fill(m12/GeV);
@@ -227,55 +225,38 @@ namespace Rivet {
 
     /// Normalise histograms etc., after the run
     void finalize() {
-      for (size_t j = 0; j < DRS.size(); ++j) {
-        for (size_t i = 0; i < SELNAMES.size(); ++i) {
-          scale(_c_xs[j][i], crossSection()/femtobarn/sumOfWeights());
-          for (auto kv : _h[j][i])
-            scale(kv.second, crossSection()/femtobarn/sumOfWeights());
+      const double sf = crossSection()/femtobarn/sumOfWeights();
+      scale(_h_incl, sf);
+      for (size_t ir = 0; ir < DRS.size(); ++ir) {
+        for (size_t ih = 0; ih < PTHCUTS.size(); ++ih) {
+          for (size_t iy = 0; iy < DY12CUTS.size(); ++iy) {
+            scale(_h_dr_pth_dy[ir][ih][iy], sf);
+          }
         }
-        for (auto kv : _h_mjj[j])
-          scale(kv.second, crossSection()/femtobarn/sumOfWeights());
-        for (auto kv : _hh[j])
-          scale(kv.second, crossSection()/femtobarn/sumOfWeights());
-        for (auto kv : _hvh[j])
-          scale(kv.second, crossSection()/femtobarn/sumOfWeights());
-
-        /* for (auto kv : _h_dyjj[j])
-           scale(kv.second, crossSection()/femtobarn/sumOfWeights());*/
+        for (size_t iv = 0; iv < 2; ++iv) {
+          scale(_h_dr_res[ir][iv], sf);
+        }
       }
     }
 
 
-    // @name Histograms
-    map<string, Histo1DPtr> _h[15][8], _hh[15], _hvh[15];
-    CounterPtr _c_xs[15][8];
-    map<string,Histo1DPtr> _h_mjj[15]; //, _h_dyjj[15];
+    // Histograms
+    map<string, Histo1DPtr> _h_incl, _h_dr_pth_dy[3][3][2], _h_dr_res[3][2];
 
     // Cut values for standard histogram sets (other than m12 and dy12)
     static const vector<double> DRS;
-    static const vector<string> SELNAMES;
-    static const vector<doubles> M12CUTS;
-    static const vector<doubles> DY12CUTS;
-    static const vector<double> DPHIJHCUTS;
-    static const vector<double> HPTCUTS;
-    static const vector<double> HPTCUTSV2, HPTCUTSV2_MAX, M12MAXCUTS, DR12CUTS;
+    static const vector<double> PTHCUTS;
+    static const vector<double> DY12CUTS;
+    static const vector<double> RESNAMES;
 
   };
 
 
   // Static const initializers
-  //const vector<double>  MC_HJETSVBF::DRS = { 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5 };
-  const vector<double>  MC_HJETSVBF::DRS = {0.4, 0.7, 1.0};
-  const vector<string>  MC_HJETSVBF::SELNAMES = {"", "_light_center", "_heavy_center", "_light_middle", "_heavy_middle", "_light_forward", "_heavy_forward", "_ATLAS"};
-  const vector<doubles> MC_HJETSVBF::M12CUTS = {{0., HUGE_VAL}, {0., 350.}, {350., HUGE_VAL}, {0., 350.}, {350., HUGE_VAL}, {0., 350.}, {350., HUGE_VAL}, {400., HUGE_VAL}};
-  const vector<doubles> MC_HJETSVBF::DY12CUTS = {{0., HUGE_VAL}, {0., 2.}, {0., 2.}, {2., 4.}, {2., 4.}, {4., HUGE_VAL}, {4., HUGE_VAL}, {3., HUGE_VAL}};
-  const vector<double>  MC_HJETSVBF::DPHIJHCUTS = {0., 0., 0., 0., 0., 0., 0., 2.8};
-  // const vector<double> MC_HJETSVBF::HPTCUTS = {0., 100.,200.,300.,400.,500.,1000.};
-  const vector<double> MC_HJETSVBF::HPTCUTS = {0., 200., 500.};
-  // const vector<double> MC_HJETSVBF::HPTCUTSV2 = {0., 200., 500.};
-  // const vector<double> MC_HJETSVBF::HPTCUTSV2_MAX = {50., 300., HUGE_VAL};
-  const vector<double> MC_HJETSVBF::M12MAXCUTS = {100.,200.,300.,400.,500.,1000.,2000.};
-  const vector<double> MC_HJETSVBF::DR12CUTS = {0.5, 1.0, 1.5,  2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 6.0, 7.0};
+  const vector<double> MC_HJETSVBF::DRS = {0.4, 0.7, 1.0};
+  const vector<double> MC_HJETSVBF::PTHCUTS = {0., 200., 500.};
+  const vector<double> MC_HJETSVBF::DY12CUTS = {0.0, 1.0};
+  const vector<string> MC_HJETSVBF::RESNAMES = {"nores", "res"};
   DECLARE_RIVET_PLUGIN(MC_HJETSVBF);
 
 }
