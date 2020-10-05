@@ -22,118 +22,71 @@ namespace Rivet {
       NonPromptFinalState fs(Cuts::abseta < 5);
       for (size_t i = 0; i < DRS.size(); ++i) {
         FastJets fj(fs, FastJets::ANTIKT, DRS[i]);
-        std::string dr = "_xxx";
+        string dr = "_xxx";
         sprintf(&dr[1], "%0.1f", DRS[i]);
         declare(fj, "Jets"+dr);
       }
       PromptFinalState pfs(Cuts::abseta < 5);
-      PromptFinalState higgses(Cuts::pid == PID::HIGGS && Cuts::abseta < 5);
+      PromptFinalState higgses(Cuts::pid == PID::HIGGS && Cuts::absrap < 2.4);
       declare(pfs, "PromptFS");
       declare(higgses, "Higgses");
 
 
-      // Histograms, starting with standard m12, dy12 combinations
-      /// @todo Add an extra loop, array layer, and suffix element for the jet radius
-      for (size_t j = 0; j < DRS.size(); ++j) {
-        std::string dr = "_xxx";
-        sprintf(&dr[1], "%0.1f", DRS[j]);
-        book(_hvh[j]["deltay_vh"], "deltay_vh"+dr, 100, 0, 10);
-        book(_hvh[j]["deltaR_vh"], "deltaR_vh"+dr, 100, 0, 10);
-        book(_hvh[j]["deltaphi_vh"], "deltaR_vh"+dr, 30, 0, M_PI);
-        book(_hvh[j]["mjj_vh"], "mjj_vh"+dr, 40, 0, 2000.);
-        book(_hvh[j]["ratioPt_vh"], "ratioPt_vh"+dr,50, 0., 1.);
+      // Histograms
 
+      // Inclusive histograms (dR = 0.4 only)
+      // [njets, delta_y_jj, m_jj,delta_phi_jj, HT, pTH, pTHj, pTHjj]
+      const string pre = "incl_";
+      book(_h_incl["njets"], pre+"njets", 5, -0.5, 4.5);
+      book(_h_incl["delta_y_jj12"], pre+"delta_y_jj12", ...);
+      book(_h_incl["delta_phi_jj12"], pre+"delta_phi_jj12", ...);
+      book(_h_incl["m_jj12"], pre+"m_jj12", ...);
+      book(_h_incl["ht"], pre+"HT", linspace(10, 0, 1000)+linspace(4, 1200, 2000));
+      book(_h_incl["pth"], pre+"pTH", 200, 0, 1000);
+      book(_h_incl["pthj1"], pre+"pTHj1", 200, 0, 1000);
+      book(_h_incl["pthjj12"], pre+"pTHjj12", linspace(4, 0, 100)+linspace(7, 150, 500)+linspace(2, 600, 1000));
 
+      for (size_t ir = 0; ir < DRS.size(); ++ir) {
+        string dr = "xxx";
+        sprintf(&dr[0], "%0.1f", DRS[ir]);
 
-        for (size_t i = 0; i < SELNAMES.size(); ++i) {
-          const string sn = dr+SELNAMES[i];
-          book(_c_xs[j][i], "cross"+sn);
-          book(_h[j][i]["deltaphi_jj"], "deltaphi_jj"+sn, 30, 0.0, M_PI);
-          book(_h[j][i]["y_j12_02bin"], "y_j12_02bin"+sn, linspace(20, 0.0, 4.0)+linspace(4, 4.5, 6.5)+linspace(3, 7.0, 10));
-          book(_h[j][i]["pth_largebin"], "pth_largebin"+sn, linspace(4, 0, 100)+linspace(7, 150, 500)+linspace(2, 600, 1000));
-          book(_h[j][i]["pth_finebin"], "pth_finebin"+sn, linspace(19, 0, 95)+linspace(9, 100, 190)+linspace(16, 200, 600));
-          book(_h[j][i]["njets"], "njets"+sn, 5, -0.5, 4.5);
-          book(_h[j][i]["HT"], "HT"+sn, linspace(10, 0, 1000)+linspace(4, 1200, 2000));
-          book(_h[j][i]["pthjj"], "pthjj"+sn, 200, 0, 1000);
-          book(_h[j][i]["pthjj_largebin"], "pthjj_largebin"+sn, linspace(4, 0, 100)+linspace(7, 150, 500)+linspace(2, 600, 1000));
-          book(_h[j][i]["logpthjj_largebin"], "logpthjj_largebin"+sn, linspace(100, 0., 4.));
-          book(_h[j][i]["ptjj_largebin"], "ptjj_largebin"+sn, linspace(4, 0, 100)+linspace(7, 150, 500)+linspace(2, 600, 1000));
-          // for (size_t c = 0; c < HPTCUTS.size(); ++c) {
-          //   std::string pt = "_xxx";
-          //   sprintf(&pt[1], "%0.0f", HPTCUTS[c]);
-          //   book(_h[j][i]["deltay_jj"+pt], "deltay_jj"+sn+pt, 100, 0, 10);
-          //   book(_h[j][i]["deltaR_jj"+pt], "deltaR_jj"+sn+pt, 100, 0, 10);
-          //   book(_h[j][i]["m_jj"+pt], "m_jj"+sn+pt, 40, 0, 2000);
-          // }
-        }
-        // Now the m12 histograms, with various binnings and dy12 cuts
-        book(_h_mjj[j]["mjj_STXS"], "mjj_STXS"+dr, {0.,100.,200.,350.,700.,1000.,1500.,2000.,2500.,3000.});
-        book(_h_mjj[j]["mjj_ATLAS_CONF_029"], "mjj_ATLAS_CONF_029"+dr, {0.,160.,500.,1500.});
-        book(_h_mjj[j]["mjj_100GeVbin"], "mjj_100GeVbin"+dr, 40, 0, 2000);
-        book(_h_mjj[j]["mjj_100GeVbin_center"], "mjj_100GeVbin_center"+dr, 40, 0, 2000);
-        book(_h_mjj[j]["mjj_100GeVbin_middle"], "mjj_100GeVbin_middle"+dr, 40, 0, 2000);
-        book(_h_mjj[j]["mjj_100GeVbin_forward"], "mjj_100GeVbin_forward"+dr, 40, 0, 2000);
-        book(_h_mjj[j]["mjj_100GeVbin_ATLAS"], "mjj_100GeVbin_ATLAS"+dr, 40, 0, 2000);
-        // // Now the dy12 histograms, with various m12 cuts
-        // book(_h_dyjj[j]["deltay_jj"], "deltay_jj"+dr, 10, 0, 10);
-        // book(_h_dyjj[j]["deltay_jj_light"], "deltay_jj_light"+dr, 10, 0, 10);
-        // book(_h_dyjj[j]["deltay_jj_heavy"], "deltay_jj_heavy"+dr, 10, 0, 10);
-
-        for (size_t c = 0; c < HPTCUTS.size(); ++c) {
-          std::string pt = std::to_string(int(HPTCUTS[c]));
-          pt = "_pt"+pt;
-          book(_hh[j]["deltay_jj"+pt], "deltay_jj"+dr+pt, 100, 0, 10);
-          book(_hh[j]["deltaR_jj"+pt], "deltaR_jj"+dr+pt, 100, 0, 10);
-          book(_hh[j]["deltaphi_jj"+pt], "deltaphi_jj"+dr+pt, 30, 0, M_PI);
-          book(_hh[j]["y_h"+pt], "y_h"+dr+pt, 70, -3.5, 3.5);
-          book(_hh[j]["y_j1"+pt], "y_j1"+dr+pt, 70, -3.5, 3.5);
-          book(_hh[j]["y_j2"+pt], "y_j2"+dr+pt, 70, -3.5, 3.5);
-          book(_hh[j]["y_j3"+pt], "y_j3"+dr+pt, 70, -3.5, 3.5);
-          book(_hh[j]["m_jj"+pt], "m_jj"+dr+pt, 80, 0, 4000);
-        }
-
-        for (size_t c = 0; c < HPTCUTSV2.size(); ++c) {
-          std::string ptmin = std::to_string(int(HPTCUTSV2[c]));
-          std::string ptmax = std::to_string(int(HPTCUTSV2_MAX[c]));
-          if(HPTCUTSV2_MAX[c] == HUGE_VAL) ptmax="inf";
-          std::string pt = "_pt"+ptmin;
-          for (size_t c1 = 0; c1 < M12MAXCUTS.size(); ++c1) {
-            std::string mpt = std::to_string(int(M12MAXCUTS[c1]));
-            mpt = "_m"+mpt+pt;
-            std::string mpt2 =mpt+"-"+ptmax;
-            book(_hh[j]["deltay_jj"+mpt], "deltay_jj"+dr+mpt, 100, 0, 10);
-            book(_hh[j]["deltaR_jj"+mpt], "deltaR_jj"+dr+mpt, 100, 0, 10);
-            book(_hh[j]["deltaphi_jj"+mpt], "deltaphi_jj"+dr+mpt, 30, 0, M_PI);
-            book(_hh[j]["y_h"+mpt], "y_h"+dr+mpt, 70, -3.5, 3.5);
-            book(_hh[j]["y_j1"+mpt], "y_j1"+dr+mpt, 70, -3.5, 3.5);
-            book(_hh[j]["y_j2"+mpt], "y_j2"+dr+mpt, 70, -3.5, 3.5);
-            book(_hh[j]["y_j3"+mpt], "y_j3"+dr+mpt, 70, -3.5, 3.5);
-            book(_hh[j]["deltay_jj"+mpt2], "deltay_jj"+dr+mpt2, 100, 0, 10);
-            book(_hh[j]["deltaR_jj"+mpt2], "deltaR_jj"+dr+mpt2, 100, 0, 10);
-            book(_hh[j]["deltaphi_jj"+mpt2], "deltaphi_jj"+dr+mpt2, 30, 0, M_PI);
-            book(_hh[j]["y_h"+mpt2], "y_h"+dr+mpt2, 70, -3.5, 3.5);
-            book(_hh[j]["y_j1"+mpt2], "y_j1"+dr+mpt2, 70, -3.5, 3.5);
-            book(_hh[j]["y_j2"+mpt2], "y_j2"+dr+mpt2, 70, -3.5, 3.5);
-            book(_hh[j]["y_j3"+mpt2], "y_j3"+dr+mpt2, 70, -3.5, 3.5);
+        // Per-dR, per-pTH, per-dy histograms
+        // [njets, delta_y_jj12, m_jj12, delta_phi_jj12, delta_y_jjfb,
+        //  pT2/pT1, pT3/pT1, xH, x1, x2, x3, pTH, pTHj, pTHjj]
+        for (size_t ih = 0; ih < PTHCUTS.size(); ++ih) {
+          const string pth = PTHCUTS[ih];
+          for (size_t iy = 0; iy < DY12CUTS.size(); ++iy) {
+            const string dy = DY12CUTS[iy];
+            const string pre = "drptdy_" + dr + "_" + pth + "_" + dy + "_";
+            const string suff = "";
+            book(_h_dr_pth_dy[ir][ih][iy]["njets"], pre+"njets"+suff, 5, -0.5, 4.5);
+            book(_h_dr_pth_dy[ir][ih][iy]["delta_y_jj12"], pre+"delta_y_jj12"+suff, ...);
+            book(_h_dr_pth_dy[ir][ih][iy]["delta_phi_jj12"], pre+"delta_phi_jj12"+suff, 30, 0.0, M_PI);
+            book(_h_dr_pth_dy[ir][ih][iy]["m_jj12"], pre+"m_jj12"+suff, ...);
+            book(_h_dr_pth_dy[ir][ih][iy]["delta_y_jjfb"], pre+"delta_y_jjfb"+suff, ...);
+            book(_h_dr_pth_dy[ir][ih][iy]["pt2_pt1"], pre+"pt2_pt1"+suff, linspace(10, 0, 1000)+linspace(4, 1200, 2000));
+            book(_h_dr_pth_dy[ir][ih][iy]["pt3_pt1"], pre+"pt3_pt1"+suff, linspace(10, 0, 1000)+linspace(4, 1200, 2000));
+            book(_h_dr_pth_dy[ir][ih][iy]["xh"], pre+"xh"+suff, linspace(10, 0, 1000)+linspace(4, 1200, 2000));
+            book(_h_dr_pth_dy[ir][ih][iy]["x1"], pre+"x1"+suff, linspace(10, 0, 1000)+linspace(4, 1200, 2000));
+            book(_h_dr_pth_dy[ir][ih][iy]["x2"], pre+"x2"+suff, linspace(10, 0, 1000)+linspace(4, 1200, 2000));
+            book(_h_dr_pth_dy[ir][ih][iy]["x3"], pre+"x3"+suff, linspace(10, 0, 1000)+linspace(4, 1200, 2000));
+            book(_h_dr_pth_dy[ir][ih][iy]["ht"], pre+"ht"+suff, linspace(10, 0, 1000)+linspace(4, 1200, 2000));
+            book(_h_dr_pth_dy[ir][ih][iy]["pth"], pre+"pth"+suff, 200, 0, 1000);
+            book(_h_dr_pth_dy[ir][ih][iy]["pthj1"], pre+"pthj1"+suff, 200, 0, 1000);
+            book(_h_dr_pth_dy[ir][ih][iy]["pthjj12"], pre+"pthjj12"+suff, linspace(4, 0, 100)+linspace(7, 150, 500)+linspace(2, 600, 1000));
           }
         }
 
-        for (size_t c = 0; c < HPTCUTSV2.size(); ++c) {
-          std::string pt = std::to_string(int(HPTCUTSV2[c]));
-          std::string ptmax = std::to_string(int(HPTCUTSV2_MAX[c]));
-          if(HPTCUTSV2_MAX[c] == HUGE_VAL) ptmax="inf";
-
-          pt = "_pt"+pt;
-          for (size_t c1 = 0; c1 < DR12CUTS.size(); ++c1) {
-            std::string drpt =  "_drxxx";
-            sprintf(&drpt[3], "%0.1f", DR12CUTS[c1]);
-            drpt = drpt+pt;
-            book(_hh[j]["m_jj"+drpt], "m_jj"+dr+drpt, 80, 0, 4000);
-            drpt=drpt+"-"+ptmax;
-            string name="m_jj"+drpt;
-            book(_hh[j]["m_jj"+drpt], "m_jj"+dr+drpt, 80, 0, 4000);
-
-          }
+        // Per-dR, per-rescuts histograms
+        // [delta_y_jj12, m_jj12, delta_phi_jj12, delta_y_jjfb]
+        for (size_t iv = 0; iv < 2; ++iv) {
+          const string res = RESS[iv]; //< @todo string??
+          const string pre = "drres_" + dr + "_" + pth + "_" + res + "_";
+          const string suff = "";
+          book(_h_dr_res[ir][ih][iy]["delta_y_jj12"], pre+"delta_y_jj12"+suff, ...);
+          book(_h_dr_res[ir][ih][iy]["delta_phi_jj12"], pre+"delta_phi_jj12"+suff, 30, 0.0, M_PI);
+          book(_h_dr_res[ir][ih][iy]["m_jj12"], pre+"m_jj12"+suff, ...);
+          book(_h_dr_res[ir][ih][iy]["delta_y_jjfb"], pre+"delta_y_jjfb"+suff, ...);
         }
 
       }
@@ -142,19 +95,22 @@ namespace Rivet {
 
     /// Perform the per-event analysis
     void analyze(const Event& event) {
-      for (size_t j = 0; j < DRS.size(); ++j) {
-        std::string dr = "_xxx";
-        sprintf(&dr[1], "%0.1f", DRS[j]);
-        // Get Higgs
-        const Particles higgses = apply<ParticleFinder>(event, "Higgses").particles();
-        if (higgses.empty()) continue;
-        if (higgses.size() > 1) continue;
-        const Particle higgs = higgses[0];
-        const double ptH = higgs.pT();
-        const double yh  = higgs.rap();
 
-        // Get jets and leading dijet system
-        const Jets jets = apply<FastJets>(event, "Jets"+dr).jetsByPt(Cuts::pT > 30*GeV && Cuts::absrap < 4.4);
+      // Get Higgs
+      const Particles higgses = apply<ParticleFinder>(event, "Higgses").particles();
+      if (higgses.empty()) continue;
+      if (higgses.size() > 1) continue;
+      const Particle higgs = higgses[0];
+      const double ptH = higgs.pT();
+      const double yh  = higgs.rap();
+
+      for (size_t ir = 0; ir < DRS.size(); ++j) {
+        std::string dr = "xxx";
+        sprintf(&dr[0], "%0.1f", DRS[ir]);
+
+        // Get jets, require dijet, and compute HTs
+        const Jets jets = apply<FastJets>(event, "Jets"+dr)
+          .jetsByPt(Cuts::pT > 30*GeV && Cuts::absrap < 4.4);
         if (jets.size() < 2) continue;
         const int njets = jets.size();
         const double htj = sum(jets, Kin::pT, 0.0);
@@ -167,183 +123,105 @@ namespace Rivet {
         const double y12 = dijet.rap();
         const double dy12 = std::abs(jets[0].rap() - jets[1].rap());
         const double dphi12 = deltaPhi(jets[0], jets[1]);
-        const double dR12   = sqrt(dy12*dy12+dphi12*dphi12);
+        const double dR12   = add_quad(dy12, dphi12);
         const double y1  = jets[0].rap();
         const double y2  = jets[1].rap();
+
+        // Get most fwd/bwd jet pair
+        const Jets jetsbyrap = sortBy(jets, rapGtr); //< sorts from fwd to bwd
+        const Jet& jf = jets.front();
+        const Jet& jb = jets.back();
+        const FourMomentum dijetfb = jf.mom() + jb.mom();
+        const double mfb = dijetfb.mass();
+        const double ptfb = dijetfb.pT();
+        const double yfb = dijetfb.rap();
+        const double dyfb = std::abs(jf.rap() - jb.rap());
+        const double dphifb = deltaPhi(jf, jb);
+        const double dRfb   = add_quad(dyfb, dphifb);
+        const double y1  = jf.rap();
+        const double y2  = jb.rap();
+
+        // Get leading jet + H
+        const FourMomentum jH = jets[0].mom() + higgs.mom();
+        const double ptjH = jH.pT();
 
         // Get leading dijet + H
         const FourMomentum jjH = dijet + higgs.mom();
         const double ptjjH = jjH.pT();
-        const double dphijjH = deltaPhi(higgs, dijet); //min(deltaPhi(higgs, jets[0]), deltaPhi(higgs, jets[1]));
+        const double dphijjH = deltaPhi(higgs, dijet);
+        //min(deltaPhi(higgs, jets[0]), deltaPhi(higgs, jets[1]));
 
-        const double minmasswindow = 50.;
-        const double maxmasswindow = 150.;
-
-        bool novh = ( (m12 < minmasswindow) || (m12 > maxmasswindow));
-
-        if(novh){
+        // VH resonance cut
+        const double minmasswindow = 50*GeV, maxmasswindow = 150*GeV;
+        bool novh = !inRange(m12, minmasswindow, maxmasswindow);
+        if (novh) {
           const double m1 = jets[0].mom().mass();
           const double m2 = jets[1].mom().mass();
           if (m1 > minmasswindow && m1 < maxmasswindow) novh = false;
           if (m2 > minmasswindow && m2 < maxmasswindow) novh = false;
-        }
 
-        if(njets > 2 and novh){
-          const double m3 = jets[2].mom().mass();
-          const double m13 = (jets[0].mom() + jets[2].mom()).mass();
-          const double m23 = (jets[1].mom() + jets[2].mom()).mass();
-          const double m123 = (jets[0].mom() +jets[1].mom() + jets[2].mom()).mass();
-
-          if (m3 > minmasswindow && m3 < maxmasswindow) novh = false;
-          if (m13 > minmasswindow && m13 < maxmasswindow) novh = false;
-          if (m23 > minmasswindow && m23 < maxmasswindow) novh = false;
-          if (m123 > minmasswindow && m123 < maxmasswindow) novh = false;
-
-        }
-
-
-        if(novh){
-
-          _hvh[j]["deltay_vh"]->fill(dy12);
-          _hvh[j]["deltaR_vh"]->fill(dR12);
-          _hvh[j]["deltaphi_vh"]->fill(dphi12);
-          _hvh[j]["mjj_vh"]->fill(m12/GeV);
-          _hvh[j]["ratioPt_vh"]->fill(jets[1].mom().pT()/jets[0].mom().pT() );
-
-        }
-
-
-
-
-
-        // Fill standard cut-combination histograms
-        for (size_t i = 0; i < SELNAMES.size(); ++i) {
-          if (m12 < M12CUTS[i][0]*GeV) continue;
-          if (m12 >= M12CUTS[i][1]*GeV) continue;
-          if (dy12 < DY12CUTS[i][0]) continue;
-          if (dy12 >= DY12CUTS[i][1]) continue;
-          if (dphijjH < DPHIJHCUTS[i]) continue;
-          _c_xs[j][i]->fill();
-          _h[j][i]["deltaphi_jj"]->fill(dphi12);
-          _h[j][i]["y_j12_02bin"]->fill(y12);
-          _h[j][i]["pth_largebin"]->fill(ptH/GeV);
-          _h[j][i]["pth_finebin"]->fill(ptH/GeV);
-          _h[j][i]["njets"]->fill(njets);
-          _h[j][i]["HT"]->fill(ht/GeV);
-          _h[j][i]["pthjj"]->fill(ptjjH/GeV);
-          _h[j][i]["pthjj_largebin"]->fill(ptjjH/GeV);
-          _h[j][i]["logpthjj_largebin"]->fill(log10(ptjjH/GeV));
-          _h[j][i]["ptjj_largebin"]->fill(pt12/GeV);
-          /*for (size_t c = 0; c < HPTCUTS.size(); ++c) {
-            if (ptH/GeV>HPTCUTS[c]) {
-            std::string pt = "_xxx";
-            sprintf(&pt[1], "%0.0f", HPTCUTS[c]);
-            _h[j][i]["deltay_jj"+pt]->fill(dy12);
-            _h[j][i]["deltaR_jj"+pt]->fill(sqrt(dy12*dy12+dphi12*dphi12));
-            _h[j][i]["m_jj"+pt]->fill(m12);
-            }
-            }*/
-        }
-
-        // Fill dijet mass histograms
-        _h_mjj[j]["mjj_STXS"]->fill(m12/GeV);
-        _h_mjj[j]["mjj_ATLAS_CONF_029"]->fill(m12/GeV);
-        _h_mjj[j]["mjj_100GeVbin"]->fill(m12/GeV);
-        if (dy12 < 2.)
-          _h_mjj[j]["mjj_100GeVbin_center"]->fill(m12/GeV);
-        if (dy12 >= 2. && dy12 < 4.)
-          _h_mjj[j]["mjj_100GeVbin_middle"]->fill(m12/GeV);
-        if (dy12 > 4.)
-          _h_mjj[j]["mjj_100GeVbin_forward"]->fill(m12/GeV);
-        if (dy12 > 3 && m12 > 400*GeV && dphijjH > 2.8)
-          _h_mjj[j]["mjj_100GeVbin_ATLAS"]->fill(m12/GeV);
-
-        // // Now the dy12 histograms, with various m12 cuts
-        // _h_dyjj[j]["deltay_jj"]->fill(dy12);
-        // if (m12 < 350*GeV)
-        //   _h_dyjj[j]["deltay_jj_light"]->fill(dy12);
-        // else // if (m12 < 350*GeV)
-        //   _h_dyjj[j]["deltay_jj_heavy"]->fill(dy12);
-
-        for (size_t c = 0; c < HPTCUTS.size(); ++c) {
-          if (ptH/GeV>HPTCUTS[c]) {
-            std::string pt = std::to_string(int(HPTCUTS[c]));
-            pt = "_pt"+pt;
-            _hh[j]["deltay_jj"+pt]->fill(dy12);
-            _hh[j]["deltaR_jj"+pt]->fill(dR12);
-            _hh[j]["deltaphi_jj"+pt]->fill(dphi12);
-            _hh[j]["y_h"+pt]->fill(yh);
-            _hh[j]["y_j1"+pt]->fill(y1);
-            _hh[j]["y_j2"+pt]->fill(y2);
-            if(jets.size()>2) _hh[j]["y_j3"+pt]->fill(jets[2].rap());
-            _hh[j]["m_jj"+pt]->fill(m12);
-
-
+          if (njets > 2) {
+            const double m3 = jets[2].mom().mass();
+            const double m13 = (jets[0].mom() + jets[2].mom()).mass();
+            const double m23 = (jets[1].mom() + jets[2].mom()).mass();
+            const double m123 = (jets[0].mom() +jets[1].mom() + jets[2].mom()).mass();
+            if (m3 > minmasswindow && m3 < maxmasswindow) novh = false;
+            if (m13 > minmasswindow && m13 < maxmasswindow) novh = false;
+            if (m23 > minmasswindow && m23 < maxmasswindow) novh = false;
+            if (m123 > minmasswindow && m123 < maxmasswindow) novh = false;
           }
         }
 
-        for (size_t c = 0; c < HPTCUTSV2.size(); ++c) {
-          if (ptH/GeV>HPTCUTSV2[c]) {
-            std::string pt = std::to_string(int(HPTCUTSV2[c]));
-            pt = "_pt"+pt;
-            for (size_t c1 = 0; c1 < M12MAXCUTS.size(); ++c1) {
-              if(m12/GeV < M12MAXCUTS[c1]){
-                std::string mpt = std::to_string(int(M12MAXCUTS[c1]));
-                mpt = "_m"+mpt+pt;
-                _hh[j]["deltay_jj"+mpt]->fill(dy12);
-                _hh[j]["deltaR_jj"+mpt]->fill(dR12);
-                _hh[j]["deltaphi_jj"+mpt]->fill(dphi12);
-                _hh[j]["y_h"+mpt]->fill(yh);
-                _hh[j]["y_j1"+mpt]->fill(y1);
-                _hh[j]["y_j2"+mpt]->fill(y2);
-                if(jets.size()>2) _hh[j]["y_j3"+mpt]->fill(jets[2].rap());
-              }
-            }
-          }
-          if (ptH/GeV>HPTCUTSV2[c] && ptH/GeV<HPTCUTSV2_MAX[c]) {
-            std::string pt = std::to_string(int(HPTCUTSV2[c]));
-            std::string ptmax = std::to_string(int(HPTCUTSV2_MAX[c]));
-            if(HPTCUTSV2_MAX[c] == HUGE_VAL) ptmax="inf";
-            pt = "_pt"+pt+"-"+ptmax;
-            for (size_t c1 = 0; c1 < M12MAXCUTS.size(); ++c1) {
-              if(m12/GeV < M12MAXCUTS[c1]){
-                std::string mpt = std::to_string(int(M12MAXCUTS[c1]));
-                mpt = "_m"+mpt+pt;
-                _hh[j]["deltay_jj"+mpt]->fill(dy12);
-                _hh[j]["deltaR_jj"+mpt]->fill(dR12);
-                _hh[j]["deltaphi_jj"+mpt]->fill(dphi12);
-                _hh[j]["y_h"+mpt]->fill(yh);
-                _hh[j]["y_j1"+mpt]->fill(y1);
-                _hh[j]["y_j2"+mpt]->fill(y2);
-                if(jets.size()>2) _hh[j]["y_j3"+mpt]->fill(jets[2].rap());
-              }
-            }
-          }
 
-
+        // Inclusive plots, for dR = 0.4 only
+        /// @todo Aren't these duplicated in the cut-combination plots?
+        if (ir == 0) { //< dR = 0.4
+          _h_incl["njets"]->fill(njets);
+          _h_incl["delta_y_jj12"]->fill(dy12);
+          _h_incl["deltaphi_jj12"]->fill(dphi12);
+          _h_incl["m_jj12"]->fill(m12/GeV);
+          _h_incl["ht"]->fill(ht/GeV);
+          _h_incl["pth"]->fill(ptH/GeV);
+          _h_incl["pthj1"]->fill(ptjH/GeV);
+          _h_incl["pthjj12"]->fill(ptjjH/GeV);
         }
 
-        for (size_t c = 0; c < HPTCUTSV2.size(); ++c) {
-          if (ptH/GeV>HPTCUTSV2[c]) {
-            std::string pt = std::to_string(int(HPTCUTSV2[c]));
-            std::string ptmax = std::to_string(int(HPTCUTSV2_MAX[c]));
-            if(HPTCUTSV2_MAX[c] == HUGE_VAL) ptmax="inf";
-            pt = "_pt"+pt;
-            for (size_t c1 = 0; c1 < DR12CUTS.size(); ++c1) {
-              if(dR12 < DR12CUTS[c1]){
-                std::string drpt =  "_drxxx";
-                sprintf(&drpt[3], "%0.1f", DR12CUTS[c1]);
-                drpt = drpt+pt;
-                _hh[j]["m_jj"+drpt]->fill(m12);
-                drpt=drpt+"-"+ptmax;
-                if(ptH/GeV<HPTCUTSV2_MAX[c]) _hh[j]["m_jj"+drpt]->fill(m12);
+        // Standard histograms for pTH and dy12 cuts
+        for (size_t ih = 0; ih < PTHS.size(); ++ih) {
+          if (pTH < PTHCUTS[ih]*GeV) continue;
+          for (size_t iy = 0; iy < 2; ++iy) {
+            if (dy12 < DY12CUTS[iy]) continue;
 
-              }
-            }
+            // _c_xs[j][i]->fill();
+            _h_incl[ir][ih][iy]["njets"]->fill(njets);
+            _h_incl[ir][ih][iy]["delta_y_jj12"]->fill(dy12);
+            _h_incl[ir][ih][iy]["deltaphi_jj12"]->fill(dphi12);
+            _h_incl[ir][ih][iy]["m_jj12"]->fill(m12/GeV);
+            _h_incl[ir][ih][iy]["delta_y_jjfb"]->fill(dyfb);
+            _h_incl[ir][ih][iy]["pt2_pt1"]->fill(ptjjH/GeV);
+            _h_incl[ir][ih][iy]["pt3_pt1"]->fill(ptjjH/GeV);
+            _h_incl[ir][ih][iy]["xh"]->fill();
+            _h_incl[ir][ih][iy]["x1"]->fill();
+            _h_incl[ir][ih][iy]["x2"]->fill();
+            _h_incl[ir][ih][iy]["x3"]->fill();
+            _h_incl[ir][ih][iy]["ht"]->fill(ht/GeV);
+            _h_incl[ir][ih][iy]["pth"]->fill(ptH/GeV);
+            _h_incl[ir][ih][iy]["pthj1"]->fill(ptjH/GeV);
+            _h_incl[ir][ih][iy]["pthjj12"]->fill(ptjjH/GeV);
           }
         }
 
-      }
+        // VH resonance cut
+        for (size_t iv = 0; iv < 2; ++iv) {
+          if (bool(iv) == novh) continue; // if passed, 0 = !res, 1 = res
+
+          _h_dr_res[ir][iv]["delta_y_jj12"]->fill(dy12);
+          _h_dr_res[ir][iv]["deltaphi_jj12"]->fill(dphi12);
+          _h_dr_res[ir][iv]["m_jj12"]->fill(m12/GeV);
+          _h_dr_res[ir][iv]["delta_y_jjfb"]->fill(dyfb);
+        }
+
+      } // DR loop
     }
 
 
@@ -368,39 +246,36 @@ namespace Rivet {
     }
 
 
-    /// @name Histograms
-    //@{
+    // @name Histograms
     map<string, Histo1DPtr> _h[15][8], _hh[15], _hvh[15];
     CounterPtr _c_xs[15][8];
     map<string,Histo1DPtr> _h_mjj[15]; //, _h_dyjj[15];
-    //@}
 
-    static const vector<double> DRS, HPTCUTS;
-
-    /// Cut values for standard histogram sets (other than m12 and dy12)
-    //@{
+    // Cut values for standard histogram sets (other than m12 and dy12)
+    static const vector<double> DRS;
     static const vector<string> SELNAMES;
     static const vector<doubles> M12CUTS;
     static const vector<doubles> DY12CUTS;
     static const vector<double> DPHIJHCUTS;
+    static const vector<double> HPTCUTS;
     static const vector<double> HPTCUTSV2, HPTCUTSV2_MAX, M12MAXCUTS, DR12CUTS;
-    //@}
 
   };
 
 
   // Static const initializers
   //const vector<double>  MC_HJETSVBF::DRS = { 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5 };
-  const vector<double>  MC_HJETSVBF::DRS = {0.2, 0.4, 0.7, 1.0};
+  const vector<double>  MC_HJETSVBF::DRS = {0.4, 0.7, 1.0};
   const vector<string>  MC_HJETSVBF::SELNAMES = {"", "_light_center", "_heavy_center", "_light_middle", "_heavy_middle", "_light_forward", "_heavy_forward", "_ATLAS"};
-  const vector<doubles> MC_HJETSVBF::M12CUTS  = {{0., HUGE_VAL}, {0., 350.}, {350., HUGE_VAL}, {0., 350.}, {350., HUGE_VAL}, {0., 350.}, {350., HUGE_VAL}, {400., HUGE_VAL}};
+  const vector<doubles> MC_HJETSVBF::M12CUTS = {{0., HUGE_VAL}, {0., 350.}, {350., HUGE_VAL}, {0., 350.}, {350., HUGE_VAL}, {0., 350.}, {350., HUGE_VAL}, {400., HUGE_VAL}};
   const vector<doubles> MC_HJETSVBF::DY12CUTS = {{0., HUGE_VAL}, {0., 2.}, {0., 2.}, {2., 4.}, {2., 4.}, {4., HUGE_VAL}, {4., HUGE_VAL}, {3., HUGE_VAL}};
   const vector<double>  MC_HJETSVBF::DPHIJHCUTS = {0., 0., 0., 0., 0., 0., 0., 2.8};
-  const vector<double> MC_HJETSVBF::HPTCUTS  = {0., 100.,200.,300.,400.,500.,1000.};
-  const vector<double> MC_HJETSVBF::HPTCUTSV2= {0., 200., 500.};
-  const vector<double> MC_HJETSVBF::HPTCUTSV2_MAX= {50., 300., HUGE_VAL};
-  const vector<double> MC_HJETSVBF::M12MAXCUTS={100.,200.,300.,400.,500.,1000.,2000.};
-  const vector<double> MC_HJETSVBF::DR12CUTS={0.5, 1.0, 1.5,  2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 6.0, 7.0};
+  // const vector<double> MC_HJETSVBF::HPTCUTS = {0., 100.,200.,300.,400.,500.,1000.};
+  const vector<double> MC_HJETSVBF::HPTCUTS = {0., 200., 500.};
+  // const vector<double> MC_HJETSVBF::HPTCUTSV2 = {0., 200., 500.};
+  // const vector<double> MC_HJETSVBF::HPTCUTSV2_MAX = {50., 300., HUGE_VAL};
+  const vector<double> MC_HJETSVBF::M12MAXCUTS = {100.,200.,300.,400.,500.,1000.,2000.};
+  const vector<double> MC_HJETSVBF::DR12CUTS = {0.5, 1.0, 1.5,  2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 6.0, 7.0};
   DECLARE_RIVET_PLUGIN(MC_HJETSVBF);
 
 }
