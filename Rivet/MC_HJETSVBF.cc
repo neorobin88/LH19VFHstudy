@@ -20,10 +20,9 @@ namespace Rivet {
 
       // Projections
       NonPromptFinalState fs(Cuts::abseta < 5);
-      for (size_t i = 0; i < DRS.size(); ++i) {
-        FastJets fj(fs, FastJets::ANTIKT, DRS[i]);
-        string dr = "_xxx";
-        sprintf(&dr[1], "%0.1f", DRS[i]);
+      for (size_t ir = 0; ir < DRS.size(); ++ir) {
+        FastJets fj(fs, FastJets::ANTIKT, DRS[ir]);
+        const string dr = to_string(int(10*DRS[ir]));
         declare(fj, "Jets"+dr);
       }
       PromptFinalState pfs(Cuts::abseta < 5);
@@ -58,16 +57,15 @@ namespace Rivet {
       book(_h_incl["pthjj12"], pre+"pTHjj12", edges_pthjj);
 
       for (size_t ir = 0; ir < DRS.size(); ++ir) {
-        string dr = "xxx";
-        sprintf(&dr[0], "%0.1f", DRS[ir]);
+        const string dr = to_string(int(10*DRS[ir]));
 
         // Per-dR, per-pTH, per-dy histograms
         // [njets, delta_y_jj12, m_jj12, delta_phi_jj12, delta_y_jjfb,
         //  pT2/pT1, pT3/pT1, xH, x1, x2, x3, pTH, pTHj, pTHjj]
         for (size_t ih = 0; ih < PTHCUTS.size(); ++ih) {
-          const string pth = PTHCUTS[ih];
+          const string pth = to_string(PTHCUTS[ih]);
           for (size_t iy = 0; iy < DY12CUTS.size(); ++iy) {
-            const string dy = DY12CUTS[iy];
+            const string dy = to_string(DY12CUTS[iy]);
             const string pre = "drptdy_" + dr + "_" + pth + "_" + dy + "_";
             const string suff = "";
             book(_h_dr_pth_dy[ir][ih][iy]["njets"], pre+"njets"+suff, edges_njets);
@@ -92,12 +90,12 @@ namespace Rivet {
         // [delta_y_jj12, m_jj12, delta_phi_jj12, delta_y_jjfb]
         for (size_t iv = 0; iv < 2; ++iv) {
           const string res = RESNAMES[iv];
-          const string pre = "drres_" + dr + "_" + pth + "_" + res + "_";
+          const string pre = "drres_" + dr + "_" + res + "_";
           const string suff = "";
-          book(_h_dr_res[ir][ih][iy]["delta_y_jj12"], pre+"delta_y_jj12"+suff, edges_delta_y_jj);
-          book(_h_dr_res[ir][ih][iy]["delta_phi_jj12"], pre+"delta_phi_jj12"+suff, edges_delta_phi_jj);
-          book(_h_dr_res[ir][ih][iy]["m_jj12"], pre+"m_jj12"+suff, edges_m_jj);
-          book(_h_dr_res[ir][ih][iy]["delta_y_jjfb"], pre+"delta_y_jjfb"+suff, edges_delta_y_jj);
+          book(_h_dr_res[ir][iv]["delta_y_jj12"], pre+"delta_y_jj12"+suff, edges_delta_y_jj);
+          book(_h_dr_res[ir][iv]["delta_phi_jj12"], pre+"delta_phi_jj12"+suff, edges_delta_phi_jj);
+          book(_h_dr_res[ir][iv]["m_jj12"], pre+"m_jj12"+suff, edges_m_jj);
+          book(_h_dr_res[ir][iv]["delta_y_jjfb"], pre+"delta_y_jjfb"+suff, edges_delta_y_jj);
         }
 
         // Higgs pT histogram with ATLAS VBF cuts
@@ -113,21 +111,20 @@ namespace Rivet {
 
       // Get Higgs
       const Particles higgses = apply<ParticleFinder>(event, "Higgses").particles();
-      if (higgses.empty()) continue;
-      if (higgses.size() > 1) continue;
+      if (higgses.empty()) vetoEvent;
+      if (higgses.size() > 1) vetoEvent;
       const Particle higgs = higgses[0];
       const double ptH = higgs.pT();
       const double yh  = higgs.rap();
 
-      for (size_t ir = 0; ir < DRS.size(); ++j) {
-        string dr = "xxx";
-        sprintf(&dr[0], "%0.1f", DRS[ir]);
+      for (size_t ir = 0; ir < DRS.size(); ++ir) {
+        const string dr = to_string(int(10*DRS[ir]));
 
         // Get jets, require dijet, and compute HTs
         const Jets jets = apply<FastJets>(event, "Jets"+dr)
           .jetsByPt(Cuts::pT > 30*GeV && Cuts::absrap < 4.4);
-        if (jets.size() < 2) continue;
         const int njets = jets.size();
+        if (njets < 2) continue;
         const double htj = sum(jets, Kin::pT, 0.0);
         const double ht = htj + higgs.pT();
 
@@ -153,8 +150,8 @@ namespace Rivet {
         const double dyfb = std::abs(jf.rap() - jb.rap());
         const double dphifb = deltaPhi(jf, jb);
         const double dRfb   = add_quad(dyfb, dphifb);
-        const double y1  = jf.rap();
-        const double y2  = jb.rap();
+        const double yf  = jf.rap();
+        const double yb  = jb.rap();
 
         // Get leading jet + H
         const FourMomentum jH = jets[0].mom() + higgs.mom();
@@ -201,8 +198,8 @@ namespace Rivet {
         }
 
         // Standard histograms for pTH and dy12 cuts
-        for (size_t ih = 0; ih < PTHS.size(); ++ih) {
-          if (pTH < PTHCUTS[ih]*GeV) continue;
+        for (size_t ih = 0; ih < PTHCUTS.size(); ++ih) {
+          if (ptH < PTHCUTS[ih]*GeV) continue;
           for (size_t iy = 0; iy < 2; ++iy) {
             if (dy12 < DY12CUTS[iy]) continue;
             // _c_xs[j][i]->fill();
@@ -271,7 +268,7 @@ namespace Rivet {
     static const vector<double> DRS;
     static const vector<double> PTHCUTS;
     static const vector<double> DY12CUTS;
-    static const vector<double> RESNAMES;
+    static const vector<string> RESNAMES;
 
   };
 
