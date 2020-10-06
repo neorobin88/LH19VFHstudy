@@ -98,11 +98,11 @@ namespace Rivet {
           book(_h_dr_res[ir][iv]["delta_y_jjfb"], pre+"delta_y_jjfb"+suff, edges_delta_y_jj);
         }
 
-        // Higgs pT histogram with ATLAS VBF cuts
-        pre = "atlas_";
-        book(_h_atlas["pth"], pre+"pth", edges_pth);
-
       }
+
+      // Higgs pT histogram with ATLAS VBF cuts
+      pre = "atlas_";
+      book(_h_atlas["pth"], pre+"pth", edges_pth);
     }
 
 
