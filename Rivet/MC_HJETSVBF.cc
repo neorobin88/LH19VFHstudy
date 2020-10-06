@@ -53,10 +53,10 @@ namespace Rivet {
       book(_h_incl["delta_phi_jj12"], pre+"delta_phi_jj12", edges_delta_phi_jj);
       book(_h_incl["delta_r_jj12"], pre+"delta_r_jj12", edges_delta_r_jj);
       book(_h_incl["m_jj12"], pre+"m_jj12", edges_m_jj);
-      book(_h_incl["ht"], pre+"HT", edges_ht);
-      book(_h_incl["pth"], pre+"pTH", edges_pth);
-      book(_h_incl["pthj1"], pre+"pTHj1", edges_pthj);
-      book(_h_incl["pthjj12"], pre+"pTHjj12", edges_pthjj);
+      book(_h_incl["ht"], pre+"ht", edges_ht);
+      book(_h_incl["pth"], pre+"pth", edges_pth);
+      book(_h_incl["pthj1"], pre+"pthj1", edges_pthj);
+      book(_h_incl["pthjj12"], pre+"pthjj12", edges_pthjj);
 
       for (size_t ir = 0; ir < DRS.size(); ++ir) {
         const string dr = zeropad(to_string(int(10*DRS[ir])), 2);
