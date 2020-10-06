@@ -115,7 +115,7 @@ namespace Rivet {
       if (higgses.size() > 1) vetoEvent;
       const Particle higgs = higgses[0];
       const double ptH = higgs.pT();
-      const double yh  = higgs.rap();
+      // const double yh  = higgs.rap();
 
       for (size_t ir = 0; ir < DRS.size(); ++ir) {
         const string dr = to_string(int(10*DRS[ir]));
@@ -131,27 +131,27 @@ namespace Rivet {
         // Get leading dijet system
         const FourMomentum dijet = jets[0].mom() + jets[1].mom();
         const double m12 = dijet.mass();
-        const double pt12 = dijet.pT();
-        const double y12 = dijet.rap();
+        // const double pt12 = dijet.pT();
+        // const double y12 = dijet.rap();
         const double dy12 = std::abs(jets[0].rap() - jets[1].rap());
         const double dphi12 = deltaPhi(jets[0], jets[1]);
-        const double dR12   = add_quad(dy12, dphi12);
-        const double y1  = jets[0].rap();
-        const double y2  = jets[1].rap();
+        // const double dR12   = add_quad(dy12, dphi12);
+        // const double y1  = jets[0].rap();
+        // const double y2  = jets[1].rap();
 
         // Get most fwd/bwd jet pair
-        const Jets jetsbyrap = sortBy(jets, rapGtr); //< sorts from fwd to bwd
+        const Jets jetsbyrap = sortBy(jets, cmpMomByRap); //< sorts from fwd to bwd
         const Jet& jf = jets.front();
         const Jet& jb = jets.back();
         const FourMomentum dijetfb = jf.mom() + jb.mom();
-        const double mfb = dijetfb.mass();
-        const double ptfb = dijetfb.pT();
-        const double yfb = dijetfb.rap();
+        // const double mfb = dijetfb.mass();
+        // const double ptfb = dijetfb.pT();
+        // const double yfb = dijetfb.rap();
         const double dyfb = std::abs(jf.rap() - jb.rap());
-        const double dphifb = deltaPhi(jf, jb);
-        const double dRfb   = add_quad(dyfb, dphifb);
-        const double yf  = jf.rap();
-        const double yb  = jb.rap();
+        // const double dphifb = deltaPhi(jf, jb);
+        // const double dRfb   = add_quad(dyfb, dphifb);
+        // const double yf  = jf.rap();
+        // const double yb  = jb.rap();
 
         // Get leading jet + H
         const FourMomentum jH = jets[0].mom() + higgs.mom();
@@ -170,7 +170,6 @@ namespace Rivet {
           const double m2 = jets[1].mom().mass();
           if (m1 > minmasswindow && m1 < maxmasswindow) novh = false;
           if (m2 > minmasswindow && m2 < maxmasswindow) novh = false;
-
           if (njets > 2) {
             const double m3 = jets[2].mom().mass();
             const double m13 = (jets[0].mom() + jets[2].mom()).mass();
@@ -203,22 +202,22 @@ namespace Rivet {
           for (size_t iy = 0; iy < 2; ++iy) {
             if (dy12 < DY12CUTS[iy]) continue;
             // _c_xs[j][i]->fill();
-            _h_incl[ir][ih][iy]["njets"]->fill(njets);
-            _h_incl[ir][ih][iy]["delta_y_jj12"]->fill(dy12);
-            _h_incl[ir][ih][iy]["delta_phi_jj12"]->fill(dphi12/M_PI);
-            _h_incl[ir][ih][iy]["m_jj12"]->fill(m12/GeV);
-            _h_incl[ir][ih][iy]["delta_y_jjfb"]->fill(dyfb);
-            _h_incl[ir][ih][iy]["pt2_pt1"]->fill(ptjjH/GeV);
-            _h_incl[ir][ih][iy]["pt3_pt1"]->fill(ptjjH/GeV);
-            _h_incl[ir][ih][iy]["ht"]->fill(ht/GeV);
-            _h_incl[ir][ih][iy]["pth"]->fill(ptH/GeV);
-            _h_incl[ir][ih][iy]["pthj1"]->fill(ptjH/GeV);
-            _h_incl[ir][ih][iy]["pthjj12"]->fill(ptjjH/GeV);
-            _h_incl[ir][ih][iy]["xh"]->fill(ptH/ht);
-            _h_incl[ir][ih][iy]["x1"]->fill(jets[0].pT()/ht);
-            _h_incl[ir][ih][iy]["x2"]->fill(jets[1].pT()/ht);
+            _h_dr_pth_dy[ir][ih][iy]["njets"]->fill(njets);
+            _h_dr_pth_dy[ir][ih][iy]["delta_y_jj12"]->fill(dy12);
+            _h_dr_pth_dy[ir][ih][iy]["delta_phi_jj12"]->fill(dphi12/M_PI);
+            _h_dr_pth_dy[ir][ih][iy]["m_jj12"]->fill(m12/GeV);
+            _h_dr_pth_dy[ir][ih][iy]["delta_y_jjfb"]->fill(dyfb);
+            _h_dr_pth_dy[ir][ih][iy]["pt2_pt1"]->fill(ptjjH/GeV);
+            _h_dr_pth_dy[ir][ih][iy]["pt3_pt1"]->fill(ptjjH/GeV);
+            _h_dr_pth_dy[ir][ih][iy]["ht"]->fill(ht/GeV);
+            _h_dr_pth_dy[ir][ih][iy]["pth"]->fill(ptH/GeV);
+            _h_dr_pth_dy[ir][ih][iy]["pthj1"]->fill(ptjH/GeV);
+            _h_dr_pth_dy[ir][ih][iy]["pthjj12"]->fill(ptjjH/GeV);
+            _h_dr_pth_dy[ir][ih][iy]["xh"]->fill(ptH/ht);
+            _h_dr_pth_dy[ir][ih][iy]["x1"]->fill(jets[0].pT()/ht);
+            _h_dr_pth_dy[ir][ih][iy]["x2"]->fill(jets[1].pT()/ht);
             if (njets > 2)
-              _h_incl[ir][ih][iy]["x3"]->fill(jets[2].pT()/ht);
+              _h_dr_pth_dy[ir][ih][iy]["x3"]->fill(jets[2].pT()/ht);
           }
         }
 
