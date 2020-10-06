@@ -22,7 +22,7 @@ namespace Rivet {
       NonPromptFinalState fs(Cuts::abseta < 5);
       for (size_t ir = 0; ir < DRS.size(); ++ir) {
         FastJets fj(fs, FastJets::ANTIKT, DRS[ir]);
-        const string dr = to_string(int(10*DRS[ir]));
+        const string dr = zeropad(to_string(int(10*DRS[ir])), 2);
         declare(fj, "Jets"+dr);
       }
       PromptFinalState pfs(Cuts::abseta < 5);
@@ -36,6 +36,7 @@ namespace Rivet {
       const doubles edges_njets = linspace(6, -0.5, 5.5); //  from 0 to 5, exclusive and inclusive
       const doubles edges_delta_y_jj = linspace(200, 0.0, 10.0); // 0.05 bins from 0-10 (can be recombined later if needed) (log and linear)
       const doubles edges_delta_phi_jj = linspace(30, 0.0, 1.0); // 0.1 bins from 0-pi/pi
+      const doubles edges_delta_r_jj = linspace(200, 0.0, 10.0); // 0.05 bins from 0-10 (log and linear)
       const doubles edges_m_jj = linspace(40, 0.0, 2000.0); // 50 GeV bins from 0-2000 GeV (log and linear)
       const doubles edges_ptn_ptm = linspace(20, 0.0, 1.0); // 0.05 bins from 0-1
       const doubles edges_ht = linspace(30, 0.0, 3000.0); // 100 GeV bins from 0-3 TeV (log and linear)
@@ -50,6 +51,7 @@ namespace Rivet {
       book(_h_incl["njets"], pre+"njets", edges_njets);
       book(_h_incl["delta_y_jj12"], pre+"delta_y_jj12", edges_delta_y_jj);
       book(_h_incl["delta_phi_jj12"], pre+"delta_phi_jj12", edges_delta_phi_jj);
+      book(_h_incl["delta_r_jj12"], pre+"delta_r_jj12", edges_delta_r_jj);
       book(_h_incl["m_jj12"], pre+"m_jj12", edges_m_jj);
       book(_h_incl["ht"], pre+"HT", edges_ht);
       book(_h_incl["pth"], pre+"pTH", edges_pth);
@@ -57,32 +59,32 @@ namespace Rivet {
       book(_h_incl["pthjj12"], pre+"pTHjj12", edges_pthjj);
 
       for (size_t ir = 0; ir < DRS.size(); ++ir) {
-        const string dr = to_string(int(10*DRS[ir]));
+        const string dr = zeropad(to_string(int(10*DRS[ir])), 2);
 
         // Per-dR, per-pTH, per-dy histograms
         // [njets, delta_y_jj12, m_jj12, delta_phi_jj12, delta_y_jjfb,
         //  pT2/pT1, pT3/pT1, xH, x1, x2, x3, pTH, pTHj, pTHjj]
         for (size_t ih = 0; ih < PTHCUTS.size(); ++ih) {
-          const string pth = to_string(PTHCUTS[ih]);
+          const string pth = zeropad(to_string(int(PTHCUTS[ih])), 3);
           for (size_t iy = 0; iy < DY12CUTS.size(); ++iy) {
-            const string dy = to_string(DY12CUTS[iy]);
-            const string pre = "drptdy_" + dr + "_" + pth + "_" + dy + "_";
-            const string suff = "";
-            book(_h_dr_pth_dy[ir][ih][iy]["njets"], pre+"njets"+suff, edges_njets);
-            book(_h_dr_pth_dy[ir][ih][iy]["delta_y_jj12"], pre+"delta_y_jj12"+suff, edges_delta_y_jj);
-            book(_h_dr_pth_dy[ir][ih][iy]["delta_phi_jj12"], pre+"delta_phi_jj12"+suff, edges_delta_phi_jj);
-            book(_h_dr_pth_dy[ir][ih][iy]["m_jj12"], pre+"m_jj12"+suff, edges_m_jj);
-            book(_h_dr_pth_dy[ir][ih][iy]["delta_y_jjfb"], pre+"delta_y_jjfb"+suff, edges_delta_y_jj);
-            book(_h_dr_pth_dy[ir][ih][iy]["pt2_pt1"], pre+"pt2_pt1"+suff, edges_ptn_ptm);
-            book(_h_dr_pth_dy[ir][ih][iy]["pt3_pt1"], pre+"pt3_pt1"+suff, edges_ptn_ptm);
-            book(_h_dr_pth_dy[ir][ih][iy]["xh"], pre+"xh"+suff, edges_xs);
-            book(_h_dr_pth_dy[ir][ih][iy]["x1"], pre+"x1"+suff, edges_xs);
-            book(_h_dr_pth_dy[ir][ih][iy]["x2"], pre+"x2"+suff, edges_xs);
-            book(_h_dr_pth_dy[ir][ih][iy]["x3"], pre+"x3"+suff, edges_xs);
-            book(_h_dr_pth_dy[ir][ih][iy]["ht"], pre+"ht"+suff, edges_xs);
-            book(_h_dr_pth_dy[ir][ih][iy]["pth"], pre+"pth"+suff, edges_pth);
-            book(_h_dr_pth_dy[ir][ih][iy]["pthj1"], pre+"pthj1"+suff, edges_pthj);
-            book(_h_dr_pth_dy[ir][ih][iy]["pthjj12"], pre+"pthjj12"+suff, edges_pthjj);
+            const string dy = zeropad(to_string(int(DY12CUTS[iy])), 2);
+            const string pre = "rstudy_dr" + dr + "_pth" + pth + "_dy" + dy + "_";
+            book(_h_dr_pth_dy[ir][ih][iy]["njets"], pre+"njets", edges_njets);
+            book(_h_dr_pth_dy[ir][ih][iy]["delta_y_jj12"], pre+"delta_y_jj12", edges_delta_y_jj);
+            book(_h_dr_pth_dy[ir][ih][iy]["delta_phi_jj12"], pre+"delta_phi_jj12", edges_delta_phi_jj);
+            book(_h_dr_pth_dy[ir][ih][iy]["delta_r_jj12"], pre+"delta_r_jj12", edges_delta_r_jj);
+            book(_h_dr_pth_dy[ir][ih][iy]["m_jj12"], pre+"m_jj12", edges_m_jj);
+            book(_h_dr_pth_dy[ir][ih][iy]["delta_y_jjfb"], pre+"delta_y_jjfb", edges_delta_y_jj);
+            book(_h_dr_pth_dy[ir][ih][iy]["pt2_pt1"], pre+"pt2_pt1", edges_ptn_ptm);
+            book(_h_dr_pth_dy[ir][ih][iy]["pt3_pt1"], pre+"pt3_pt1", edges_ptn_ptm);
+            book(_h_dr_pth_dy[ir][ih][iy]["xh"], pre+"xh", edges_xs);
+            book(_h_dr_pth_dy[ir][ih][iy]["x1"], pre+"x1", edges_xs);
+            book(_h_dr_pth_dy[ir][ih][iy]["x2"], pre+"x2", edges_xs);
+            book(_h_dr_pth_dy[ir][ih][iy]["x3"], pre+"x3", edges_xs);
+            book(_h_dr_pth_dy[ir][ih][iy]["ht"], pre+"ht", edges_xs);
+            book(_h_dr_pth_dy[ir][ih][iy]["pth"], pre+"pth", edges_pth);
+            book(_h_dr_pth_dy[ir][ih][iy]["pthj1"], pre+"pthj1", edges_pthj);
+            book(_h_dr_pth_dy[ir][ih][iy]["pthjj12"], pre+"pthjj12", edges_pthjj);
           }
         }
 
@@ -90,12 +92,11 @@ namespace Rivet {
         // [delta_y_jj12, m_jj12, delta_phi_jj12, delta_y_jjfb]
         for (size_t iv = 0; iv < 2; ++iv) {
           const string res = RESNAMES[iv];
-          const string pre = "drres_" + dr + "_" + res + "_";
-          const string suff = "";
-          book(_h_dr_res[ir][iv]["delta_y_jj12"], pre+"delta_y_jj12"+suff, edges_delta_y_jj);
-          book(_h_dr_res[ir][iv]["delta_phi_jj12"], pre+"delta_phi_jj12"+suff, edges_delta_phi_jj);
-          book(_h_dr_res[ir][iv]["m_jj12"], pre+"m_jj12"+suff, edges_m_jj);
-          book(_h_dr_res[ir][iv]["delta_y_jjfb"], pre+"delta_y_jjfb"+suff, edges_delta_y_jj);
+          const string pre = "vbfvh_dr" + dr + "_" + res + "_";
+          book(_h_dr_res[ir][iv]["delta_y_jj12"], pre+"delta_y_jj12", edges_delta_y_jj);
+          book(_h_dr_res[ir][iv]["delta_phi_jj12"], pre+"delta_phi_jj12", edges_delta_phi_jj);
+          book(_h_dr_res[ir][iv]["m_jj12"], pre+"m_jj12", edges_m_jj);
+          book(_h_dr_res[ir][iv]["delta_y_jjfb"], pre+"delta_y_jjfb", edges_delta_y_jj);
         }
 
       }
@@ -135,7 +136,7 @@ namespace Rivet {
         // const double y12 = dijet.rap();
         const double dy12 = std::abs(jets[0].rap() - jets[1].rap());
         const double dphi12 = deltaPhi(jets[0], jets[1]);
-        // const double dR12   = add_quad(dy12, dphi12);
+        const double dR12   = add_quad(dy12, dphi12);
         // const double y1  = jets[0].rap();
         // const double y2  = jets[1].rap();
 
@@ -189,6 +190,7 @@ namespace Rivet {
           _h_incl["njets"]->fill(njets);
           _h_incl["delta_y_jj12"]->fill(dy12);
           _h_incl["delta_phi_jj12"]->fill(dphi12/M_PI);
+          _h_incl["delta_r_jj12"]->fill(dR12);
           _h_incl["m_jj12"]->fill(m12/GeV);
           _h_incl["ht"]->fill(ht/GeV);
           _h_incl["pth"]->fill(ptH/GeV);
@@ -200,11 +202,12 @@ namespace Rivet {
         for (size_t ih = 0; ih < PTHCUTS.size(); ++ih) {
           if (ptH < PTHCUTS[ih]*GeV) continue;
           for (size_t iy = 0; iy < 2; ++iy) {
-            if (dy12 < DY12CUTS[iy]) continue;
+            if (dy12 > DY12CUTS[iy]) continue;
             // _c_xs[j][i]->fill();
             _h_dr_pth_dy[ir][ih][iy]["njets"]->fill(njets);
             _h_dr_pth_dy[ir][ih][iy]["delta_y_jj12"]->fill(dy12);
             _h_dr_pth_dy[ir][ih][iy]["delta_phi_jj12"]->fill(dphi12/M_PI);
+            _h_dr_pth_dy[ir][ih][iy]["delta_r_jj12"]->fill(dR12);
             _h_dr_pth_dy[ir][ih][iy]["m_jj12"]->fill(m12/GeV);
             _h_dr_pth_dy[ir][ih][iy]["delta_y_jjfb"]->fill(dyfb);
             _h_dr_pth_dy[ir][ih][iy]["pt2_pt1"]->fill(ptjjH/GeV);
@@ -260,6 +263,13 @@ namespace Rivet {
     }
 
 
+    /// Zero-pad the given string @a s to width @a width
+    inline string zeropad(const string& s, size_t width) {
+      if (s.size() >= width) return s;
+      return string(width - s.size(), '0') + s;
+    }
+
+
     // Histograms
     map<string, Histo1DPtr> _h_incl, _h_dr_pth_dy[3][3][2], _h_dr_res[3][2], _h_atlas;
 
@@ -275,7 +285,7 @@ namespace Rivet {
   // Static const initializers
   const vector<double> MC_HJETSVBF::DRS = {0.4, 0.7, 1.0};
   const vector<double> MC_HJETSVBF::PTHCUTS = {0., 200., 500.};
-  const vector<double> MC_HJETSVBF::DY12CUTS = {0.0, 1.0};
+  const vector<double> MC_HJETSVBF::DY12CUTS = {1.0, 10.0};
   const vector<string> MC_HJETSVBF::RESNAMES = {"nores", "res"};
 
 
