@@ -23,6 +23,7 @@ namespace Rivet {
       for (size_t ir = 0; ir < DRS.size(); ++ir) {
         FastJets fj(fs, FastJets::ANTIKT, DRS[ir]);
         const string dr = zeropad(to_string(int(10*DRS[ir])), 2);
+        // MSG_INFO(dr);
         declare(fj, "Jets"+dr);
       }
       PromptFinalState pfs(Cuts::abseta < 5);
@@ -98,8 +99,8 @@ namespace Rivet {
             book(_h_dr_pth_dy[ir][ih][iy]["x1"], pre+"x1", edges_xs);
             book(_h_dr_pth_dy[ir][ih][iy]["x2"], pre+"x2", edges_xs);
             book(_h_dr_pth_dy[ir][ih][iy]["x3"], pre+"x3", edges_xs);
-            book(_h_dr_pth_dy[ir][ih][iy]["ht"], pre+"ht", edges_xs);
-            book(_h_dr_pth_dy[ir][ih][iy]["ht_log"], pre+"ht_log", edges_xs_log);
+            book(_h_dr_pth_dy[ir][ih][iy]["ht"], pre+"ht", edges_ht);
+            book(_h_dr_pth_dy[ir][ih][iy]["ht_log"], pre+"ht_log", edges_ht_log);
             book(_h_dr_pth_dy[ir][ih][iy]["pth"], pre+"pth", edges_pth);
             book(_h_dr_pth_dy[ir][ih][iy]["pth_log"], pre+"pth_log", edges_pth_log);
             book(_h_dr_pth_dy[ir][ih][iy]["pthj1"], pre+"pthj1", edges_pthj);
@@ -144,7 +145,7 @@ namespace Rivet {
       // const double yh  = higgs.rap();
 
       for (size_t ir = 0; ir < DRS.size(); ++ir) {
-        const string dr = to_string(int(10*DRS[ir]));
+        const string dr = zeropad(to_string(int(10*DRS[ir])), 2);
 
         // Get jets, require dijet, and compute HTs
         const Jets jets = apply<FastJets>(event, "Jets"+dr)
