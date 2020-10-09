@@ -32,31 +32,44 @@ namespace Rivet {
 
 
       // Histograms
-      /// @todo Add log-scale histo copies?
       const doubles edges_njets = linspace(6, -0.5, 5.5); //  from 0 to 5, exclusive and inclusive
       const doubles edges_delta_y_jj = linspace(200, 0.0, 10.0); // 0.05 bins from 0-10 (can be recombined later if needed) (log and linear)
+      const doubles edges_delta_y_jj_log = logspace(200, 1e-1, 10.0);
       const doubles edges_delta_phi_jj = linspace(30, 0.0, 1.0); // 0.1 bins from 0-pi/pi
       const doubles edges_delta_r_jj = linspace(200, 0.0, 10.0); // 0.05 bins from 0-10 (log and linear)
+      const doubles edges_delta_r_jj_log = logspace(200, 1e-1, 10.0);
       const doubles edges_m_jj = linspace(40, 0.0, 2000.0); // 50 GeV bins from 0-2000 GeV (log and linear)
+      const doubles edges_m_jj_log = logspace(40, 10.0, 2000.0);
       const doubles edges_ptn_ptm = linspace(20, 0.0, 1.0); // 0.05 bins from 0-1
       const doubles edges_ht = linspace(30, 0.0, 3000.0); // 100 GeV bins from 0-3 TeV (log and linear)
+      const doubles edges_ht_log = logspace(30, 10.0, 3000.0);
       const doubles edges_xs = linspace(10, 0.0, 0.5); // 0.05 bins from 0 to 0.5
       const doubles edges_pth = linspace(50, 0.0, 500.0); // 10 GeV bins from 0-500 GeV (log and linear)
       const doubles edges_pthj = linspace(40, 0.0, 200.0); // -pTHj; 5 GeV bins from 0-200 GeV (log and linear)
       const doubles edges_pthjj = linspace(20, 0.0, 100.0); // -pTHjj: 5 GeV bins from 0-100 GeV (log and linear)
+      const doubles edges_pth_log = logspace(50, 1.0, 500.0);
+      const doubles edges_pthj_log = logspace(40, 1.0, 200.0);
+      const doubles edges_pthjj_log = logspace(20, 1.0, 100.0);
 
       // Inclusive histograms (dR = 0.4 only)
       // [njets, delta_y_jj, m_jj,delta_phi_jj, HT, pTH, pTHj, pTHjj]
       string pre = "incl_";
       book(_h_incl["njets"], pre+"njets", edges_njets);
       book(_h_incl["delta_y_jj12"], pre+"delta_y_jj12", edges_delta_y_jj);
+      book(_h_incl["delta_y_jj12_log"], pre+"delta_y_jj12_log", edges_delta_y_jj_log);
       book(_h_incl["delta_phi_jj12"], pre+"delta_phi_jj12", edges_delta_phi_jj);
       book(_h_incl["delta_r_jj12"], pre+"delta_r_jj12", edges_delta_r_jj);
+      book(_h_incl["delta_r_jj12_log"], pre+"delta_r_jj12_log", edges_delta_r_jj_log);
       book(_h_incl["m_jj12"], pre+"m_jj12", edges_m_jj);
+      book(_h_incl["m_jj12_log"], pre+"m_jj12_log", edges_m_jj_log);
       book(_h_incl["ht"], pre+"ht", edges_ht);
+      book(_h_incl["ht_log"], pre+"ht_log", edges_ht_log);
       book(_h_incl["pth"], pre+"pth", edges_pth);
+      book(_h_incl["pth_log"], pre+"pth_log", edges_pth_log);
       book(_h_incl["pthj1"], pre+"pthj1", edges_pthj);
+      book(_h_incl["pthj1_log"], pre+"pthj1_log", edges_pthj_log);
       book(_h_incl["pthjj12"], pre+"pthjj12", edges_pthjj);
+      book(_h_incl["pthjj12_log"], pre+"pthjj12_log", edges_pthjj_log);
 
       for (size_t ir = 0; ir < DRS.size(); ++ir) {
         const string dr = zeropad(to_string(int(10*DRS[ir])), 2);
@@ -71,10 +84,14 @@ namespace Rivet {
             const string pre = "rstudy_dr" + dr + "_pth" + pth + "_dy" + dy + "_";
             book(_h_dr_pth_dy[ir][ih][iy]["njets"], pre+"njets", edges_njets);
             book(_h_dr_pth_dy[ir][ih][iy]["delta_y_jj12"], pre+"delta_y_jj12", edges_delta_y_jj);
+            book(_h_dr_pth_dy[ir][ih][iy]["delta_y_jj12_log"], pre+"delta_y_jj12_log", edges_delta_y_jj_log);
             book(_h_dr_pth_dy[ir][ih][iy]["delta_phi_jj12"], pre+"delta_phi_jj12", edges_delta_phi_jj);
             book(_h_dr_pth_dy[ir][ih][iy]["delta_r_jj12"], pre+"delta_r_jj12", edges_delta_r_jj);
+            book(_h_dr_pth_dy[ir][ih][iy]["delta_r_jj12_log"], pre+"delta_r_jj12_log", edges_delta_r_jj_log);
             book(_h_dr_pth_dy[ir][ih][iy]["m_jj12"], pre+"m_jj12", edges_m_jj);
+            book(_h_dr_pth_dy[ir][ih][iy]["m_jj12_log"], pre+"m_jj12_log", edges_m_jj_log);
             book(_h_dr_pth_dy[ir][ih][iy]["delta_y_jjfb"], pre+"delta_y_jjfb", edges_delta_y_jj);
+            book(_h_dr_pth_dy[ir][ih][iy]["delta_y_jjfb_log"], pre+"delta_y_jjfb_log", edges_delta_y_jj_log);
             book(_h_dr_pth_dy[ir][ih][iy]["pt2_pt1"], pre+"pt2_pt1", edges_ptn_ptm);
             book(_h_dr_pth_dy[ir][ih][iy]["pt3_pt1"], pre+"pt3_pt1", edges_ptn_ptm);
             book(_h_dr_pth_dy[ir][ih][iy]["xh"], pre+"xh", edges_xs);
@@ -82,9 +99,13 @@ namespace Rivet {
             book(_h_dr_pth_dy[ir][ih][iy]["x2"], pre+"x2", edges_xs);
             book(_h_dr_pth_dy[ir][ih][iy]["x3"], pre+"x3", edges_xs);
             book(_h_dr_pth_dy[ir][ih][iy]["ht"], pre+"ht", edges_xs);
+            book(_h_dr_pth_dy[ir][ih][iy]["ht_log"], pre+"ht_log", edges_xs_log);
             book(_h_dr_pth_dy[ir][ih][iy]["pth"], pre+"pth", edges_pth);
+            book(_h_dr_pth_dy[ir][ih][iy]["pth_log"], pre+"pth_log", edges_pth_log);
             book(_h_dr_pth_dy[ir][ih][iy]["pthj1"], pre+"pthj1", edges_pthj);
+            book(_h_dr_pth_dy[ir][ih][iy]["pthj1_log"], pre+"pthj1_log", edges_pthj_log);
             book(_h_dr_pth_dy[ir][ih][iy]["pthjj12"], pre+"pthjj12", edges_pthjj);
+            book(_h_dr_pth_dy[ir][ih][iy]["pthjj12_log"], pre+"pthjj12_log", edges_pthjj_log);
           }
         }
 
@@ -94,9 +115,12 @@ namespace Rivet {
           const string res = RESNAMES[iv];
           const string pre = "vbfvh_dr" + dr + "_" + res + "_";
           book(_h_dr_res[ir][iv]["delta_y_jj12"], pre+"delta_y_jj12", edges_delta_y_jj);
+          book(_h_dr_res[ir][iv]["delta_y_jj12_log"], pre+"delta_y_jj12_log", edges_delta_y_jj_log);
           book(_h_dr_res[ir][iv]["delta_phi_jj12"], pre+"delta_phi_jj12", edges_delta_phi_jj);
           book(_h_dr_res[ir][iv]["m_jj12"], pre+"m_jj12", edges_m_jj);
+          book(_h_dr_res[ir][iv]["m_jj12_log"], pre+"m_jj12_log", edges_m_jj_log);
           book(_h_dr_res[ir][iv]["delta_y_jjfb"], pre+"delta_y_jjfb", edges_delta_y_jj);
+          book(_h_dr_res[ir][iv]["delta_y_jjfb_log"], pre+"delta_y_jjfb_log", edges_delta_y_jj_log);
         }
 
       }
@@ -104,6 +128,7 @@ namespace Rivet {
       // Higgs pT histogram with ATLAS VBF cuts
       pre = "atlas_";
       book(_h_atlas["pth"], pre+"pth", edges_pth);
+      book(_h_atlas["pth_log"], pre+"pth_log", edges_pth_log);
     }
 
 
@@ -189,13 +214,20 @@ namespace Rivet {
         if (ir == 0) { //< dR = 0.4
           _h_incl["njets"]->fill(njets);
           _h_incl["delta_y_jj12"]->fill(dy12);
+          _h_incl["delta_y_jj12_log"]->fill(dy12);
           _h_incl["delta_phi_jj12"]->fill(dphi12/M_PI);
           _h_incl["delta_r_jj12"]->fill(dR12);
+          _h_incl["delta_r_jj12_log"]->fill(dR12);
           _h_incl["m_jj12"]->fill(m12/GeV);
+          _h_incl["m_jj12_log"]->fill(m12/GeV);
           _h_incl["ht"]->fill(ht/GeV);
+          _h_incl["ht_log"]->fill(ht/GeV);
           _h_incl["pth"]->fill(ptH/GeV);
+          _h_incl["pth_log"]->fill(ptH/GeV);
           _h_incl["pthj1"]->fill(ptjH/GeV);
+          _h_incl["pthj1_log"]->fill(ptjH/GeV);
           _h_incl["pthjj12"]->fill(ptjjH/GeV);
+          _h_incl["pthjj12_log"]->fill(ptjjH/GeV);
         }
 
         // Standard histograms for pTH and dy12 cuts
@@ -206,16 +238,24 @@ namespace Rivet {
             // _c_xs[j][i]->fill();
             _h_dr_pth_dy[ir][ih][iy]["njets"]->fill(njets);
             _h_dr_pth_dy[ir][ih][iy]["delta_y_jj12"]->fill(dy12);
+            _h_dr_pth_dy[ir][ih][iy]["delta_y_jj12_log"]->fill(dy12);
             _h_dr_pth_dy[ir][ih][iy]["delta_phi_jj12"]->fill(dphi12/M_PI);
             _h_dr_pth_dy[ir][ih][iy]["delta_r_jj12"]->fill(dR12);
+            _h_dr_pth_dy[ir][ih][iy]["delta_r_jj12_log"]->fill(dR12);
             _h_dr_pth_dy[ir][ih][iy]["m_jj12"]->fill(m12/GeV);
+            _h_dr_pth_dy[ir][ih][iy]["m_jj12_log"]->fill(m12/GeV);
             _h_dr_pth_dy[ir][ih][iy]["delta_y_jjfb"]->fill(dyfb);
+            _h_dr_pth_dy[ir][ih][iy]["delta_y_jjfb_log"]->fill(dyfb);
             _h_dr_pth_dy[ir][ih][iy]["pt2_pt1"]->fill(ptjjH/GeV);
             _h_dr_pth_dy[ir][ih][iy]["pt3_pt1"]->fill(ptjjH/GeV);
             _h_dr_pth_dy[ir][ih][iy]["ht"]->fill(ht/GeV);
+            _h_dr_pth_dy[ir][ih][iy]["ht_log"]->fill(ht/GeV);
             _h_dr_pth_dy[ir][ih][iy]["pth"]->fill(ptH/GeV);
+            _h_dr_pth_dy[ir][ih][iy]["pth_log"]->fill(ptH/GeV);
             _h_dr_pth_dy[ir][ih][iy]["pthj1"]->fill(ptjH/GeV);
+            _h_dr_pth_dy[ir][ih][iy]["pthj1_log"]->fill(ptjH/GeV);
             _h_dr_pth_dy[ir][ih][iy]["pthjj12"]->fill(ptjjH/GeV);
+            _h_dr_pth_dy[ir][ih][iy]["pthjj12_log"]->fill(ptjjH/GeV);
             _h_dr_pth_dy[ir][ih][iy]["xh"]->fill(ptH/ht);
             _h_dr_pth_dy[ir][ih][iy]["x1"]->fill(jets[0].pT()/ht);
             _h_dr_pth_dy[ir][ih][iy]["x2"]->fill(jets[1].pT()/ht);
@@ -228,9 +268,12 @@ namespace Rivet {
         for (size_t iv = 0; iv < 2; ++iv) {
           if (bool(iv) == novh) continue; // if passed, 0 = !res, 1 = res
           _h_dr_res[ir][iv]["delta_y_jj12"]->fill(dy12);
+          _h_dr_res[ir][iv]["delta_y_jj12_log"]->fill(dy12);
           _h_dr_res[ir][iv]["delta_phi_jj12"]->fill(dphi12/M_PI);
           _h_dr_res[ir][iv]["m_jj12"]->fill(m12/GeV);
+          _h_dr_res[ir][iv]["m_jj12_log"]->fill(m12/GeV);
           _h_dr_res[ir][iv]["delta_y_jjfb"]->fill(dyfb);
+          _h_dr_res[ir][iv]["delta_y_jjfb_log"]->fill(dyfb);
         }
 
         // Final cuts used for ATLAS VBF measurements in a Higgs pT histogram
@@ -239,6 +282,7 @@ namespace Rivet {
         //   delta_phi_H_jj>2.7.
         if (dy12 > 3.5 && m12 > 600*GeV && dphijjH > 2.7) {
           _h_atlas["pth"]->fill(ptH/GeV);
+          _h_atlas["pth_log"]->fill(ptH/GeV);
         }
 
       } // DR loop
