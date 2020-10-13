@@ -161,6 +161,9 @@ namespace Rivet {
           .jetsByPt(Cuts::pT > 30*GeV && Cuts::absrap < 4.4);
         const int njets = jets.size();
         if (njets < 2) continue;
+        const double ptj1 = jets[0].pT();
+        const double ptj2 = jets[1].pT();
+        const double ptj3 = (njets > 2) ? jets[2].pT() : -1.0;
         const double htj = sum(jets, Kin::pT, 0.0);
         const double ht = htj + higgs.pT();
 
@@ -256,8 +259,8 @@ namespace Rivet {
             _h_dr_pth_dy[ir][ih][iy]["m_jj12_log"]->fill(m12/GeV);
             _h_dr_pth_dy[ir][ih][iy]["delta_y_jjfb"]->fill(dyfb);
             _h_dr_pth_dy[ir][ih][iy]["delta_y_jjfb_log"]->fill(dyfb);
-            _h_dr_pth_dy[ir][ih][iy]["pt2_pt1"]->fill(ptjjH/GeV);
-            _h_dr_pth_dy[ir][ih][iy]["pt3_pt1"]->fill(ptjjH/GeV);
+            _h_dr_pth_dy[ir][ih][iy]["pt2_pt1"]->fill(ptj2/ptj1);
+            _h_dr_pth_dy[ir][ih][iy]["pt3_pt1"]->fill(ptj3/ptj1);
             _h_dr_pth_dy[ir][ih][iy]["ht"]->fill(ht/GeV);
             _h_dr_pth_dy[ir][ih][iy]["ht_log"]->fill(ht/GeV);
             _h_dr_pth_dy[ir][ih][iy]["pth"]->fill(ptH/GeV);
