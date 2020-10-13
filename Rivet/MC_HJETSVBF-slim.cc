@@ -19,18 +19,15 @@ namespace Rivet {
     void init() {
 
       // Projections
+      declare("PromptFS", PromptFinalState(Cuts::abseta < 5));
+      declare("Higgses", PromptFinalState(Cuts::pid == PID::HIGGS && Cuts::absrap < 2.4));
       NonPromptFinalState fs(Cuts::abseta < 5);
+      declare("KtClustering", FastJets(fs, FastJets::KT, 0.4));
       for (size_t ir = 0; ir < DRS.size(); ++ir) {
         FastJets fj(fs, FastJets::ANTIKT, DRS[ir]);
         const string dr = zeropad(to_string(int(10*DRS[ir])), 2);
-        // MSG_INFO(dr);
         declare(fj, "Jets"+dr);
       }
-      PromptFinalState pfs(Cuts::abseta < 5);
-      PromptFinalState higgses(Cuts::pid == PID::HIGGS && Cuts::absrap < 2.4);
-      declare(pfs, "PromptFS");
-      declare(higgses, "Higgses");
-
 
       // Histograms
       const doubles edges_njets = linspace(6, -0.5, 5.5); //  from 0 to 5, exclusive and inclusive
@@ -51,6 +48,7 @@ namespace Rivet {
       const doubles edges_pth_log = logspace(50, 1.0, 500.0);
       const doubles edges_pthj_log = logspace(40, 1.0, 200.0);
       const doubles edges_pthjj_log = logspace(20, 1.0, 100.0);
+      const doubles edges_log10dij = linspace(100, 0, log10(7000));
 
       // Inclusive histograms (dR = 0.4 only)
       // [njets, delta_y_jj, m_jj,delta_phi_jj, HT, pTH, pTHj, pTHjj]
@@ -71,6 +69,10 @@ namespace Rivet {
       book(_h_incl["pthj1_log"], pre+"pthj1_log", edges_pthj_log);
       book(_h_incl["pthjj12"], pre+"pthjj12", edges_pthjj);
       book(_h_incl["pthjj12_log"], pre+"pthjj12_log", edges_pthjj_log);
+      book(_h_incl["log10_d12"], pre+"log10_d12", edges_log10dij);
+      book(_h_incl["log10_d23"], pre+"log10_d23", edges_log10dij);
+      book(_h_incl["log10_d34"], pre+"log10_d34", edges_log10dij);
+      book(_h_incl["log10_d45"], pre+"log10_d45", edges_log10dij);
 
       for (size_t ir = 0; ir < DRS.size(); ++ir) {
         const string dr = zeropad(to_string(int(10*DRS[ir])), 2);
@@ -143,6 +145,13 @@ namespace Rivet {
       const Particle higgs = higgses[0];
       const double ptH = higgs.pT();
       // const double yh  = higgs.rap();
+
+      // Get kT splitting scales
+      const auto& cs = apply<FastJets>(event, "KtClustering").clusterSeq();
+      _h_incl["log10_d12"]->fill(0.5*log10(cs->exclusive_dmerge(1)/GeV2));
+      _h_incl["log10_d23"]->fill(0.5*log10(cs->exclusive_dmerge(2)/GeV2));
+      _h_incl["log10_d34"]->fill(0.5*log10(cs->exclusive_dmerge(3)/GeV2));
+      _h_incl["log10_d45"]->fill(0.5*log10(cs->exclusive_dmerge(4)/GeV2));
 
       for (size_t ir = 0; ir < DRS.size(); ++ir) {
         const string dr = zeropad(to_string(int(10*DRS[ir])), 2);
