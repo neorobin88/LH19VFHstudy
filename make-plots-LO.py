@@ -65,8 +65,7 @@ for key in yodaData[0].keys():
                 yval = np.array([bin.area for bin in histo.bins])/binsize
                 yerr = np.array([bin.relErr for bin in histo.bins])*yval
                 ax1.errorbar(xav, yval, yerr=yerr, xerr=binsize/2, color=color[yd], ls='-', label='LO')
-                ax2.errorbar(xav, yval/ref,  xerr=binsize/2, color=color[yd], ls='-', label='')
-                print yval[0]
+                ax2.errorbar(xav, yval/ref, yerr=yerr/yval, xerr=binsize/2, color=color[yd], ls='-', label='')
         ylims=ax2.get_ylim()
         #ylims=[max(ylims[0],0.9), min(ylims[1],1.1)]
         ax2.set_ylim(ylims)
