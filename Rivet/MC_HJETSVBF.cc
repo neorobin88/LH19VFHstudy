@@ -296,7 +296,7 @@ namespace Rivet {
         //   delta_y_jj>3.5 (where the two jets are the two highest pT jets),
         //   m_jj > 600 GeV (again using the two highest pT jets) and
         //   delta_phi_H_jj>2.7.
-        if (dy12 > 3.5 && m12 > 600*GeV && dphijjH > 2.7) {
+        if (DRS[ir]==0.4 && dy12 > 3.5 && m12 > 600*GeV && dphijjH > 2.7) {
           _h_atlas["pth"]->fill(ptH/GeV);
           _h_atlas["pth_log"]->fill(ptH/GeV);
         }
