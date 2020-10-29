@@ -1,0 +1,55 @@
+TO BE CORRECTED:
+
+- The deltaphi distributions have phi/PI, not phi as x values
+
+- fix the binnings of the log distributions
+
+      const doubles edges_delta_y_jj_log = logspace(200, 1e-1, 10.0);
+      const doubles edges_delta_r_jj_log = logspace(200, 1e-1, 10.0);
+      const doubles edges_m_jj_log = logspace(40, 10.0, 2000.0);
+      const doubles edges_ht_log = logspace(30, 10.0, 3000.0);
+      const doubles edges_pth_log = logspace(50, 1.0, 500.0);
+      const doubles edges_pthj_log = logspace(40, 1.0, 200.0);
+      const doubles edges_pthjj_log = logspace(20, 1.0, 100.0);
+
+- fix bins in njets distr, from 0 to 5
+
+TO BE ADDED:
+
+[fb distributions?? tell Joey you cannot do that in NNLOJET]
+[vbfvh distr: we probably do not need them]
+
+
+- dr07, dr10 (for NLO)
+- dy01
+- x1,x2,x3,xh distributions // 0.05 bins from 0 to 0.5
+           e.g. name rstudy_dr07_pth200_dy10_x1.dat
+
+            _h_dr_pth_dy[ir][ih][iy]["xh"]->fill(ptH/ht);
+            _h_dr_pth_dy[ir][ih][iy]["x1"]->fill(jets[0].pT()/ht);
+            _h_dr_pth_dy[ir][ih][iy]["x2"]->fill(jets[1].pT()/ht);
+            if (njets > 2)
+              _h_dr_pth_dy[ir][ih][iy]["x3"]->fill(jets[2].pT()/ht);
+          }
+
+- pt{2,3}_pt1 // 0.05 bins from 0-1
+     e.g. name rstudy_dr07_pth500_dy10_pt3_pt1.dat
+
+            _h_dr_pth_dy[ir][ih][iy]["pt2_pt1"]->fill(ptj2/ptj1);
+            _h_dr_pth_dy[ir][ih][iy]["pt3_pt1"]->fill(ptj3/ptj1);
+
+
+
+- incl distributions [they do not have the dy12<1,10 cut], they have the same binnings of the non incl obs
+incl_delta_phi_jj12    incl_delta_y_jj12      incl_ht_log     incl_log10_d34  incl_m_jj12_log  incl_pthj1      incl_pthjj12_log
+incl_delta_r_jj12      incl_delta_y_jj12_log  incl_log10_d12  incl_log10_d45  incl_njets       incl_pthj1_log  incl_pth_log
+incl_delta_r_jj12_log  incl_ht                incl_log10_d23  incl_m_jj12     incl_pth         incl_pthjj12
+
+NB: incl_log10_dij, binnings const doubles edges_log10dij = linspace(100, 0, log10(7000));
+      // Get kT splitting scales
+      const auto& cs = apply<FastJets>(event, "KtClustering").clusterSeq();
+      _h_incl["log10_d12"]->fill(0.5*log10(cs->exclusive_dmerge(1)/GeV2));
+      _h_incl["log10_d23"]->fill(0.5*log10(cs->exclusive_dmerge(2)/GeV2));
+      _h_incl["log10_d34"]->fill(0.5*log10(cs->exclusive_dmerge(3)/GeV2));
+      _h_incl["log10_d45"]->fill(0.5*log10(cs->exclusive_dmerge(4)/GeV2));
+
