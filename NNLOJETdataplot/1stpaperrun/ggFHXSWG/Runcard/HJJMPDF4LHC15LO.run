@@ -1,0 +1,102 @@
+PROCESS  HJJM
+  decay_type = 3
+  collider = pp
+  sqrts = 13000
+  jet = antikt[0.4]
+  jet_exclusive = .false.
+  jet_recomb = V4
+END_PROCESS
+
+RUN  HLO  ! <--- this is the JOB name
+  PDF = PDF4LHC15_nnlo_mc[0]
+  tcut = 1d-7
+  iseed   = 11
+  imethod = 2
+  iplot   = 0
+  lips_reduce      = .true.
+  reset_vegas_grid = .true.
+  angular_average  = .false.
+  print_max_weight = .false.
+  cache_kinematics = .true.
+  pole_check       = .false.
+  multi_channel    = .false.
+  !multi_channel    = 2
+  !phase_space      = qt
+
+  warmup     = 50000[10]
+  !production = 50000[10]
+END_RUN
+
+PARAMETERS
+  MASS[H]  = 125
+  WIDTH[H] = 0.004088 !Higgs values from https://twiki.cern.ch/twiki/bin/view/LHCPhysics/CERNYellowReportPageBR#TotalWidthAnchor
+  MASS[Z]  = 91.1876
+  WIDTH[Z] = 2.4952
+  MASS[W]  = 80.379
+  WIDTH[W] = 2.085 !Vector boson values from http://pdg.lbl.gov/2019/download/db2018.pdf
+  MASS[t]  = 173.055
+  WIDTH[t] = 1.41
+  MASS[b]  = 0
+  MASS[c]  = 0
+  MASS[tau]  = 0
+  SCHEME[WIDTH_V] = CMS
+END_PARAMETERS
+
+
+SELECTORS
+
+        select njets        min = 2
+  	select jets_pt      min = 30
+  	select jets_abs_y   max = 4.4
+
+END_SELECTORS
+
+HISTOGRAMS
+
+   pth         >   pth_10 min = 30  max = 1000 nbins = 97
+   pth         >   pth_10_vbfpaper min = 30  max = 1000 nbins = 97
+        HISTOGRAM_SELECTORS
+            select abs_yh   max = 2.4
+            select deltay_j12   max = 10
+        END_HISTOGRAM_SELECTORS
+
+   pth         >   pth_20 min = 40  max = 1000 nbins = 48
+   pth         >   pth_20_vbfpaper min = 40  max = 1000 nbins = 48
+        HISTOGRAM_SELECTORS
+            select abs_yh   max = 2.4
+            select deltay_j12   max = 10
+        END_HISTOGRAM_SELECTORS
+
+   pth         >   pth_50 min = 50  max = 1300 nbins = 25
+   pth         >   pth_50_vbfpaper min = 50  max = 1300 nbins = 25
+        HISTOGRAM_SELECTORS
+            select abs_yh   max = 2.4
+            select deltay_j12   max = 10
+        END_HISTOGRAM_SELECTORS
+
+
+END_HISTOGRAMS
+
+SCALES
+
+	!----- HJ paper setup
+	muf =        eth     mur =        eth
+	muf =  0.5 * eth     mur =  0.5 * eth 
+	muf =  2.0 * eth     mur =  2.0 * eth
+	muf =  0.5 * eth     mur =        eth
+	muf =        eth     mur =  0.5 * eth
+	muf =  2.0 * eth     mur =        eth
+	muf =        eth     mur =  2.0 * eth
+
+END_SCALES
+
+
+CHANNELS
+
+  LO
+
+END_CHANNELS
+
+
+
+
