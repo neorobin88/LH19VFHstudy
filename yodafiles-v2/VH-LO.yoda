@@ -8,8 +8,8 @@ Type: Scatter1D
 END YODA_SCATTER1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF_Hpt/pth_full_heavy_middle
-Path: /MC_HJETSVBF_Hpt/pth_full_heavy_middle
+BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF/pth_full_heavy_middle
+Path: /MC_HJETSVBF/pth_full_heavy_middle
 Title: ~
 Type: Histo1D
 ---
@@ -43,8 +43,8 @@ Overflow	Overflow	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF_Hpt/pth_cum_heavy_middle
-Path: /MC_HJETSVBF_Hpt/pth_cum_heavy_middle
+BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF/pth_cum_heavy_middle
+Path: /MC_HJETSVBF/pth_cum_heavy_middle
 Title: ~
 Type: Histo1D
 ---
@@ -78,8 +78,8 @@ Overflow	Overflow	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF_Hpt/pth_finebin[W1]
-Path: /RAW/MC_HJETSVBF_Hpt/pth_finebin[W1]
+BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF/pth_finebin[W1]
+Path: /RAW/MC_HJETSVBF/pth_finebin[W1]
 Title: ~
 Type: Histo1D
 ---
@@ -139,8 +139,8 @@ Overflow	Overflow	1.807535e+03	6.008993e+02	1.214303e+06	8.263760e+08	6.334000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF_Hpt/pth_full_light_middle[W1]
-Path: /RAW/MC_HJETSVBF_Hpt/pth_full_light_middle[W1]
+BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF/pth_full_light_middle[W1]
+Path: /RAW/MC_HJETSVBF/pth_full_light_middle[W1]
 Title: ~
 Type: Histo1D
 ---
@@ -174,8 +174,8 @@ Overflow	Overflow	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF_Hpt/pth_full_light_middle
-Path: /MC_HJETSVBF_Hpt/pth_full_light_middle
+BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF/pth_full_light_middle
+Path: /MC_HJETSVBF/pth_full_light_middle
 Title: ~
 Type: Histo1D
 ---
@@ -209,8 +209,8 @@ Overflow	Overflow	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF_Hpt/pth_full_light_middle
-Path: /RAW/MC_HJETSVBF_Hpt/pth_full_light_middle
+BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF/pth_full_light_middle
+Path: /RAW/MC_HJETSVBF/pth_full_light_middle
 Title: ~
 Type: Histo1D
 ---
@@ -244,8 +244,8 @@ Overflow	Overflow	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF_Hpt/pth_cum_light_center
-Path: /MC_HJETSVBF_Hpt/pth_cum_light_center
+BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF/pth_cum_light_center
+Path: /MC_HJETSVBF/pth_cum_light_center
 Title: ~
 Type: Histo1D
 ---
@@ -279,8 +279,8 @@ Overflow	Overflow	6.400640e-03	5.865527e-08	7.094095e+00	7.906781e+03	8.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF_Hpt/pth_largebin_heavy_middle
-Path: /MC_HJETSVBF_Hpt/pth_largebin_heavy_middle
+BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF/pth_largebin_heavy_middle
+Path: /MC_HJETSVBF/pth_largebin_heavy_middle
 Title: ~
 Type: Histo1D
 ---
@@ -309,8 +309,8 @@ Overflow	Overflow	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF_Hpt/pth_full
-Path: /RAW/MC_HJETSVBF_Hpt/pth_full
+BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF/pth_full
+Path: /RAW/MC_HJETSVBF/pth_full
 Title: ~
 Type: Histo1D
 ---
@@ -344,8 +344,8 @@ Overflow	Overflow	1.111879e+01	3.260086e+00	1.241683e+04	1.400251e+07	4.300000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF_Hpt/pth_cum_light_middle[W1]
-Path: /RAW/MC_HJETSVBF_Hpt/pth_cum_light_middle[W1]
+BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF/pth_cum_light_middle[W1]
+Path: /RAW/MC_HJETSVBF/pth_cum_light_middle[W1]
 Title: ~
 Type: Histo1D
 ---
@@ -379,8 +379,8 @@ Overflow	Overflow	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF_Hpt/pth_finebin_light_center
-Path: /MC_HJETSVBF_Hpt/pth_finebin_light_center
+BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF/pth_finebin_light_center
+Path: /MC_HJETSVBF/pth_finebin_light_center
 Title: ~
 Type: Histo1D
 ---
@@ -440,8 +440,8 @@ Overflow	Overflow	5.622420e-02	5.841656e-07	3.774924e+01	2.566405e+04	6.305000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF_Hpt/pth_cum_ATLAS
-Path: /MC_HJETSVBF_Hpt/pth_cum_ATLAS
+BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF/pth_cum_ATLAS
+Path: /MC_HJETSVBF/pth_cum_ATLAS
 Title: ~
 Type: Histo1D
 ---
@@ -475,8 +475,8 @@ Overflow	Overflow	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF_Hpt/pth_largebin_light_forward[W1]
-Path: /MC_HJETSVBF_Hpt/pth_largebin_light_forward[W1]
+BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF/pth_largebin_light_forward[W1]
+Path: /MC_HJETSVBF/pth_largebin_light_forward[W1]
 Title: ~
 Type: Histo1D
 ---
@@ -505,8 +505,8 @@ Overflow	Overflow	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF_Hpt/pth_full_heavy_forward[W1]
-Path: /RAW/MC_HJETSVBF_Hpt/pth_full_heavy_forward[W1]
+BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF/pth_full_heavy_forward[W1]
+Path: /RAW/MC_HJETSVBF/pth_full_heavy_forward[W1]
 Title: ~
 Type: Histo1D
 ---
@@ -540,8 +540,8 @@ Overflow	Overflow	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF_Hpt/pth_finebin
-Path: /RAW/MC_HJETSVBF_Hpt/pth_finebin
+BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF/pth_finebin
+Path: /RAW/MC_HJETSVBF/pth_finebin
 Title: ~
 Type: Histo1D
 ---
@@ -601,8 +601,8 @@ Overflow	Overflow	1.807535e+03	6.008993e+02	1.214303e+06	8.263760e+08	6.334000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_COUNTER_V2 /RAW/MC_HJETSVBF_Hpt/cross_full[W1]
-Path: /RAW/MC_HJETSVBF_Hpt/cross_full[W1]
+BEGIN YODA_COUNTER_V2 /RAW/MC_HJETSVBF/cross_full[W1]
+Path: /RAW/MC_HJETSVBF/cross_full[W1]
 ScaledBy: 1.00000000000000000e+00
 Title: ~
 Type: Counter
@@ -612,8 +612,8 @@ Type: Counter
 END YODA_COUNTER_V2
 
 
-BEGIN YODA_COUNTER_V2 /RAW/MC_HJETSVBF_Hpt/cross_heavy_forward[W1]
-Path: /RAW/MC_HJETSVBF_Hpt/cross_heavy_forward[W1]
+BEGIN YODA_COUNTER_V2 /RAW/MC_HJETSVBF/cross_heavy_forward[W1]
+Path: /RAW/MC_HJETSVBF/cross_heavy_forward[W1]
 ScaledBy: 1.00000000000000000e+00
 Title: ~
 Type: Counter
@@ -623,8 +623,8 @@ Type: Counter
 END YODA_COUNTER_V2
 
 
-BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF_Hpt/pth_largebin_light_center
-Path: /RAW/MC_HJETSVBF_Hpt/pth_largebin_light_center
+BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF/pth_largebin_light_center
+Path: /RAW/MC_HJETSVBF/pth_largebin_light_center
 Title: ~
 Type: Histo1D
 ---
@@ -653,8 +653,8 @@ Overflow	Overflow	1.024103e+01	3.003150e+00	1.135055e+04	1.265085e+07	4.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF_Hpt/pth_full_heavy_forward
-Path: /RAW/MC_HJETSVBF_Hpt/pth_full_heavy_forward
+BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF/pth_full_heavy_forward
+Path: /RAW/MC_HJETSVBF/pth_full_heavy_forward
 Title: ~
 Type: Histo1D
 ---
@@ -688,8 +688,8 @@ Overflow	Overflow	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF_Hpt/pth_cum[W1]
-Path: /RAW/MC_HJETSVBF_Hpt/pth_cum[W1]
+BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF/pth_cum[W1]
+Path: /RAW/MC_HJETSVBF/pth_cum[W1]
 Title: ~
 Type: Histo1D
 ---
@@ -723,8 +723,8 @@ Overflow	Overflow	2.223759e+02	6.520173e+01	2.483366e+05	2.800503e+08	8.600000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF_Hpt/pth_cum_ATLAS[W1]
-Path: /RAW/MC_HJETSVBF_Hpt/pth_cum_ATLAS[W1]
+BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF/pth_cum_ATLAS[W1]
+Path: /RAW/MC_HJETSVBF/pth_cum_ATLAS[W1]
 Title: ~
 Type: Histo1D
 ---
@@ -758,8 +758,8 @@ Overflow	Overflow	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_COUNTER_V2 /RAW/MC_HJETSVBF_Hpt/cross_full
-Path: /RAW/MC_HJETSVBF_Hpt/cross_full
+BEGIN YODA_COUNTER_V2 /RAW/MC_HJETSVBF/cross_full
+Path: /RAW/MC_HJETSVBF/cross_full
 ScaledBy: 1.00000000000000000e+00
 Title: ~
 Type: Counter
@@ -769,8 +769,8 @@ Type: Counter
 END YODA_COUNTER_V2
 
 
-BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF_Hpt/pth_finebin_heavy_forward[W1]
-Path: /RAW/MC_HJETSVBF_Hpt/pth_finebin_heavy_forward[W1]
+BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF/pth_finebin_heavy_forward[W1]
+Path: /RAW/MC_HJETSVBF/pth_finebin_heavy_forward[W1]
 Title: ~
 Type: Histo1D
 ---
@@ -830,8 +830,8 @@ Overflow	Overflow	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF_Hpt/pth_finebin_ATLAS
-Path: /MC_HJETSVBF_Hpt/pth_finebin_ATLAS
+BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF/pth_finebin_ATLAS
+Path: /MC_HJETSVBF/pth_finebin_ATLAS
 Title: ~
 Type: Histo1D
 ---
@@ -891,8 +891,8 @@ Overflow	Overflow	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF_Hpt/pth_cum_light_middle
-Path: /MC_HJETSVBF_Hpt/pth_cum_light_middle
+BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF/pth_cum_light_middle
+Path: /MC_HJETSVBF/pth_cum_light_middle
 Title: ~
 Type: Histo1D
 ---
@@ -926,8 +926,8 @@ Overflow	Overflow	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_COUNTER_V2 /MC_HJETSVBF_Hpt/cross_full[W1]
-Path: /MC_HJETSVBF_Hpt/cross_full[W1]
+BEGIN YODA_COUNTER_V2 /MC_HJETSVBF/cross_full[W1]
+Path: /MC_HJETSVBF/cross_full[W1]
 ScaledBy: 3.12500000000000007e-05
 Title: ~
 Type: Counter
@@ -937,8 +937,8 @@ Type: Counter
 END YODA_COUNTER_V2
 
 
-BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF_Hpt/pth_finebin_light_middle
-Path: /RAW/MC_HJETSVBF_Hpt/pth_finebin_light_middle
+BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF/pth_finebin_light_middle
+Path: /RAW/MC_HJETSVBF/pth_finebin_light_middle
 Title: ~
 Type: Histo1D
 ---
@@ -998,8 +998,8 @@ Overflow	Overflow	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF_Hpt/pth_cum_ATLAS
-Path: /RAW/MC_HJETSVBF_Hpt/pth_cum_ATLAS
+BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF/pth_cum_ATLAS
+Path: /RAW/MC_HJETSVBF/pth_cum_ATLAS
 Title: ~
 Type: Histo1D
 ---
@@ -1033,8 +1033,8 @@ Overflow	Overflow	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF_Hpt/pth_largebin_light_middle
-Path: /MC_HJETSVBF_Hpt/pth_largebin_light_middle
+BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF/pth_largebin_light_middle
+Path: /MC_HJETSVBF/pth_largebin_light_middle
 Title: ~
 Type: Histo1D
 ---
@@ -1063,8 +1063,8 @@ Overflow	Overflow	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_COUNTER_V2 /MC_HJETSVBF_Hpt/cross_heavy_middle
-Path: /MC_HJETSVBF_Hpt/cross_heavy_middle
+BEGIN YODA_COUNTER_V2 /MC_HJETSVBF/cross_heavy_middle
+Path: /MC_HJETSVBF/cross_heavy_middle
 ScaledBy: 4.95049504950495083e-05
 Title: ~
 Type: Counter
@@ -1074,8 +1074,8 @@ Type: Counter
 END YODA_COUNTER_V2
 
 
-BEGIN YODA_COUNTER_V2 /MC_HJETSVBF_Hpt/cross_light_middle
-Path: /MC_HJETSVBF_Hpt/cross_light_middle
+BEGIN YODA_COUNTER_V2 /MC_HJETSVBF/cross_light_middle
+Path: /MC_HJETSVBF/cross_light_middle
 ScaledBy: 3.12500000000000007e-05
 Title: ~
 Type: Counter
@@ -1085,8 +1085,8 @@ Type: Counter
 END YODA_COUNTER_V2
 
 
-BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF_Hpt/pth_largebin_ATLAS[W1]
-Path: /RAW/MC_HJETSVBF_Hpt/pth_largebin_ATLAS[W1]
+BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF/pth_largebin_ATLAS[W1]
+Path: /RAW/MC_HJETSVBF/pth_largebin_ATLAS[W1]
 Title: ~
 Type: Histo1D
 ---
@@ -1115,8 +1115,8 @@ Overflow	Overflow	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_COUNTER_V2 /MC_HJETSVBF_Hpt/cross_light_middle[W1]
-Path: /MC_HJETSVBF_Hpt/cross_light_middle[W1]
+BEGIN YODA_COUNTER_V2 /MC_HJETSVBF/cross_light_middle[W1]
+Path: /MC_HJETSVBF/cross_light_middle[W1]
 ScaledBy: 3.12500000000000007e-05
 Title: ~
 Type: Counter
@@ -1126,8 +1126,8 @@ Type: Counter
 END YODA_COUNTER_V2
 
 
-BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF_Hpt/pth_full_heavy_center
-Path: /RAW/MC_HJETSVBF_Hpt/pth_full_heavy_center
+BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF/pth_full_heavy_center
+Path: /RAW/MC_HJETSVBF/pth_full_heavy_center
 Title: ~
 Type: Histo1D
 ---
@@ -1161,8 +1161,8 @@ Overflow	Overflow	8.777690e-01	2.569368e-01	1.066277e+03	1.351661e+06	3.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_COUNTER_V2 /RAW/MC_HJETSVBF_Hpt/cross_heavy_middle
-Path: /RAW/MC_HJETSVBF_Hpt/cross_heavy_middle
+BEGIN YODA_COUNTER_V2 /RAW/MC_HJETSVBF/cross_heavy_middle
+Path: /RAW/MC_HJETSVBF/cross_heavy_middle
 ScaledBy: 1.00000000000000000e+00
 Title: ~
 Type: Counter
@@ -1172,8 +1172,8 @@ Type: Counter
 END YODA_COUNTER_V2
 
 
-BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF_Hpt/pth_finebin_heavy_forward
-Path: /RAW/MC_HJETSVBF_Hpt/pth_finebin_heavy_forward
+BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF/pth_finebin_heavy_forward
+Path: /RAW/MC_HJETSVBF/pth_finebin_heavy_forward
 Title: ~
 Type: Histo1D
 ---
@@ -1233,8 +1233,8 @@ Overflow	Overflow	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF_Hpt/pth_largebin[W1]
-Path: /RAW/MC_HJETSVBF_Hpt/pth_largebin[W1]
+BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF/pth_largebin[W1]
+Path: /RAW/MC_HJETSVBF/pth_largebin[W1]
 Title: ~
 Type: Histo1D
 ---
@@ -1263,8 +1263,8 @@ Overflow	Overflow	1.111879e+01	3.260086e+00	1.241683e+04	1.400251e+07	4.300000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF_Hpt/pth_largebin_heavy_forward[W1]
-Path: /MC_HJETSVBF_Hpt/pth_largebin_heavy_forward[W1]
+BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF/pth_largebin_heavy_forward[W1]
+Path: /MC_HJETSVBF/pth_largebin_heavy_forward[W1]
 Title: ~
 Type: Histo1D
 ---
@@ -1293,8 +1293,8 @@ Overflow	Overflow	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF_Hpt/pth_cum_heavy_forward[W1]
-Path: /RAW/MC_HJETSVBF_Hpt/pth_cum_heavy_forward[W1]
+BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF/pth_cum_heavy_forward[W1]
+Path: /RAW/MC_HJETSVBF/pth_cum_heavy_forward[W1]
 Title: ~
 Type: Histo1D
 ---
@@ -1328,8 +1328,8 @@ Overflow	Overflow	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF_Hpt/pth_cum_heavy_center[W1]
-Path: /MC_HJETSVBF_Hpt/pth_cum_heavy_center[W1]
+BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF/pth_cum_heavy_center[W1]
+Path: /MC_HJETSVBF/pth_cum_heavy_center[W1]
 Title: ~
 Type: Histo1D
 ---
@@ -1363,8 +1363,8 @@ Overflow	Overflow	5.605012e-04	5.241751e-09	6.826031e-01	8.675957e+02	6.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF_Hpt/pth_finebin_ATLAS
-Path: /RAW/MC_HJETSVBF_Hpt/pth_finebin_ATLAS
+BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF/pth_finebin_ATLAS
+Path: /RAW/MC_HJETSVBF/pth_finebin_ATLAS
 Title: ~
 Type: Histo1D
 ---
@@ -1424,8 +1424,8 @@ Overflow	Overflow	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF_Hpt/pth_finebin_light_center[W1]
-Path: /MC_HJETSVBF_Hpt/pth_finebin_light_center[W1]
+BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF/pth_finebin_light_center[W1]
+Path: /MC_HJETSVBF/pth_finebin_light_center[W1]
 Title: ~
 Type: Histo1D
 ---
@@ -1485,8 +1485,8 @@ Overflow	Overflow	5.622420e-02	5.841656e-07	3.774924e+01	2.566405e+04	6.305000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF_Hpt/pth_cum_heavy_forward
-Path: /RAW/MC_HJETSVBF_Hpt/pth_cum_heavy_forward
+BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF/pth_cum_heavy_forward
+Path: /RAW/MC_HJETSVBF/pth_cum_heavy_forward
 Title: ~
 Type: Histo1D
 ---
@@ -1520,8 +1520,8 @@ Overflow	Overflow	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF_Hpt/pth_full_light_center[W1]
-Path: /MC_HJETSVBF_Hpt/pth_full_light_center[W1]
+BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF/pth_full_light_center[W1]
+Path: /MC_HJETSVBF/pth_full_light_center[W1]
 Title: ~
 Type: Histo1D
 ---
@@ -1566,8 +1566,8 @@ Type: Counter
 END YODA_COUNTER_V2
 
 
-BEGIN YODA_COUNTER_V2 /RAW/MC_HJETSVBF_Hpt/cross_light_middle[W1]
-Path: /RAW/MC_HJETSVBF_Hpt/cross_light_middle[W1]
+BEGIN YODA_COUNTER_V2 /RAW/MC_HJETSVBF/cross_light_middle[W1]
+Path: /RAW/MC_HJETSVBF/cross_light_middle[W1]
 ScaledBy: 1.00000000000000000e+00
 Title: ~
 Type: Counter
@@ -1577,8 +1577,8 @@ Type: Counter
 END YODA_COUNTER_V2
 
 
-BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF_Hpt/pth_cum
-Path: /RAW/MC_HJETSVBF_Hpt/pth_cum
+BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF/pth_cum
+Path: /RAW/MC_HJETSVBF/pth_cum
 Title: ~
 Type: Histo1D
 ---
@@ -1612,8 +1612,8 @@ Overflow	Overflow	2.223759e+02	6.520173e+01	2.483366e+05	2.800503e+08	8.600000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF_Hpt/pth_cum_heavy_middle[W1]
-Path: /RAW/MC_HJETSVBF_Hpt/pth_cum_heavy_middle[W1]
+BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF/pth_cum_heavy_middle[W1]
+Path: /RAW/MC_HJETSVBF/pth_cum_heavy_middle[W1]
 Title: ~
 Type: Histo1D
 ---
@@ -1647,8 +1647,8 @@ Overflow	Overflow	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_COUNTER_V2 /RAW/MC_HJETSVBF_Hpt/cross_light_center
-Path: /RAW/MC_HJETSVBF_Hpt/cross_light_center
+BEGIN YODA_COUNTER_V2 /RAW/MC_HJETSVBF/cross_light_center
+Path: /RAW/MC_HJETSVBF/cross_light_center
 ScaledBy: 1.00000000000000000e+00
 Title: ~
 Type: Counter
@@ -1658,8 +1658,8 @@ Type: Counter
 END YODA_COUNTER_V2
 
 
-BEGIN YODA_COUNTER_V2 /RAW/MC_HJETSVBF_Hpt/cross_heavy_center
-Path: /RAW/MC_HJETSVBF_Hpt/cross_heavy_center
+BEGIN YODA_COUNTER_V2 /RAW/MC_HJETSVBF/cross_heavy_center
+Path: /RAW/MC_HJETSVBF/cross_heavy_center
 ScaledBy: 1.00000000000000000e+00
 Title: ~
 Type: Counter
@@ -1669,8 +1669,8 @@ Type: Counter
 END YODA_COUNTER_V2
 
 
-BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF_Hpt/pth_cum_heavy_forward[W1]
-Path: /MC_HJETSVBF_Hpt/pth_cum_heavy_forward[W1]
+BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF/pth_cum_heavy_forward[W1]
+Path: /MC_HJETSVBF/pth_cum_heavy_forward[W1]
 Title: ~
 Type: Histo1D
 ---
@@ -1704,8 +1704,8 @@ Overflow	Overflow	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF_Hpt/pth_cum_light_middle[W1]
-Path: /MC_HJETSVBF_Hpt/pth_cum_light_middle[W1]
+BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF/pth_cum_light_middle[W1]
+Path: /MC_HJETSVBF/pth_cum_light_middle[W1]
 Title: ~
 Type: Histo1D
 ---
@@ -1739,8 +1739,8 @@ Overflow	Overflow	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_COUNTER_V2 /MC_HJETSVBF_Hpt/cross_ATLAS[W1]
-Path: /MC_HJETSVBF_Hpt/cross_ATLAS[W1]
+BEGIN YODA_COUNTER_V2 /MC_HJETSVBF/cross_ATLAS[W1]
+Path: /MC_HJETSVBF/cross_ATLAS[W1]
 ScaledBy: 2.50000000000000005e-04
 Title: ~
 Type: Counter
@@ -1750,8 +1750,8 @@ Type: Counter
 END YODA_COUNTER_V2
 
 
-BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF_Hpt/pth_cum[W1]
-Path: /MC_HJETSVBF_Hpt/pth_cum[W1]
+BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF/pth_cum[W1]
+Path: /MC_HJETSVBF/pth_cum[W1]
 Title: ~
 Type: Histo1D
 ---
@@ -1785,8 +1785,8 @@ Overflow	Overflow	6.949246e-03	6.367357e-08	7.760517e+00	8.751570e+03	8.600000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF_Hpt/pth_full_light_center
-Path: /MC_HJETSVBF_Hpt/pth_full_light_center
+BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF/pth_full_light_center
+Path: /MC_HJETSVBF/pth_full_light_center
 Title: ~
 Type: Histo1D
 ---
@@ -1820,8 +1820,8 @@ Overflow	Overflow	3.200320e-04	2.932763e-09	3.547047e-01	3.953391e+02	4.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF_Hpt/pth_largebin_ATLAS
-Path: /MC_HJETSVBF_Hpt/pth_largebin_ATLAS
+BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF/pth_largebin_ATLAS
+Path: /MC_HJETSVBF/pth_largebin_ATLAS
 Title: ~
 Type: Histo1D
 ---
@@ -1850,8 +1850,8 @@ Overflow	Overflow	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_COUNTER_V2 /MC_HJETSVBF_Hpt/cross_light_forward
-Path: /MC_HJETSVBF_Hpt/cross_light_forward
+BEGIN YODA_COUNTER_V2 /MC_HJETSVBF/cross_light_forward
+Path: /MC_HJETSVBF/cross_light_forward
 ScaledBy: 5.55555555555555555e-04
 Title: ~
 Type: Counter
@@ -1861,8 +1861,8 @@ Type: Counter
 END YODA_COUNTER_V2
 
 
-BEGIN YODA_COUNTER_V2 /MC_HJETSVBF_Hpt/cross_light_forward[W1]
-Path: /MC_HJETSVBF_Hpt/cross_light_forward[W1]
+BEGIN YODA_COUNTER_V2 /MC_HJETSVBF/cross_light_forward[W1]
+Path: /MC_HJETSVBF/cross_light_forward[W1]
 ScaledBy: 5.55555555555555555e-04
 Title: ~
 Type: Counter
@@ -1872,8 +1872,8 @@ Type: Counter
 END YODA_COUNTER_V2
 
 
-BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF_Hpt/pth_cum_heavy_middle[W1]
-Path: /MC_HJETSVBF_Hpt/pth_cum_heavy_middle[W1]
+BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF/pth_cum_heavy_middle[W1]
+Path: /MC_HJETSVBF/pth_cum_heavy_middle[W1]
 Title: ~
 Type: Histo1D
 ---
@@ -1907,8 +1907,8 @@ Overflow	Overflow	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF_Hpt/pth_largebin_light_middle[W1]
-Path: /RAW/MC_HJETSVBF_Hpt/pth_largebin_light_middle[W1]
+BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF/pth_largebin_light_middle[W1]
+Path: /RAW/MC_HJETSVBF/pth_largebin_light_middle[W1]
 Title: ~
 Type: Histo1D
 ---
@@ -1937,8 +1937,8 @@ Overflow	Overflow	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF_Hpt/pth_full_light_center[W1]
-Path: /RAW/MC_HJETSVBF_Hpt/pth_full_light_center[W1]
+BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF/pth_full_light_center[W1]
+Path: /RAW/MC_HJETSVBF/pth_full_light_center[W1]
 Title: ~
 Type: Histo1D
 ---
@@ -1972,8 +1972,8 @@ Overflow	Overflow	1.024103e+01	3.003150e+00	1.135055e+04	1.265085e+07	4.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF_Hpt/pth_finebin_ATLAS[W1]
-Path: /RAW/MC_HJETSVBF_Hpt/pth_finebin_ATLAS[W1]
+BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF/pth_finebin_ATLAS[W1]
+Path: /RAW/MC_HJETSVBF/pth_finebin_ATLAS[W1]
 Title: ~
 Type: Histo1D
 ---
@@ -2033,8 +2033,8 @@ Overflow	Overflow	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_COUNTER_V2 /RAW/MC_HJETSVBF_Hpt/cross_light_middle
-Path: /RAW/MC_HJETSVBF_Hpt/cross_light_middle
+BEGIN YODA_COUNTER_V2 /RAW/MC_HJETSVBF/cross_light_middle
+Path: /RAW/MC_HJETSVBF/cross_light_middle
 ScaledBy: 1.00000000000000000e+00
 Title: ~
 Type: Counter
@@ -2044,8 +2044,8 @@ Type: Counter
 END YODA_COUNTER_V2
 
 
-BEGIN YODA_COUNTER_V2 /MC_HJETSVBF_Hpt/cross_full
-Path: /MC_HJETSVBF_Hpt/cross_full
+BEGIN YODA_COUNTER_V2 /MC_HJETSVBF/cross_full
+Path: /MC_HJETSVBF/cross_full
 ScaledBy: 3.12500000000000007e-05
 Title: ~
 Type: Counter
@@ -2055,8 +2055,8 @@ Type: Counter
 END YODA_COUNTER_V2
 
 
-BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF_Hpt/pth_full
-Path: /MC_HJETSVBF_Hpt/pth_full
+BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF/pth_full
+Path: /MC_HJETSVBF/pth_full
 Title: ~
 Type: Histo1D
 ---
@@ -2090,8 +2090,8 @@ Overflow	Overflow	3.474624e-04	3.183678e-09	3.880259e-01	4.375785e+02	4.300000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF_Hpt/pth_largebin[W1]
-Path: /MC_HJETSVBF_Hpt/pth_largebin[W1]
+BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF/pth_largebin[W1]
+Path: /MC_HJETSVBF/pth_largebin[W1]
 Title: ~
 Type: Histo1D
 ---
@@ -2120,8 +2120,8 @@ Overflow	Overflow	3.474624e-04	3.183678e-09	3.880259e-01	4.375785e+02	4.300000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF_Hpt/pth_full_heavy_middle
-Path: /RAW/MC_HJETSVBF_Hpt/pth_full_heavy_middle
+BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF/pth_full_heavy_middle
+Path: /RAW/MC_HJETSVBF/pth_full_heavy_middle
 Title: ~
 Type: Histo1D
 ---
@@ -2155,8 +2155,8 @@ Overflow	Overflow	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF_Hpt/pth_finebin_heavy_center[W1]
-Path: /MC_HJETSVBF_Hpt/pth_finebin_heavy_center[W1]
+BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF/pth_finebin_heavy_center[W1]
+Path: /MC_HJETSVBF/pth_finebin_heavy_center[W1]
 Title: ~
 Type: Histo1D
 ---
@@ -2216,8 +2216,8 @@ Overflow	Overflow	2.477997e-04	2.584446e-09	1.875749e-01	1.524891e+02	2.700000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_COUNTER_V2 /RAW/MC_HJETSVBF_Hpt/cross_heavy_center[W1]
-Path: /RAW/MC_HJETSVBF_Hpt/cross_heavy_center[W1]
+BEGIN YODA_COUNTER_V2 /RAW/MC_HJETSVBF/cross_heavy_center[W1]
+Path: /RAW/MC_HJETSVBF/cross_heavy_center[W1]
 ScaledBy: 1.00000000000000000e+00
 Title: ~
 Type: Counter
@@ -2238,8 +2238,8 @@ Type: Counter
 END YODA_COUNTER_V2
 
 
-BEGIN YODA_COUNTER_V2 /RAW/MC_HJETSVBF_Hpt/cross_light_center[W1]
-Path: /RAW/MC_HJETSVBF_Hpt/cross_light_center[W1]
+BEGIN YODA_COUNTER_V2 /RAW/MC_HJETSVBF/cross_light_center[W1]
+Path: /RAW/MC_HJETSVBF/cross_light_center[W1]
 ScaledBy: 1.00000000000000000e+00
 Title: ~
 Type: Counter
@@ -2249,8 +2249,8 @@ Type: Counter
 END YODA_COUNTER_V2
 
 
-BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF_Hpt/pth_cum_light_middle
-Path: /RAW/MC_HJETSVBF_Hpt/pth_cum_light_middle
+BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF/pth_cum_light_middle
+Path: /RAW/MC_HJETSVBF/pth_cum_light_middle
 Title: ~
 Type: Histo1D
 ---
@@ -2284,8 +2284,8 @@ Overflow	Overflow	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF_Hpt/pth_largebin_ATLAS
-Path: /RAW/MC_HJETSVBF_Hpt/pth_largebin_ATLAS
+BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF/pth_largebin_ATLAS
+Path: /RAW/MC_HJETSVBF/pth_largebin_ATLAS
 Title: ~
 Type: Histo1D
 ---
@@ -2314,8 +2314,8 @@ Overflow	Overflow	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF_Hpt/pth_finebin_heavy_middle
-Path: /MC_HJETSVBF_Hpt/pth_finebin_heavy_middle
+BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF/pth_finebin_heavy_middle
+Path: /MC_HJETSVBF/pth_finebin_heavy_middle
 Title: ~
 Type: Histo1D
 ---
@@ -2375,8 +2375,8 @@ Overflow	Overflow	2.252305e-05	2.536438e-10	1.714608e-02	1.351646e+01	2.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF_Hpt/pth_full_heavy_middle[W1]
-Path: /RAW/MC_HJETSVBF_Hpt/pth_full_heavy_middle[W1]
+BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF/pth_full_heavy_middle[W1]
+Path: /RAW/MC_HJETSVBF/pth_full_heavy_middle[W1]
 Title: ~
 Type: Histo1D
 ---
@@ -2410,8 +2410,8 @@ Overflow	Overflow	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF_Hpt/pth_largebin_heavy_forward
-Path: /RAW/MC_HJETSVBF_Hpt/pth_largebin_heavy_forward
+BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF/pth_largebin_heavy_forward
+Path: /RAW/MC_HJETSVBF/pth_largebin_heavy_forward
 Title: ~
 Type: Histo1D
 ---
@@ -2440,8 +2440,8 @@ Overflow	Overflow	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF_Hpt/pth_full_heavy_center
-Path: /MC_HJETSVBF_Hpt/pth_full_heavy_center
+BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF/pth_full_heavy_center
+Path: /MC_HJETSVBF/pth_full_heavy_center
 Title: ~
 Type: Histo1D
 ---
@@ -2475,8 +2475,8 @@ Overflow	Overflow	2.802506e-05	2.620875e-10	3.413015e-02	4.337978e+01	3.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF_Hpt/pth_finebin_ATLAS[W1]
-Path: /MC_HJETSVBF_Hpt/pth_finebin_ATLAS[W1]
+BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF/pth_finebin_ATLAS[W1]
+Path: /MC_HJETSVBF/pth_finebin_ATLAS[W1]
 Title: ~
 Type: Histo1D
 ---
@@ -2536,8 +2536,8 @@ Overflow	Overflow	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF_Hpt/pth_full_light_center
-Path: /RAW/MC_HJETSVBF_Hpt/pth_full_light_center
+BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF/pth_full_light_center
+Path: /RAW/MC_HJETSVBF/pth_full_light_center
 Title: ~
 Type: Histo1D
 ---
@@ -2571,8 +2571,8 @@ Overflow	Overflow	1.024103e+01	3.003150e+00	1.135055e+04	1.265085e+07	4.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF_Hpt/pth_finebin_light_middle
-Path: /MC_HJETSVBF_Hpt/pth_finebin_light_middle
+BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF/pth_finebin_light_middle
+Path: /MC_HJETSVBF/pth_finebin_light_middle
 Title: ~
 Type: Histo1D
 ---
@@ -2632,8 +2632,8 @@ Overflow	Overflow	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF_Hpt/pth_cum_light_forward
-Path: /MC_HJETSVBF_Hpt/pth_cum_light_forward
+BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF/pth_cum_light_forward
+Path: /MC_HJETSVBF/pth_cum_light_forward
 Title: ~
 Type: Histo1D
 ---
@@ -2667,8 +2667,8 @@ Overflow	Overflow	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF_Hpt/pth_full_light_forward
-Path: /MC_HJETSVBF_Hpt/pth_full_light_forward
+BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF/pth_full_light_forward
+Path: /MC_HJETSVBF/pth_full_light_forward
 Title: ~
 Type: Histo1D
 ---
@@ -2702,8 +2702,8 @@ Overflow	Overflow	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF_Hpt/pth_largebin_heavy_forward[W1]
-Path: /RAW/MC_HJETSVBF_Hpt/pth_largebin_heavy_forward[W1]
+BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF/pth_largebin_heavy_forward[W1]
+Path: /RAW/MC_HJETSVBF/pth_largebin_heavy_forward[W1]
 Title: ~
 Type: Histo1D
 ---
@@ -2732,8 +2732,8 @@ Overflow	Overflow	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF_Hpt/pth_finebin_heavy_middle
-Path: /RAW/MC_HJETSVBF_Hpt/pth_finebin_heavy_middle
+BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF/pth_finebin_heavy_middle
+Path: /RAW/MC_HJETSVBF/pth_finebin_heavy_middle
 Title: ~
 Type: Histo1D
 ---
@@ -2793,8 +2793,8 @@ Overflow	Overflow	5.765900e-01	1.662280e-01	4.389395e+02	3.460214e+05	2.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF_Hpt/pth_full_light_middle[W1]
-Path: /MC_HJETSVBF_Hpt/pth_full_light_middle[W1]
+BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF/pth_full_light_middle[W1]
+Path: /MC_HJETSVBF/pth_full_light_middle[W1]
 Title: ~
 Type: Histo1D
 ---
@@ -2828,8 +2828,8 @@ Overflow	Overflow	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF_Hpt/pth_finebin_light_forward
-Path: /RAW/MC_HJETSVBF_Hpt/pth_finebin_light_forward
+BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF/pth_finebin_light_forward
+Path: /RAW/MC_HJETSVBF/pth_finebin_light_forward
 Title: ~
 Type: Histo1D
 ---
@@ -2889,8 +2889,8 @@ Overflow	Overflow	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF_Hpt/pth_largebin_light_forward
-Path: /RAW/MC_HJETSVBF_Hpt/pth_largebin_light_forward
+BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF/pth_largebin_light_forward
+Path: /RAW/MC_HJETSVBF/pth_largebin_light_forward
 Title: ~
 Type: Histo1D
 ---
@@ -2919,8 +2919,8 @@ Overflow	Overflow	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_COUNTER_V2 /RAW/MC_HJETSVBF_Hpt/cross_ATLAS
-Path: /RAW/MC_HJETSVBF_Hpt/cross_ATLAS
+BEGIN YODA_COUNTER_V2 /RAW/MC_HJETSVBF/cross_ATLAS
+Path: /RAW/MC_HJETSVBF/cross_ATLAS
 ScaledBy: 1.00000000000000000e+00
 Title: ~
 Type: Counter
@@ -2930,8 +2930,8 @@ Type: Counter
 END YODA_COUNTER_V2
 
 
-BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF_Hpt/pth_full_ATLAS
-Path: /RAW/MC_HJETSVBF_Hpt/pth_full_ATLAS
+BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF/pth_full_ATLAS
+Path: /RAW/MC_HJETSVBF/pth_full_ATLAS
 Title: ~
 Type: Histo1D
 ---
@@ -2965,8 +2965,8 @@ Overflow	Overflow	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF_Hpt/pth_largebin_light_forward[W1]
-Path: /RAW/MC_HJETSVBF_Hpt/pth_largebin_light_forward[W1]
+BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF/pth_largebin_light_forward[W1]
+Path: /RAW/MC_HJETSVBF/pth_largebin_light_forward[W1]
 Title: ~
 Type: Histo1D
 ---
@@ -2995,8 +2995,8 @@ Overflow	Overflow	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_COUNTER_V2 /MC_HJETSVBF_Hpt/cross_heavy_forward
-Path: /MC_HJETSVBF_Hpt/cross_heavy_forward
+BEGIN YODA_COUNTER_V2 /MC_HJETSVBF/cross_heavy_forward
+Path: /MC_HJETSVBF/cross_heavy_forward
 ScaledBy: 1.00000000000000002e-03
 Title: ~
 Type: Counter
@@ -3006,8 +3006,8 @@ Type: Counter
 END YODA_COUNTER_V2
 
 
-BEGIN YODA_COUNTER_V2 /RAW/MC_HJETSVBF_Hpt/cross_ATLAS[W1]
-Path: /RAW/MC_HJETSVBF_Hpt/cross_ATLAS[W1]
+BEGIN YODA_COUNTER_V2 /RAW/MC_HJETSVBF/cross_ATLAS[W1]
+Path: /RAW/MC_HJETSVBF/cross_ATLAS[W1]
 ScaledBy: 1.00000000000000000e+00
 Title: ~
 Type: Counter
@@ -3017,8 +3017,8 @@ Type: Counter
 END YODA_COUNTER_V2
 
 
-BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF_Hpt/pth_full_light_forward[W1]
-Path: /RAW/MC_HJETSVBF_Hpt/pth_full_light_forward[W1]
+BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF/pth_full_light_forward[W1]
+Path: /RAW/MC_HJETSVBF/pth_full_light_forward[W1]
 Title: ~
 Type: Histo1D
 ---
@@ -3052,8 +3052,8 @@ Overflow	Overflow	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF_Hpt/pth_cum_heavy_center
-Path: /RAW/MC_HJETSVBF_Hpt/pth_cum_heavy_center
+BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF/pth_cum_heavy_center
+Path: /RAW/MC_HJETSVBF/pth_cum_heavy_center
 Title: ~
 Type: Histo1D
 ---
@@ -3087,8 +3087,8 @@ Overflow	Overflow	1.755538e+01	5.138736e+00	2.132553e+04	2.703323e+07	6.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF_Hpt/pth_full_light_forward
-Path: /RAW/MC_HJETSVBF_Hpt/pth_full_light_forward
+BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF/pth_full_light_forward
+Path: /RAW/MC_HJETSVBF/pth_full_light_forward
 Title: ~
 Type: Histo1D
 ---
@@ -3122,8 +3122,8 @@ Overflow	Overflow	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF_Hpt/pth_largebin
-Path: /RAW/MC_HJETSVBF_Hpt/pth_largebin
+BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF/pth_largebin
+Path: /RAW/MC_HJETSVBF/pth_largebin
 Title: ~
 Type: Histo1D
 ---
@@ -3152,8 +3152,8 @@ Overflow	Overflow	1.111879e+01	3.260086e+00	1.241683e+04	1.400251e+07	4.300000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF_Hpt/pth_cum_ATLAS[W1]
-Path: /MC_HJETSVBF_Hpt/pth_cum_ATLAS[W1]
+BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF/pth_cum_ATLAS[W1]
+Path: /MC_HJETSVBF/pth_cum_ATLAS[W1]
 Title: ~
 Type: Histo1D
 ---
@@ -3197,8 +3197,8 @@ Type: Scatter1D
 END YODA_SCATTER1D_V2
 
 
-BEGIN YODA_COUNTER_V2 /MC_HJETSVBF_Hpt/cross_light_center
-Path: /MC_HJETSVBF_Hpt/cross_light_center
+BEGIN YODA_COUNTER_V2 /MC_HJETSVBF/cross_light_center
+Path: /MC_HJETSVBF/cross_light_center
 ScaledBy: 3.12500000000000007e-05
 Title: ~
 Type: Counter
@@ -3208,8 +3208,8 @@ Type: Counter
 END YODA_COUNTER_V2
 
 
-BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF_Hpt/pth_largebin_heavy_center
-Path: /RAW/MC_HJETSVBF_Hpt/pth_largebin_heavy_center
+BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF/pth_largebin_heavy_center
+Path: /RAW/MC_HJETSVBF/pth_largebin_heavy_center
 Title: ~
 Type: Histo1D
 ---
@@ -3238,8 +3238,8 @@ Overflow	Overflow	8.777690e-01	2.569368e-01	1.066277e+03	1.351661e+06	3.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF_Hpt/pth_cum_light_center
-Path: /RAW/MC_HJETSVBF_Hpt/pth_cum_light_center
+BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF/pth_cum_light_center
+Path: /RAW/MC_HJETSVBF/pth_cum_light_center
 Title: ~
 Type: Histo1D
 ---
@@ -3273,8 +3273,8 @@ Overflow	Overflow	2.048205e+02	6.006299e+01	2.270111e+05	2.530170e+08	8.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF_Hpt/pth_finebin_heavy_center[W1]
-Path: /RAW/MC_HJETSVBF_Hpt/pth_finebin_heavy_center[W1]
+BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF/pth_finebin_heavy_center[W1]
+Path: /RAW/MC_HJETSVBF/pth_finebin_heavy_center[W1]
 Title: ~
 Type: Histo1D
 ---
@@ -3334,8 +3334,8 @@ Overflow	Overflow	7.784153e+00	2.547407e+00	5.888277e+03	4.780494e+06	2.700000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_COUNTER_V2 /MC_HJETSVBF_Hpt/cross_ATLAS
-Path: /MC_HJETSVBF_Hpt/cross_ATLAS
+BEGIN YODA_COUNTER_V2 /MC_HJETSVBF/cross_ATLAS
+Path: /MC_HJETSVBF/cross_ATLAS
 ScaledBy: 2.50000000000000005e-04
 Title: ~
 Type: Counter
@@ -3345,8 +3345,8 @@ Type: Counter
 END YODA_COUNTER_V2
 
 
-BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF_Hpt/pth_full[W1]
-Path: /MC_HJETSVBF_Hpt/pth_full[W1]
+BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF/pth_full[W1]
+Path: /MC_HJETSVBF/pth_full[W1]
 Title: ~
 Type: Histo1D
 ---
@@ -3380,8 +3380,8 @@ Overflow	Overflow	3.474624e-04	3.183678e-09	3.880259e-01	4.375785e+02	4.300000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF_Hpt/pth_largebin_heavy_center[W1]
-Path: /MC_HJETSVBF_Hpt/pth_largebin_heavy_center[W1]
+BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF/pth_largebin_heavy_center[W1]
+Path: /MC_HJETSVBF/pth_largebin_heavy_center[W1]
 Title: ~
 Type: Histo1D
 ---
@@ -3410,8 +3410,8 @@ Overflow	Overflow	2.802506e-05	2.620875e-10	3.413015e-02	4.337978e+01	3.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF_Hpt/pth_largebin
-Path: /MC_HJETSVBF_Hpt/pth_largebin
+BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF/pth_largebin
+Path: /MC_HJETSVBF/pth_largebin
 Title: ~
 Type: Histo1D
 ---
@@ -3440,8 +3440,8 @@ Overflow	Overflow	3.474624e-04	3.183678e-09	3.880259e-01	4.375785e+02	4.300000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF_Hpt/pth_largebin_heavy_center
-Path: /MC_HJETSVBF_Hpt/pth_largebin_heavy_center
+BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF/pth_largebin_heavy_center
+Path: /MC_HJETSVBF/pth_largebin_heavy_center
 Title: ~
 Type: Histo1D
 ---
@@ -3470,8 +3470,8 @@ Overflow	Overflow	2.802506e-05	2.620875e-10	3.413015e-02	4.337978e+01	3.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF_Hpt/pth_largebin_heavy_middle[W1]
-Path: /MC_HJETSVBF_Hpt/pth_largebin_heavy_middle[W1]
+BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF/pth_largebin_heavy_middle[W1]
+Path: /MC_HJETSVBF/pth_largebin_heavy_middle[W1]
 Title: ~
 Type: Histo1D
 ---
@@ -3500,8 +3500,8 @@ Overflow	Overflow	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF_Hpt/pth_full_ATLAS
-Path: /MC_HJETSVBF_Hpt/pth_full_ATLAS
+BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF/atlas_pth
+Path: /MC_HJETSVBF/atlas_pth
 Title: ~
 Type: Histo1D
 ---
@@ -3535,8 +3535,8 @@ Overflow	Overflow	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF_Hpt/pth_finebin_light_center
-Path: /RAW/MC_HJETSVBF_Hpt/pth_finebin_light_center
+BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF/pth_finebin_light_center
+Path: /RAW/MC_HJETSVBF/pth_finebin_light_center
 Title: ~
 Type: Histo1D
 ---
@@ -3606,8 +3606,8 @@ Type: Scatter1D
 END YODA_SCATTER1D_V2
 
 
-BEGIN YODA_COUNTER_V2 /RAW/MC_HJETSVBF_Hpt/cross_heavy_forward
-Path: /RAW/MC_HJETSVBF_Hpt/cross_heavy_forward
+BEGIN YODA_COUNTER_V2 /RAW/MC_HJETSVBF/cross_heavy_forward
+Path: /RAW/MC_HJETSVBF/cross_heavy_forward
 ScaledBy: 1.00000000000000000e+00
 Title: ~
 Type: Counter
@@ -3617,8 +3617,8 @@ Type: Counter
 END YODA_COUNTER_V2
 
 
-BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF_Hpt/pth_largebin_light_center[W1]
-Path: /MC_HJETSVBF_Hpt/pth_largebin_light_center[W1]
+BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF/pth_largebin_light_center[W1]
+Path: /MC_HJETSVBF/pth_largebin_light_center[W1]
 Title: ~
 Type: Histo1D
 ---
@@ -3647,8 +3647,8 @@ Overflow	Overflow	3.200320e-04	2.932763e-09	3.547047e-01	3.953391e+02	4.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF_Hpt/pth_finebin_heavy_center
-Path: /RAW/MC_HJETSVBF_Hpt/pth_finebin_heavy_center
+BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF/pth_finebin_heavy_center
+Path: /RAW/MC_HJETSVBF/pth_finebin_heavy_center
 Title: ~
 Type: Histo1D
 ---
@@ -3708,8 +3708,8 @@ Overflow	Overflow	7.784153e+00	2.547407e+00	5.888277e+03	4.780494e+06	2.700000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF_Hpt/pth_full_ATLAS[W1]
-Path: /MC_HJETSVBF_Hpt/pth_full_ATLAS[W1]
+BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF/pth_full_ATLAS[W1]
+Path: /MC_HJETSVBF/pth_full_ATLAS[W1]
 Title: ~
 Type: Histo1D
 ---
@@ -3743,8 +3743,8 @@ Overflow	Overflow	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF_Hpt/pth_cum_light_forward
-Path: /RAW/MC_HJETSVBF_Hpt/pth_cum_light_forward
+BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF/pth_cum_light_forward
+Path: /RAW/MC_HJETSVBF/pth_cum_light_forward
 Title: ~
 Type: Histo1D
 ---
@@ -3778,8 +3778,8 @@ Overflow	Overflow	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_COUNTER_V2 /MC_HJETSVBF_Hpt/cross_heavy_center
-Path: /MC_HJETSVBF_Hpt/cross_heavy_center
+BEGIN YODA_COUNTER_V2 /MC_HJETSVBF/cross_heavy_center
+Path: /MC_HJETSVBF/cross_heavy_center
 ScaledBy: 3.24675324675324675e-05
 Title: ~
 Type: Counter
@@ -3789,8 +3789,8 @@ Type: Counter
 END YODA_COUNTER_V2
 
 
-BEGIN YODA_COUNTER_V2 /RAW/MC_HJETSVBF_Hpt/cross_light_forward
-Path: /RAW/MC_HJETSVBF_Hpt/cross_light_forward
+BEGIN YODA_COUNTER_V2 /RAW/MC_HJETSVBF/cross_light_forward
+Path: /RAW/MC_HJETSVBF/cross_light_forward
 ScaledBy: 1.00000000000000000e+00
 Title: ~
 Type: Counter
@@ -3800,8 +3800,8 @@ Type: Counter
 END YODA_COUNTER_V2
 
 
-BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF_Hpt/pth_finebin
-Path: /MC_HJETSVBF_Hpt/pth_finebin
+BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF/rstudy_dr04_pth000_dy10_pth
+Path: /MC_HJETSVBF/rstudy_dr04_pth000_dy10_pth
 Title: ~
 Type: Histo1D
 ---
@@ -3861,8 +3861,8 @@ Overflow	Overflow	5.648548e-02	5.868157e-07	3.794696e+01	2.582425e+04	6.334000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF_Hpt/pth_finebin_light_forward[W1]
-Path: /MC_HJETSVBF_Hpt/pth_finebin_light_forward[W1]
+BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF/pth_finebin_light_forward[W1]
+Path: /MC_HJETSVBF/pth_finebin_light_forward[W1]
 Title: ~
 Type: Histo1D
 ---
@@ -3922,8 +3922,8 @@ Overflow	Overflow	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF_Hpt/pth_cum_heavy_center[W1]
-Path: /RAW/MC_HJETSVBF_Hpt/pth_cum_heavy_center[W1]
+BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF/pth_cum_heavy_center[W1]
+Path: /RAW/MC_HJETSVBF/pth_cum_heavy_center[W1]
 Title: ~
 Type: Histo1D
 ---
@@ -3957,8 +3957,8 @@ Overflow	Overflow	1.755538e+01	5.138736e+00	2.132553e+04	2.703323e+07	6.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF_Hpt/pth_full[W1]
-Path: /RAW/MC_HJETSVBF_Hpt/pth_full[W1]
+BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF/pth_full[W1]
+Path: /RAW/MC_HJETSVBF/pth_full[W1]
 Title: ~
 Type: Histo1D
 ---
@@ -3992,8 +3992,8 @@ Overflow	Overflow	1.111879e+01	3.260086e+00	1.241683e+04	1.400251e+07	4.300000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF_Hpt/pth_full_heavy_center[W1]
-Path: /RAW/MC_HJETSVBF_Hpt/pth_full_heavy_center[W1]
+BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF/pth_full_heavy_center[W1]
+Path: /RAW/MC_HJETSVBF/pth_full_heavy_center[W1]
 Title: ~
 Type: Histo1D
 ---
@@ -4027,8 +4027,8 @@ Overflow	Overflow	8.777690e-01	2.569368e-01	1.066277e+03	1.351661e+06	3.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF_Hpt/pth_full_heavy_middle[W1]
-Path: /MC_HJETSVBF_Hpt/pth_full_heavy_middle[W1]
+BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF/pth_full_heavy_middle[W1]
+Path: /MC_HJETSVBF/pth_full_heavy_middle[W1]
 Title: ~
 Type: Histo1D
 ---
@@ -4073,8 +4073,8 @@ Type: Counter
 END YODA_COUNTER_V2
 
 
-BEGIN YODA_COUNTER_V2 /MC_HJETSVBF_Hpt/cross_heavy_middle[W1]
-Path: /MC_HJETSVBF_Hpt/cross_heavy_middle[W1]
+BEGIN YODA_COUNTER_V2 /MC_HJETSVBF/cross_heavy_middle[W1]
+Path: /MC_HJETSVBF/cross_heavy_middle[W1]
 ScaledBy: 4.95049504950495083e-05
 Title: ~
 Type: Counter
@@ -4084,8 +4084,8 @@ Type: Counter
 END YODA_COUNTER_V2
 
 
-BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF_Hpt/pth_finebin_heavy_middle[W1]
-Path: /MC_HJETSVBF_Hpt/pth_finebin_heavy_middle[W1]
+BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF/pth_finebin_heavy_middle[W1]
+Path: /MC_HJETSVBF/pth_finebin_heavy_middle[W1]
 Title: ~
 Type: Histo1D
 ---
@@ -4145,8 +4145,8 @@ Overflow	Overflow	2.252305e-05	2.536438e-10	1.714608e-02	1.351646e+01	2.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF_Hpt/pth_finebin_light_middle[W1]
-Path: /MC_HJETSVBF_Hpt/pth_finebin_light_middle[W1]
+BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF/pth_finebin_light_middle[W1]
+Path: /MC_HJETSVBF/pth_finebin_light_middle[W1]
 Title: ~
 Type: Histo1D
 ---
@@ -4206,8 +4206,8 @@ Overflow	Overflow	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF_Hpt/pth_full_heavy_forward[W1]
-Path: /MC_HJETSVBF_Hpt/pth_full_heavy_forward[W1]
+BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF/pth_full_heavy_forward[W1]
+Path: /MC_HJETSVBF/pth_full_heavy_forward[W1]
 Title: ~
 Type: Histo1D
 ---
@@ -4241,8 +4241,8 @@ Overflow	Overflow	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF_Hpt/pth_finebin_heavy_middle[W1]
-Path: /RAW/MC_HJETSVBF_Hpt/pth_finebin_heavy_middle[W1]
+BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF/pth_finebin_heavy_middle[W1]
+Path: /RAW/MC_HJETSVBF/pth_finebin_heavy_middle[W1]
 Title: ~
 Type: Histo1D
 ---
@@ -4302,8 +4302,8 @@ Overflow	Overflow	5.765900e-01	1.662280e-01	4.389395e+02	3.460214e+05	2.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF_Hpt/pth_largebin_light_middle
-Path: /RAW/MC_HJETSVBF_Hpt/pth_largebin_light_middle
+BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF/pth_largebin_light_middle
+Path: /RAW/MC_HJETSVBF/pth_largebin_light_middle
 Title: ~
 Type: Histo1D
 ---
@@ -4332,8 +4332,8 @@ Overflow	Overflow	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF_Hpt/pth_largebin_heavy_middle[W1]
-Path: /RAW/MC_HJETSVBF_Hpt/pth_largebin_heavy_middle[W1]
+BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF/pth_largebin_heavy_middle[W1]
+Path: /RAW/MC_HJETSVBF/pth_largebin_heavy_middle[W1]
 Title: ~
 Type: Histo1D
 ---
@@ -4362,8 +4362,8 @@ Overflow	Overflow	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF_Hpt/pth_cum_light_forward[W1]
-Path: /MC_HJETSVBF_Hpt/pth_cum_light_forward[W1]
+BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF/pth_cum_light_forward[W1]
+Path: /MC_HJETSVBF/pth_cum_light_forward[W1]
 Title: ~
 Type: Histo1D
 ---
@@ -4397,8 +4397,8 @@ Overflow	Overflow	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF_Hpt/pth_full_heavy_center[W1]
-Path: /MC_HJETSVBF_Hpt/pth_full_heavy_center[W1]
+BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF/pth_full_heavy_center[W1]
+Path: /MC_HJETSVBF/pth_full_heavy_center[W1]
 Title: ~
 Type: Histo1D
 ---
@@ -4432,8 +4432,8 @@ Overflow	Overflow	2.802506e-05	2.620875e-10	3.413015e-02	4.337978e+01	3.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF_Hpt/pth_cum_heavy_forward
-Path: /MC_HJETSVBF_Hpt/pth_cum_heavy_forward
+BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF/pth_cum_heavy_forward
+Path: /MC_HJETSVBF/pth_cum_heavy_forward
 Title: ~
 Type: Histo1D
 ---
@@ -4467,8 +4467,8 @@ Overflow	Overflow	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF_Hpt/pth_largebin_heavy_forward
-Path: /MC_HJETSVBF_Hpt/pth_largebin_heavy_forward
+BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF/pth_largebin_heavy_forward
+Path: /MC_HJETSVBF/pth_largebin_heavy_forward
 Title: ~
 Type: Histo1D
 ---
@@ -4497,8 +4497,8 @@ Overflow	Overflow	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_COUNTER_V2 /RAW/MC_HJETSVBF_Hpt/cross_light_forward[W1]
-Path: /RAW/MC_HJETSVBF_Hpt/cross_light_forward[W1]
+BEGIN YODA_COUNTER_V2 /RAW/MC_HJETSVBF/cross_light_forward[W1]
+Path: /RAW/MC_HJETSVBF/cross_light_forward[W1]
 ScaledBy: 1.00000000000000000e+00
 Title: ~
 Type: Counter
@@ -4508,8 +4508,8 @@ Type: Counter
 END YODA_COUNTER_V2
 
 
-BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF_Hpt/pth_full_ATLAS[W1]
-Path: /RAW/MC_HJETSVBF_Hpt/pth_full_ATLAS[W1]
+BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF/pth_full_ATLAS[W1]
+Path: /RAW/MC_HJETSVBF/pth_full_ATLAS[W1]
 Title: ~
 Type: Histo1D
 ---
@@ -4543,8 +4543,8 @@ Overflow	Overflow	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF_Hpt/pth_cum_light_forward[W1]
-Path: /RAW/MC_HJETSVBF_Hpt/pth_cum_light_forward[W1]
+BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF/pth_cum_light_forward[W1]
+Path: /RAW/MC_HJETSVBF/pth_cum_light_forward[W1]
 Title: ~
 Type: Histo1D
 ---
@@ -4578,8 +4578,8 @@ Overflow	Overflow	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_COUNTER_V2 /RAW/MC_HJETSVBF_Hpt/cross_heavy_middle[W1]
-Path: /RAW/MC_HJETSVBF_Hpt/cross_heavy_middle[W1]
+BEGIN YODA_COUNTER_V2 /RAW/MC_HJETSVBF/cross_heavy_middle[W1]
+Path: /RAW/MC_HJETSVBF/cross_heavy_middle[W1]
 ScaledBy: 1.00000000000000000e+00
 Title: ~
 Type: Counter
@@ -4589,8 +4589,8 @@ Type: Counter
 END YODA_COUNTER_V2
 
 
-BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF_Hpt/pth_finebin[W1]
-Path: /MC_HJETSVBF_Hpt/pth_finebin[W1]
+BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF/pth_finebin[W1]
+Path: /MC_HJETSVBF/pth_finebin[W1]
 Title: ~
 Type: Histo1D
 ---
@@ -4650,8 +4650,8 @@ Overflow	Overflow	5.648548e-02	5.868157e-07	3.794696e+01	2.582425e+04	6.334000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF_Hpt/pth_cum_light_center[W1]
-Path: /MC_HJETSVBF_Hpt/pth_cum_light_center[W1]
+BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF/pth_cum_light_center[W1]
+Path: /MC_HJETSVBF/pth_cum_light_center[W1]
 Title: ~
 Type: Histo1D
 ---
@@ -4685,8 +4685,8 @@ Overflow	Overflow	6.400640e-03	5.865527e-08	7.094095e+00	7.906781e+03	8.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF_Hpt/pth_largebin_light_center[W1]
-Path: /RAW/MC_HJETSVBF_Hpt/pth_largebin_light_center[W1]
+BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF/pth_largebin_light_center[W1]
+Path: /RAW/MC_HJETSVBF/pth_largebin_light_center[W1]
 Title: ~
 Type: Histo1D
 ---
@@ -4715,8 +4715,8 @@ Overflow	Overflow	1.024103e+01	3.003150e+00	1.135055e+04	1.265085e+07	4.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF_Hpt/pth_largebin_light_center
-Path: /MC_HJETSVBF_Hpt/pth_largebin_light_center
+BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF/pth_largebin_light_center
+Path: /MC_HJETSVBF/pth_largebin_light_center
 Title: ~
 Type: Histo1D
 ---
@@ -4745,8 +4745,8 @@ Overflow	Overflow	3.200320e-04	2.932763e-09	3.547047e-01	3.953391e+02	4.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_COUNTER_V2 /MC_HJETSVBF_Hpt/cross_light_center[W1]
-Path: /MC_HJETSVBF_Hpt/cross_light_center[W1]
+BEGIN YODA_COUNTER_V2 /MC_HJETSVBF/cross_light_center[W1]
+Path: /MC_HJETSVBF/cross_light_center[W1]
 ScaledBy: 3.12500000000000007e-05
 Title: ~
 Type: Counter
@@ -4756,8 +4756,8 @@ Type: Counter
 END YODA_COUNTER_V2
 
 
-BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF_Hpt/pth_largebin_light_forward
-Path: /MC_HJETSVBF_Hpt/pth_largebin_light_forward
+BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF/pth_largebin_light_forward
+Path: /MC_HJETSVBF/pth_largebin_light_forward
 Title: ~
 Type: Histo1D
 ---
@@ -4786,8 +4786,8 @@ Overflow	Overflow	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF_Hpt/pth_largebin_heavy_center[W1]
-Path: /RAW/MC_HJETSVBF_Hpt/pth_largebin_heavy_center[W1]
+BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF/pth_largebin_heavy_center[W1]
+Path: /RAW/MC_HJETSVBF/pth_largebin_heavy_center[W1]
 Title: ~
 Type: Histo1D
 ---
@@ -4816,8 +4816,8 @@ Overflow	Overflow	8.777690e-01	2.569368e-01	1.066277e+03	1.351661e+06	3.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF_Hpt/pth_finebin_light_center[W1]
-Path: /RAW/MC_HJETSVBF_Hpt/pth_finebin_light_center[W1]
+BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF/pth_finebin_light_center[W1]
+Path: /RAW/MC_HJETSVBF/pth_finebin_light_center[W1]
 Title: ~
 Type: Histo1D
 ---
@@ -4877,8 +4877,8 @@ Overflow	Overflow	1.799174e+03	5.981857e+02	1.207976e+06	8.212494e+08	6.305000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF_Hpt/pth_full_light_forward[W1]
-Path: /MC_HJETSVBF_Hpt/pth_full_light_forward[W1]
+BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF/pth_full_light_forward[W1]
+Path: /MC_HJETSVBF/pth_full_light_forward[W1]
 Title: ~
 Type: Histo1D
 ---
@@ -4912,8 +4912,8 @@ Overflow	Overflow	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF_Hpt/pth_largebin_light_middle[W1]
-Path: /MC_HJETSVBF_Hpt/pth_largebin_light_middle[W1]
+BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF/pth_largebin_light_middle[W1]
+Path: /MC_HJETSVBF/pth_largebin_light_middle[W1]
 Title: ~
 Type: Histo1D
 ---
@@ -4942,8 +4942,8 @@ Overflow	Overflow	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF_Hpt/pth_finebin_heavy_forward[W1]
-Path: /MC_HJETSVBF_Hpt/pth_finebin_heavy_forward[W1]
+BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF/pth_finebin_heavy_forward[W1]
+Path: /MC_HJETSVBF/pth_finebin_heavy_forward[W1]
 Title: ~
 Type: Histo1D
 ---
@@ -5003,8 +5003,8 @@ Overflow	Overflow	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF_Hpt/pth_finebin_heavy_forward
-Path: /MC_HJETSVBF_Hpt/pth_finebin_heavy_forward
+BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF/pth_finebin_heavy_forward
+Path: /MC_HJETSVBF/pth_finebin_heavy_forward
 Title: ~
 Type: Histo1D
 ---
@@ -5064,8 +5064,8 @@ Overflow	Overflow	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_COUNTER_V2 /MC_HJETSVBF_Hpt/cross_heavy_center[W1]
-Path: /MC_HJETSVBF_Hpt/cross_heavy_center[W1]
+BEGIN YODA_COUNTER_V2 /MC_HJETSVBF/cross_heavy_center[W1]
+Path: /MC_HJETSVBF/cross_heavy_center[W1]
 ScaledBy: 3.24675324675324675e-05
 Title: ~
 Type: Counter
@@ -5075,8 +5075,8 @@ Type: Counter
 END YODA_COUNTER_V2
 
 
-BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF_Hpt/pth_largebin_ATLAS[W1]
-Path: /MC_HJETSVBF_Hpt/pth_largebin_ATLAS[W1]
+BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF/pth_largebin_ATLAS[W1]
+Path: /MC_HJETSVBF/pth_largebin_ATLAS[W1]
 Title: ~
 Type: Histo1D
 ---
@@ -5105,8 +5105,8 @@ Overflow	Overflow	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF_Hpt/pth_full_heavy_forward
-Path: /MC_HJETSVBF_Hpt/pth_full_heavy_forward
+BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF/pth_full_heavy_forward
+Path: /MC_HJETSVBF/pth_full_heavy_forward
 Title: ~
 Type: Histo1D
 ---
@@ -5140,8 +5140,8 @@ Overflow	Overflow	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_COUNTER_V2 /MC_HJETSVBF_Hpt/cross_heavy_forward[W1]
-Path: /MC_HJETSVBF_Hpt/cross_heavy_forward[W1]
+BEGIN YODA_COUNTER_V2 /MC_HJETSVBF/cross_heavy_forward[W1]
+Path: /MC_HJETSVBF/cross_heavy_forward[W1]
 ScaledBy: 1.00000000000000002e-03
 Title: ~
 Type: Counter
@@ -5151,8 +5151,8 @@ Type: Counter
 END YODA_COUNTER_V2
 
 
-BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF_Hpt/pth_finebin_light_forward
-Path: /MC_HJETSVBF_Hpt/pth_finebin_light_forward
+BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF/pth_finebin_light_forward
+Path: /MC_HJETSVBF/pth_finebin_light_forward
 Title: ~
 Type: Histo1D
 ---
@@ -5223,8 +5223,8 @@ Type: Counter
 END YODA_COUNTER_V2
 
 
-BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF_Hpt/pth_largebin_heavy_middle
-Path: /RAW/MC_HJETSVBF_Hpt/pth_largebin_heavy_middle
+BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF/pth_largebin_heavy_middle
+Path: /RAW/MC_HJETSVBF/pth_largebin_heavy_middle
 Title: ~
 Type: Histo1D
 ---
@@ -5263,8 +5263,8 @@ Type: Scatter1D
 END YODA_SCATTER1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF_Hpt/pth_cum
-Path: /MC_HJETSVBF_Hpt/pth_cum
+BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF/pth_cum
+Path: /MC_HJETSVBF/pth_cum
 Title: ~
 Type: Histo1D
 ---
@@ -5298,8 +5298,8 @@ Overflow	Overflow	6.949246e-03	6.367357e-08	7.760517e+00	8.751570e+03	8.600000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF_Hpt/pth_cum_heavy_center
-Path: /MC_HJETSVBF_Hpt/pth_cum_heavy_center
+BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF/pth_cum_heavy_center
+Path: /MC_HJETSVBF/pth_cum_heavy_center
 Title: ~
 Type: Histo1D
 ---
@@ -5333,8 +5333,8 @@ Overflow	Overflow	5.605012e-04	5.241751e-09	6.826031e-01	8.675957e+02	6.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF_Hpt/pth_cum_light_center[W1]
-Path: /RAW/MC_HJETSVBF_Hpt/pth_cum_light_center[W1]
+BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF/pth_cum_light_center[W1]
+Path: /RAW/MC_HJETSVBF/pth_cum_light_center[W1]
 Title: ~
 Type: Histo1D
 ---
@@ -5368,8 +5368,8 @@ Overflow	Overflow	2.048205e+02	6.006299e+01	2.270111e+05	2.530170e+08	8.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF_Hpt/pth_cum_heavy_middle
-Path: /RAW/MC_HJETSVBF_Hpt/pth_cum_heavy_middle
+BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF/pth_cum_heavy_middle
+Path: /RAW/MC_HJETSVBF/pth_cum_heavy_middle
 Title: ~
 Type: Histo1D
 ---
@@ -5403,8 +5403,8 @@ Overflow	Overflow	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF_Hpt/pth_finebin_heavy_center
-Path: /MC_HJETSVBF_Hpt/pth_finebin_heavy_center
+BEGIN YODA_HISTO1D_V2 /MC_HJETSVBF/pth_finebin_heavy_center
+Path: /MC_HJETSVBF/pth_finebin_heavy_center
 Title: ~
 Type: Histo1D
 ---
@@ -5464,8 +5464,8 @@ Overflow	Overflow	2.477997e-04	2.584446e-09	1.875749e-01	1.524891e+02	2.700000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF_Hpt/pth_finebin_light_forward[W1]
-Path: /RAW/MC_HJETSVBF_Hpt/pth_finebin_light_forward[W1]
+BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF/pth_finebin_light_forward[W1]
+Path: /RAW/MC_HJETSVBF/pth_finebin_light_forward[W1]
 Title: ~
 Type: Histo1D
 ---
@@ -5525,8 +5525,8 @@ Overflow	Overflow	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+00	0.000000e+
 END YODA_HISTO1D_V2
 
 
-BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF_Hpt/pth_finebin_light_middle[W1]
-Path: /RAW/MC_HJETSVBF_Hpt/pth_finebin_light_middle[W1]
+BEGIN YODA_HISTO1D_V2 /RAW/MC_HJETSVBF/pth_finebin_light_middle[W1]
+Path: /RAW/MC_HJETSVBF/pth_finebin_light_middle[W1]
 Title: ~
 Type: Histo1D
 ---
