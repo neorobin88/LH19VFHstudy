@@ -308,18 +308,18 @@ namespace Rivet {
     /// Normalise histograms etc., after the run
     void finalize() {
       const double sf = crossSection()/femtobarn/sumOfWeights();
-      scale(_h_incl, sf);
+      for (auto _h: _h_incl) scale(_h.second, sf);
       for (size_t ir = 0; ir < DRS.size(); ++ir) {
         for (size_t ih = 0; ih < PTHCUTS.size(); ++ih) {
           for (size_t iy = 0; iy < DY12CUTS.size(); ++iy) {
-            scale(_h_dr_pth_dy[ir][ih][iy], sf);
+	    for (auto _h: _h_dr_pth_dy[ir][ih][iy]) scale(_h.second, sf);
           }
         }
         for (size_t iv = 0; iv < 2; ++iv) {
-          scale(_h_dr_res[ir][iv], sf);
+	  for (auto _h: _h_dr_res[ir][iv]) scale(_h.second, sf);
         }
       }
-      scale(_h_atlas, sf);
+      for (auto _h: _h_atlas) scale(_h.second, sf);
     }
 
 
