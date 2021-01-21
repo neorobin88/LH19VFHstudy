@@ -24,8 +24,10 @@ namespace Rivet {
 
       // Projections
       NonPromptFinalState fs(Cuts::abseta < HUGE_VAL);
-      FastJets fj(fs, FastJets::ANTIKT, 0.4);
-      declare(fj, "Jets");
+      for (size_t j(0);j<DRS.size();++j) {
+	FastJets fj(fs, FastJets::ANTIKT, DRS[j]);
+	declare(fj, "Jets"+to_string(DRS[j]));
+      }
       PromptFinalState pfs(Cuts::abseta < HUGE_VAL);
       PromptFinalState higgses(Cuts::pid == PID::HIGGS && Cuts::abseta< HUGE_VAL);
       declare(pfs, "PromptFS");
@@ -37,14 +39,19 @@ namespace Rivet {
       for (size_t i = 0; i < SELNAMES.size(); ++i) {
         const string sn = SELNAMES[i];
         book(_c_xs[i], "cross"+(sn.empty() ? "_full" : sn));
-        book(_h[i]["deltaphi_jj"], "deltaphi_jj"+sn, 6, 0.0, M_PI);
-        book(_h[i]["y_j12_02bin"], "y_j12_02bin"+sn, linspace(20, 0.0, 4.0)+linspace(4, 4.5, 6.5)+linspace(3, 7.0, 10));
-        book(_h[i]["pth_largebin"], "pth_largebin"+sn, linspace(4, 0, 100)+linspace(7, 150, 500)+linspace(2, 600, 1000));
-        book(_h[i]["pth_finebin"], "pth_finebin"+sn, linspace(19, 0, 95)+linspace(9, 100, 190)+linspace(16, 200, 600));
-        book(_h[i]["njets"], "njets"+sn, 5, -0.5, 4.5);
-        book(_h[i]["HT"], "HT"+sn, linspace(10, 0, 1000)+linspace(4, 1200, 2000));
-        book(_h[i]["pthjj_largebin"], "pthjj_largebin"+sn, linspace(4, 0, 100)+linspace(7, 150, 500)+linspace(2, 600, 1000));
-        book(_h[i]["ptjj_largebin"], "ptjj_largebin"+sn, linspace(4, 0, 100)+linspace(7, 150, 500)+linspace(2, 600, 1000));
+	for (size_t j(0);j<DRS.size();++j) {
+	char drnc[4];
+	sprintf(drnc,"%.1f",DRS[j]);
+	std::string drn("_"+std::string(drnc));
+        book(_h[j][i]["deltaphi_jj"], "deltaphi_jj"+drn+sn, 6, 0.0, M_PI);
+        book(_h[j][i]["y_j12_02bin"], "y_j12_02bin"+drn+sn, linspace(20, 0.0, 4.0)+linspace(4, 4.5, 6.5)+linspace(3, 7.0, 10));
+        book(_h[j][i]["pth_largebin"], "pth_largebin"+drn+sn, linspace(4, 0, 100)+linspace(7, 150, 500)+linspace(2, 600, 1000));
+        book(_h[j][i]["pth_finebin"], "pth_finebin"+drn+sn, linspace(19, 0, 95)+linspace(9, 100, 190)+linspace(16, 200, 600));
+        book(_h[j][i]["njets"], "njets"+drn+sn, 5, -0.5, 4.5);
+        book(_h[j][i]["HT"], "HT"+drn+sn, linspace(10, 0, 1000)+linspace(4, 1200, 2000));
+        book(_h[j][i]["pthjj_largebin"], "pthjj_largebin"+drn+sn, linspace(4, 0, 100)+linspace(7, 150, 500)+linspace(2, 600, 1000));
+        book(_h[j][i]["ptjj_largebin"], "ptjj_largebin"+drn+sn, linspace(4, 0, 100)+linspace(7, 150, 500)+linspace(2, 600, 1000));
+	}
       }
       // Now the m12 histograms, with various binnings and dy12 cuts
       book(_h_mjj["mjj_STXS"], "mjj_STXS", {0.,100.,200.,350.,700.,1000.,1500.,2000.,2500.,3000.});
@@ -72,8 +79,9 @@ namespace Rivet {
       const Particle higgs = higgses[0];
       const double ptH = higgs.pT();
 
+      for (size_t j(0);j<DRS.size();++j) {
       // Get jets and leading dijet system
-      const Jets jets = apply<FastJets>(event, "Jets").jetsByPt(Cuts::pT > 30*GeV && Cuts::absrap < 4.4);
+      const Jets jets = apply<FastJets>(event, "Jets"+to_string(DRS[j])).jetsByPt(Cuts::pT > 30*GeV && Cuts::absrap < 4.4);
       if (jets.size() < 2) vetoEvent;
       const int njets = jets.size();
       const double htj = sum(jets, Kin::pT, 0.0);
@@ -100,14 +108,14 @@ namespace Rivet {
         if (dy12 >= DY12CUTS[i][1]) continue;
         if (dphijjH < DPHIJHCUTS[i]) continue;
         _c_xs[i]->fill();
-        _h[i]["deltaphi_jj"]->fill(dphi12);
-        _h[i]["y_j12_02bin"]->fill(y12);
-        _h[i]["pth_largebin"]->fill(ptH/GeV);
-        _h[i]["pth_finebin"]->fill(ptH/GeV);
-        _h[i]["njets"]->fill(njets);
-        _h[i]["HT"]->fill(ht/GeV);
-        _h[i]["pthjj_largebin"]->fill(ptjjH/GeV);
-        _h[i]["ptjj_largebin"]->fill(pt12/GeV);
+        _h[j][i]["deltaphi_jj"]->fill(dphi12);
+        _h[j][i]["y_j12_02bin"]->fill(y12);
+        _h[j][i]["pth_largebin"]->fill(ptH/GeV);
+        _h[j][i]["pth_finebin"]->fill(ptH/GeV);
+        _h[j][i]["njets"]->fill(njets);
+        _h[j][i]["HT"]->fill(ht/GeV);
+        _h[j][i]["pthjj_largebin"]->fill(ptjjH/GeV);
+        _h[j][i]["ptjj_largebin"]->fill(pt12/GeV);
       }
 
       // Fill dijet mass histograms
@@ -130,13 +138,15 @@ namespace Rivet {
       else // if (m12 < 350*GeV)
         _h_dyjj["deltay_jj_heavy"]->fill(dy12);
     }
+    }
 
 
     /// Normalise histograms etc., after the run
     void finalize() {
       for (size_t i = 0; i < SELNAMES.size(); ++i) {
         scale(_c_xs[i], crossSection()/femtobarn/sumOfWeights());
-        for (auto kv : _h[i])
+	for (size_t j(0);j<DRS.size();++j)
+        for (auto kv : _h[j][i])
           scale(kv.second, crossSection()/femtobarn/sumOfWeights());
       }
       for (auto kv : _h_mjj)
@@ -148,7 +158,7 @@ namespace Rivet {
 
     /// @name Histograms
     //@{
-    map<string, Histo1DPtr> _h[8];
+    map<string, Histo1DPtr> _h[8][8];
     CounterPtr _c_xs[8];
     map<string,Histo1DPtr> _h_mjj, _h_dyjj;
     //@}
@@ -162,6 +172,7 @@ namespace Rivet {
     static const vector<doubles> M12CUTS;
     static const vector<doubles> DY12CUTS;
     static const vector<double> DPHIJHCUTS;
+    static const vector<double> DRS;
     //@}
 
   };
@@ -173,6 +184,7 @@ namespace Rivet {
   const vector<doubles> MC_HJETSVBF_NNLOJET::M12CUTS = {{0., HUGE_VAL}, {0., 350.}, {350., HUGE_VAL}, {0., 350.}, {350., HUGE_VAL}, {0., 350.}, {350., HUGE_VAL}, {400., HUGE_VAL}};
   const vector<doubles> MC_HJETSVBF_NNLOJET::DY12CUTS = {{0., HUGE_VAL}, {0., 2.}, {0., 2.}, {2., 4.}, {2., 4.}, {4., HUGE_VAL},  {4., HUGE_VAL}, {3., HUGE_VAL}};
   const vector<double>  MC_HJETSVBF_NNLOJET::DPHIJHCUTS = {0., 0., 0., 0., 0., 0., 0., 2.8};
+  const vector<double>  MC_HJETSVBF_NNLOJET::DRS = {0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0};
 
 
   DECLARE_RIVET_PLUGIN(MC_HJETSVBF_NNLOJET);
