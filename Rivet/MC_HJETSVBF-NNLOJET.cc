@@ -12,11 +12,11 @@ namespace Rivet {
 
 
   /// Higgs + jets study in VBF topology
-  class MC_HJETSVBF : public Analysis {
+  class MC_HJETSVBF_NNLOJET : public Analysis {
   public:
 
     /// Constructor
-    DEFAULT_RIVET_ANALYSIS_CTOR(MC_HJETSVBF);
+    DEFAULT_RIVET_ANALYSIS_CTOR(MC_HJETSVBF_NNLOJET);
 
 
     /// Book histograms and initialise projections before the run
@@ -169,12 +169,12 @@ namespace Rivet {
   //typedef vector<double> doubles;
 
   // Static const initializers
-  const vector<string>  MC_HJETSVBF::SELNAMES = {"", "_light_center", "_heavy_center", "_light_middle", "_heavy_middle", "_light_forward", "_heavy_forward", "_ATLAS"};
-  const vector<doubles> MC_HJETSVBF::M12CUTS = {{0., HUGE_VAL}, {0., 350.}, {350., HUGE_VAL}, {0., 350.}, {350., HUGE_VAL}, {0., 350.}, {350., HUGE_VAL}, {400., HUGE_VAL}};
-  const vector<doubles> MC_HJETSVBF::DY12CUTS = {{0., HUGE_VAL}, {0., 2.}, {0., 2.}, {2., 4.}, {2., 4.}, {4., HUGE_VAL},  {4., HUGE_VAL}, {3., HUGE_VAL}};
-  const vector<double>  MC_HJETSVBF::DPHIJHCUTS = {0., 0., 0., 0., 0., 0., 0., 2.8};
+  const vector<string>  MC_HJETSVBF_NNLOJET::SELNAMES = {"", "_light_center", "_heavy_center", "_light_middle", "_heavy_middle", "_light_forward", "_heavy_forward", "_ATLAS"};
+  const vector<doubles> MC_HJETSVBF_NNLOJET::M12CUTS = {{0., HUGE_VAL}, {0., 350.}, {350., HUGE_VAL}, {0., 350.}, {350., HUGE_VAL}, {0., 350.}, {350., HUGE_VAL}, {400., HUGE_VAL}};
+  const vector<doubles> MC_HJETSVBF_NNLOJET::DY12CUTS = {{0., HUGE_VAL}, {0., 2.}, {0., 2.}, {2., 4.}, {2., 4.}, {4., HUGE_VAL},  {4., HUGE_VAL}, {3., HUGE_VAL}};
+  const vector<double>  MC_HJETSVBF_NNLOJET::DPHIJHCUTS = {0., 0., 0., 0., 0., 0., 0., 2.8};
 
 
-  DECLARE_RIVET_PLUGIN(MC_HJETSVBF);
+  DECLARE_RIVET_PLUGIN(MC_HJETSVBF_NNLOJET);
 
 }
