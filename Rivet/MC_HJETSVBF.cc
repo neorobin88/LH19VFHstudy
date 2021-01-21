@@ -111,22 +111,20 @@ namespace Rivet {
             book(_h_dr_pth_dy[ir][ih][iy]["pthjj12"], pre+"pthjj12", edges_pthjj);
             book(_h_dr_pth_dy[ir][ih][iy]["pthjj12_log"], pre+"pthjj12_log", edges_pthjj_log);
           }
-        }
-
-        // Per-dR, per-rescuts histograms
-        // [delta_y_jj12, m_jj12, delta_phi_jj12, delta_y_jjfb]
-        for (size_t iv = 0; iv < 2; ++iv) {
-          const string res = RESNAMES[iv];
-          const string pre = "vbfvh_dr" + dr + "_" + res + "_";
-          book(_h_dr_res[ir][iv]["delta_y_jj12"], pre+"delta_y_jj12", edges_delta_y_jj);
-          book(_h_dr_res[ir][iv]["delta_y_jj12_log"], pre+"delta_y_jj12_log", edges_delta_y_jj_log);
-          book(_h_dr_res[ir][iv]["delta_phi_jj12"], pre+"delta_phi_jj12", edges_delta_phi_jj);
-          book(_h_dr_res[ir][iv]["m_jj12"], pre+"m_jj12", edges_m_jj);
-          book(_h_dr_res[ir][iv]["m_jj12_log"], pre+"m_jj12_log", edges_m_jj_log);
-          book(_h_dr_res[ir][iv]["delta_y_jjfb"], pre+"delta_y_jjfb", edges_delta_y_jj);
-          book(_h_dr_res[ir][iv]["delta_y_jjfb_log"], pre+"delta_y_jjfb_log", edges_delta_y_jj_log);
-        }
-
+	  // Per-dR, per pTh, per-rescuts histograms
+	  // [delta_y_jj12, m_jj12, delta_phi_jj12, delta_y_jjfb]
+	  for (size_t iv = 0; iv < 2; ++iv) {
+	    const string res = RESNAMES[iv];
+	    const string pre = "vbfvh_dr" + dr + "_pth" + pth +  "_" + res + "_";
+	    book(_h_dr_res[ir][ih][iv]["delta_y_jj12"], pre+"delta_y_jj12", edges_delta_y_jj);
+	    book(_h_dr_res[ir][ih][iv]["delta_y_jj12_log"], pre+"delta_y_jj12_log", edges_delta_y_jj_log);
+	    book(_h_dr_res[ir][ih][iv]["delta_phi_jj12"], pre+"delta_phi_jj12", edges_delta_phi_jj);
+	    book(_h_dr_res[ir][ih][iv]["m_jj12"], pre+"m_jj12", edges_m_jj);
+	    book(_h_dr_res[ir][ih][iv]["m_jj12_log"], pre+"m_jj12_log", edges_m_jj_log);
+	    book(_h_dr_res[ir][ih][iv]["delta_y_jjfb"], pre+"delta_y_jjfb", edges_delta_y_jj);
+	    book(_h_dr_res[ir][ih][iv]["delta_y_jjfb_log"], pre+"delta_y_jjfb_log", edges_delta_y_jj_log);
+	  }
+	}
       }
 
       // Higgs pT histogram with ATLAS VBF cuts
@@ -276,22 +274,20 @@ namespace Rivet {
             if (njets > 2)
               _h_dr_pth_dy[ir][ih][iy]["x3"]->fill(jets[2].pT()/ht);
           }
-        }
-
         // Histograms with/without the VH resonance cut
-        for (size_t iv = 0; iv < 2; ++iv) {
-	  // if iv=1, always plot, else (iv=0, resonance cut) plot only if novh
-          if (bool(iv) == 1 || novh ) {
-          _h_dr_res[ir][iv]["delta_y_jj12"]->fill(dy12);
-          _h_dr_res[ir][iv]["delta_y_jj12_log"]->fill(dy12);
-          _h_dr_res[ir][iv]["delta_phi_jj12"]->fill(dphi12/M_PI);
-          _h_dr_res[ir][iv]["m_jj12"]->fill(m12/GeV);
-          _h_dr_res[ir][iv]["m_jj12_log"]->fill(m12/GeV);
-          _h_dr_res[ir][iv]["delta_y_jjfb"]->fill(dyfb);
-          _h_dr_res[ir][iv]["delta_y_jjfb_log"]->fill(dyfb);
+	  for (size_t iv = 0; iv < 2; ++iv) {
+	    // if iv=1, always plot, else (iv=0, resonance cut) plot only if novh
+	    if (bool(iv) == 1 || novh ) {
+	      _h_dr_res[ir][ih][iv]["delta_y_jj12"]->fill(dy12);
+	      _h_dr_res[ir][ih][iv]["delta_y_jj12_log"]->fill(dy12);
+	      _h_dr_res[ir][ih][iv]["delta_phi_jj12"]->fill(dphi12/M_PI);
+	      _h_dr_res[ir][ih][iv]["m_jj12"]->fill(m12/GeV);
+	      _h_dr_res[ir][ih][iv]["m_jj12_log"]->fill(m12/GeV);
+	      _h_dr_res[ir][ih][iv]["delta_y_jjfb"]->fill(dyfb);
+	      _h_dr_res[ir][ih][iv]["delta_y_jjfb_log"]->fill(dyfb);
+	    }
+	  }
 	}
-        }
-
         // Final cuts used for ATLAS VBF measurements in a Higgs pT histogram
         //   delta_y_jj>3.5 (where the two jets are the two highest pT jets),
         //   m_jj > 600 GeV (again using the two highest pT jets) and
@@ -314,10 +310,10 @@ namespace Rivet {
           for (size_t iy = 0; iy < DY12CUTS.size(); ++iy) {
 	    for (auto _h: _h_dr_pth_dy[ir][ih][iy]) scale(_h.second, sf);
           }
-        }
-        for (size_t iv = 0; iv < 2; ++iv) {
-	  for (auto _h: _h_dr_res[ir][iv]) scale(_h.second, sf);
-        }
+	  for (size_t iv = 0; iv < 2; ++iv) {
+	    for (auto _h: _h_dr_res[ir][ih][iv]) scale(_h.second, sf);
+	  }
+	}
       }
       for (auto _h: _h_atlas) scale(_h.second, sf);
     }
@@ -331,7 +327,7 @@ namespace Rivet {
 
 
     // Histograms
-    map<string, Histo1DPtr> _h_incl, _h_dr_pth_dy[3][3][2], _h_dr_res[3][2], _h_atlas;
+    map<string, Histo1DPtr> _h_incl, _h_dr_pth_dy[3][3][2], _h_dr_res[3][3][2], _h_atlas;
 
     // Cut values for standard histogram sets (other than m12 and dy12)
     static const vector<double> DRS;
@@ -345,7 +341,7 @@ namespace Rivet {
   // Static const initializers
   const vector<double> MC_HJETSVBF::DRS = {0.4, 0.7, 1.0};
   const vector<double> MC_HJETSVBF::PTHCUTS = {0., 200., 500.};
-  const vector<double> MC_HJETSVBF::DY12CUTS = {1.0, 10.0};
+  const vector<double> MC_HJETSVBF::DY12CUTS = {10.0};
   const vector<string> MC_HJETSVBF::RESNAMES = {"nores", "res"};
 
 
