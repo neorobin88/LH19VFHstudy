@@ -32,6 +32,9 @@ namespace Rivet {
 
       // Histograms
       const doubles edges_njets = linspace(6, -0.5, 5.5); //  from 0 to 5, exclusive and inclusive
+      const doubles edges_y_star = linspace(100, 0.0, 10.0);
+      const doubles edges_z_star = linspace(100, 0.0, 4.0);
+      const doubles edges_centrality = linspace(100, 0.0, 1.0);
       const doubles edges_delta_y_jj = linspace(200, 0.0, 10.0); // 0.05 bins from 0-10 (can be recombined later if needed) (log and linear)
       const doubles edges_delta_y_jj_log = logspace(200, 1e-1, 10.0);
       const doubles edges_delta_phi_jj = linspace(30, 0.0, 1.0); // 0.1 bins from 0-pi/pi
@@ -55,6 +58,9 @@ namespace Rivet {
       // [njets, delta_y_jj, m_jj,delta_phi_jj, HT, pTH, pTHj, pTHjj]
       string pre = "incl_";
       book(_h_incl["njets"], pre+"njets", edges_njets);
+      book(_h_incl["y_star"], pre+"y_star", edges_y_star);
+      book(_h_incl["z_star"], pre+"z_star", edges_z_star);
+      book(_h_incl["centrality"], pre+"centrality", edges_centrality);
       book(_h_incl["delta_y_jj12"], pre+"delta_y_jj12", edges_delta_y_jj);
       book(_h_incl["delta_y_jj12_log"], pre+"delta_y_jj12_log", edges_delta_y_jj_log);
       book(_h_incl["delta_phi_jj12"], pre+"delta_phi_jj12", edges_delta_phi_jj);
@@ -87,6 +93,9 @@ namespace Rivet {
             const string dy = zeropad(to_string(int(DY12CUTS[iy])), 2);
             const string pre = "rstudy_dr" + dr + "_pth" + pth + "_dy" + dy + "_";
             book(_h_dr_pth_dy[ir][ih][iy]["njets"], pre+"njets", edges_njets);
+            book(_h_dr_pth_dy[ir][ih][iy]["y_star"], pre+"y_star", edges_y_star);
+            book(_h_dr_pth_dy[ir][ih][iy]["z_star"], pre+"z_star", edges_z_star);
+            book(_h_dr_pth_dy[ir][ih][iy]["centrality"], pre+"centrality", edges_centrality);
             book(_h_dr_pth_dy[ir][ih][iy]["delta_y_jj12"], pre+"delta_y_jj12", edges_delta_y_jj);
             book(_h_dr_pth_dy[ir][ih][iy]["delta_y_jj12_log"], pre+"delta_y_jj12_log", edges_delta_y_jj_log);
             book(_h_dr_pth_dy[ir][ih][iy]["delta_phi_jj12"], pre+"delta_phi_jj12", edges_delta_phi_jj);
@@ -116,6 +125,9 @@ namespace Rivet {
 	  for (size_t iv = 0; iv < 2; ++iv) {
 	    const string res = RESNAMES[iv];
 	    const string pre = "vbfvh_dr" + dr + "_pth" + pth +  "_" + res + "_";
+	    book(_h_dr_res[ir][ih][iv]["y_star"], pre+"y_star", edges_y_star);
+	    book(_h_dr_res[ir][ih][iv]["z_star"], pre+"z_star", edges_z_star);
+	    book(_h_dr_res[ir][ih][iv]["centrality"], pre+"centrality", edges_centrality);
 	    book(_h_dr_res[ir][ih][iv]["delta_y_jj12"], pre+"delta_y_jj12", edges_delta_y_jj);
 	    book(_h_dr_res[ir][ih][iv]["delta_y_jj12_log"], pre+"delta_y_jj12_log", edges_delta_y_jj_log);
 	    book(_h_dr_res[ir][ih][iv]["delta_phi_jj12"], pre+"delta_phi_jj12", edges_delta_phi_jj);
@@ -131,6 +143,9 @@ namespace Rivet {
       pre = "atlas_";
       book(_h_atlas["pth"], pre+"pth", edges_pth);
       book(_h_atlas["pth_log"], pre+"pth_log", edges_pth_log);
+      book(_h_atlas["y_star"], pre+"y_star", edges_y_star);
+      book(_h_atlas["z_star"], pre+"z_star", edges_z_star);
+      book(_h_atlas["centrality"], pre+"centrality", edges_centrality);
     }
 
 
@@ -181,6 +196,14 @@ namespace Rivet {
         const Jets jetsbyrap = sortBy(jets, cmpMomByRap); //< sorts from fwd to bwd
         const Jet& jf = jets.front();
         const Jet& jb = jets.back();
+        double y_star = 100., z_star = 100., centrality = 100.;
+	if (jets.size()>2) {
+	  y_star = jets[2].rap();
+	  y_star = y_star - (jets[0].rap()+jets[1].rap())/2.;
+	  y_star = std::abs(y_star);
+	  z_star = y_star/dy12;
+	  centrality = exp(-4.*z_star*z_star); 
+	}
         const FourMomentum dijetfb = jf.mom() + jb.mom();
         // const double mfb = dijetfb.mass();
         // const double ptfb = dijetfb.pT();
@@ -225,6 +248,9 @@ namespace Rivet {
         /// @todo Aren't these duplicated in the cut-combination plots?
         if (ir == 0) { //< dR = 0.4
           _h_incl["njets"]->fill(njets);
+          _h_incl["y_star"]->fill(y_star);
+          _h_incl["z_star"]->fill(z_star);
+          _h_incl["centrality"]->fill(centrality);
           _h_incl["delta_y_jj12"]->fill(dy12);
           _h_incl["delta_y_jj12_log"]->fill(dy12);
           _h_incl["delta_phi_jj12"]->fill(dphi12/M_PI);
@@ -249,6 +275,9 @@ namespace Rivet {
             if (dy12 > DY12CUTS[iy]) continue;
             // _c_xs[j][i]->fill();
             _h_dr_pth_dy[ir][ih][iy]["njets"]->fill(njets);
+	    _h_dr_pth_dy[ir][ih][iy]["y_star"]->fill(y_star);
+	    _h_dr_pth_dy[ir][ih][iy]["z_star"]->fill(z_star);
+	    _h_dr_pth_dy[ir][ih][iy]["centrality"]->fill(centrality);
             _h_dr_pth_dy[ir][ih][iy]["delta_y_jj12"]->fill(dy12);
             _h_dr_pth_dy[ir][ih][iy]["delta_y_jj12_log"]->fill(dy12);
             _h_dr_pth_dy[ir][ih][iy]["delta_phi_jj12"]->fill(dphi12/M_PI);
@@ -278,6 +307,9 @@ namespace Rivet {
 	  for (size_t iv = 0; iv < 2; ++iv) {
 	    // if iv=1, always plot, else (iv=0, resonance cut) plot only if novh
 	    if (bool(iv) == 1 || novh ) {
+	      _h_dr_res[ir][ih][iv]["y_star"]->fill(y_star);
+	      _h_dr_res[ir][ih][iv]["z_star"]->fill(z_star);
+	      _h_dr_res[ir][ih][iv]["centrality"]->fill(centrality);
 	      _h_dr_res[ir][ih][iv]["delta_y_jj12"]->fill(dy12);
 	      _h_dr_res[ir][ih][iv]["delta_y_jj12_log"]->fill(dy12);
 	      _h_dr_res[ir][ih][iv]["delta_phi_jj12"]->fill(dphi12/M_PI);
@@ -295,6 +327,9 @@ namespace Rivet {
         if (DRS[ir]==0.4 && dy12 > 3.5 && m12 > 600*GeV && dphijjH > 2.7) {
           _h_atlas["pth"]->fill(ptH/GeV);
           _h_atlas["pth_log"]->fill(ptH/GeV);
+          _h_atlas["y_star"]->fill(y_star);
+          _h_atlas["z_star"]->fill(z_star);
+          _h_atlas["centrality"]->fill(centrality);
         }
 
       } // DR loop
