@@ -375,7 +375,7 @@ namespace Rivet {
 
   // Static const initializers
   const vector<double> MC_HJETSVBF::DRS = {0.4, 0.7, 1.0};
-  const vector<double> MC_HJETSVBF::PTHCUTS = {0., 200., 500.};
+  const vector<double> MC_HJETSVBF::PTHCUTS = {0., 200., 300., 400., 500.};
   const vector<double> MC_HJETSVBF::DY12CUTS = {10.0};
   const vector<string> MC_HJETSVBF::RESNAMES = {"nores", "res"};
 
