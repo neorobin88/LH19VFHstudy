@@ -362,7 +362,7 @@ namespace Rivet {
 
 
     // Histograms
-    map<string, Histo1DPtr> _h_incl, _h_dr_pth_dy[3][3][2], _h_dr_res[3][3][2], _h_atlas;
+    map<string, Histo1DPtr> _h_incl, _h_dr_pth_dy[3][5][2], _h_dr_res[3][5][2], _h_atlas;
 
     // Cut values for standard histogram sets (other than m12 and dy12)
     static const vector<double> DRS;
