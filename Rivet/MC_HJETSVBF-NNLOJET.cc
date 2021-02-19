@@ -82,7 +82,7 @@ namespace Rivet {
       for (size_t j(0);j<DRS.size();++j) {
       // Get jets and leading dijet system
       const Jets jets = apply<FastJets>(event, "Jets"+to_string(DRS[j])).jetsByPt(Cuts::pT > 30*GeV && Cuts::absrap < 4.4);
-      if (jets.size() < 2) vetoEvent;
+      if (jets.size() < 2) continue;
       const int njets = jets.size();
       const double htj = sum(jets, Kin::pT, 0.0);
       const double ht = htj + higgs.pT();
