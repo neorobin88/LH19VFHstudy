@@ -272,9 +272,9 @@ namespace Rivet {
         // Standard histograms for pTH and dy12 cuts
         for (size_t ih = 0; ih < PTHCUTS.size(); ++ih) {
           if (ptH < PTHCUTS[ih]*GeV) continue;
-          for (size_t iy = 0; iy < 2; ++iy) {
-            if (DY12CUTS[iy]>0. && njets!=DY12CUTS[iy]) continue;
-            // _c_xs[j][i]->fill();
+          for (size_t iy = 0; iy < DY12CUTS.size(); ++iy) {
+            if (DY12CUTS[iy]>0. && njets!=int(DY12CUTS[iy])) continue;
+            // _c_xs[j][i]->fill();5A
             _h_dr_pth_dy[ir][ih][iy]["njets"]->fill(njets);
 	    _h_dr_pth_dy[ir][ih][iy]["y_star"]->fill(y_star);
 	    _h_dr_pth_dy[ir][ih][iy]["z_star"]->fill(z_star);
@@ -363,7 +363,7 @@ namespace Rivet {
 
 
     // Histograms
-    map<string, Histo1DPtr> _h_incl, _h_dr_pth_dy[3][5][2], _h_dr_res[3][5][2], _h_atlas;
+    map<string, Histo1DPtr> _h_incl, _h_dr_pth_dy[3][5][3], _h_dr_res[3][5][2], _h_atlas;
 
     // Cut values for standard histogram sets (other than m12 and dy12)
     static const vector<double> DRS;
