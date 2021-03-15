@@ -90,8 +90,9 @@ namespace Rivet {
         for (size_t ih = 0; ih < PTHCUTS.size(); ++ih) {
           const string pth = zeropad(to_string(int(PTHCUTS[ih])), 3);
           for (size_t iy = 0; iy < DY12CUTS.size(); ++iy) {
-            const string dy = zeropad(to_string(int(DY12CUTS[iy])), 2);
-            const string pre = "rstudy_dr" + dr + "_pth" + pth + "_dy" + dy + "_";
+	    string dy = to_string(int(DY12CUTS[iy]))+"j";
+	    if (DY12CUTS[iy]<0.) dy="dy10";
+            const string pre = "rstudy_dr" + dr + "_pth" + pth + "_" + dy + "_";
             book(_h_dr_pth_dy[ir][ih][iy]["njets"], pre+"njets", edges_njets);
             book(_h_dr_pth_dy[ir][ih][iy]["y_star"], pre+"y_star", edges_y_star);
             book(_h_dr_pth_dy[ir][ih][iy]["z_star"], pre+"z_star", edges_z_star);
@@ -271,9 +272,9 @@ namespace Rivet {
         // Standard histograms for pTH and dy12 cuts
         for (size_t ih = 0; ih < PTHCUTS.size(); ++ih) {
           if (ptH < PTHCUTS[ih]*GeV) continue;
-          for (size_t iy = 0; iy < 2; ++iy) {
-            if (dy12 > DY12CUTS[iy]) continue;
-            // _c_xs[j][i]->fill();
+          for (size_t iy = 0; iy < DY12CUTS.size(); ++iy) {
+            if (DY12CUTS[iy]>0. && njets!=int(DY12CUTS[iy])) continue;
+            // _c_xs[j][i]->fill();5A
             _h_dr_pth_dy[ir][ih][iy]["njets"]->fill(njets);
 	    _h_dr_pth_dy[ir][ih][iy]["y_star"]->fill(y_star);
 	    _h_dr_pth_dy[ir][ih][iy]["z_star"]->fill(z_star);
@@ -362,7 +363,7 @@ namespace Rivet {
 
 
     // Histograms
-    map<string, Histo1DPtr> _h_incl, _h_dr_pth_dy[3][5][2], _h_dr_res[3][5][2], _h_atlas;
+    map<string, Histo1DPtr> _h_incl, _h_dr_pth_dy[3][5][3], _h_dr_res[3][5][2], _h_atlas;
 
     // Cut values for standard histogram sets (other than m12 and dy12)
     static const vector<double> DRS;
@@ -376,7 +377,7 @@ namespace Rivet {
   // Static const initializers
   const vector<double> MC_HJETSVBF::DRS = {0.4, 0.7, 1.0};
   const vector<double> MC_HJETSVBF::PTHCUTS = {0., 200., 300., 400., 500.};
-  const vector<double> MC_HJETSVBF::DY12CUTS = {10.0};
+  const vector<double> MC_HJETSVBF::DY12CUTS = {-1.,2.,3.};
   const vector<string> MC_HJETSVBF::RESNAMES = {"nores", "res"};
 
 
