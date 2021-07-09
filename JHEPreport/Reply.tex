@@ -1,0 +1,93 @@
+\documentclass[12pt]{article}
+\usepackage[letterpaper,margin=0.7in]{geometry}
+
+\usepackage{feynmp}
+\usepackage{url}
+\usepackage{latexsym}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{cite}
+\usepackage{cancel}
+\usepackage{upgreek}
+\usepackage{amssymb}
+\usepackage{ stmaryrd }
+
+%\usepackage{palatino,mathpazo} or \usepackage{times}
+%\usepackage{textcomp}
+%\usepackage{tgpagella}
+%\pagestyle{empty}
+
+\newcommand{\QED}{\ensuremath{\Box}}
+\newcommand{\mc}{\mathcal}
+% \cong{x,y,z} gives ``x == y (mod z)''
+\newcommand{\congr}[3]{\ensuremath{#1 \equiv #2 \mod{#3}}}
+\newcommand{\bsl}{\char`\\}
+\newcommand{\texcmd}[1]{\texttt{\char`\\#1}} 
+
+
+\begin{document}
+
+\unitlength = 1mm
+\title{Reply to the Report on JHEP\_107P\_0621}
+\author{A. Buckley, X. Chen, J. Cruz-Martinez, S. Ferrario Ravasio,\\ T. Gehrmann, E. W. N. Glover, S. H{\"o}che, A. Huss, J. Huston,\\ J. M. Lindert, S. Pl{\"a}tzer, M. Sch{\"o}nherr}
+\date{}
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Everywhere}
+\begin{enumerate}
+	\item Several plots mention “Les Houches 2019”. Does it mean that some of these results have been already presented in the report of Les Houches 2019? If yes, this should be made clearer (probably in the introduction).
+\end{enumerate}
+
+\section*{Section I}
+\begin{enumerate}
+\item While not completely overlapping with the present study, some inter- esting references are missing. For example, arXiv: 1802.09955 and 1805.04446 are complimentary to it and should be cited. In general, I would encourage the authors to present a more detailed review of the theoretical status of VBF at the LHC in the introduction.
+\end{enumerate}
+\section*{Section II}
+\begin{enumerate}
+\item It is correct that PDF4LHC15\_30 NNLO is used for all predictions (even at NLO)? This should be made explicit.
+\item The description of the Powheg predictions around Eq. (5) is a bit un- clear and clarifications should be provided. In particular, it is not clear how this prediction differs from a complete NLO QCD+PS prediction. Does it differ by the virtual corrections to the decay only? If possible, an estimate of the approximation would be useful. Also, while Eq. (5) is correct when integrating over the whole phase space, it is not true in the presence of cuts (especially close to resonances). Some comments on it would also be welcome.
+\end{enumerate}
+
+\section*{Section III}
+\begin{enumerate}
+\item ``The gluon-gluon fusion contributions are shown in both the Higgs effective theory (HEFT) and approximate Standard Model, using the reweighting technique described in Sec. II A. " Sec. II A. is not really illuminating on what is actually done there. This should be defined a bit more precisely and in particular how the two predictions differ. Also, why are both computations for ggF not provided in Table 1 (as on Fig.3) for example? Note that the labelling is not consistent between the plots and the table.
+\item A particular emphasis is put on the distinctions between VBF production with respect to VH. Such a distinction is actually unphysical as both production mechanism are actually undistinguishable (as they interfere) and posses the same physics content. The authors should explain why they want to treat VH as a background as, a priori, no distinction is required.
+\item In the footnote of page 2, it is indicated that ttH is not relevant for this study. On the other hand, it is shown on Fig.2 which is a bit contradictory. In particular, the implementation of cuts for ttH is not clear. From the caption, it is says “all hadronic”, probably meaning a 4j+2j\_b final state. In this case, how is implemented the event selection for this process? Are the bottom jets counted as jets? Also, more information on how this process is computed (given it is presented) should be given in the text (and not only in the caption).
+\item How the EW corrections are implemented for each process is unclear. Some references are given in the caption of Fig.2 but it would be more useful to have more details in the text instead.
+\item Concerning Fig.2, the event selection should also be mentioned in the text (and not only in the caption).
+\item On page 11, ``The fractional cross section distributions for the Higgs boson production processes are shown in the top panel of Fig. 10 as a function of $\Delta y_{jj}$ using the two leading jets (i.e. the ones with largest pT) for the three different Higgs boson pT cuts." I believe it should be $\Delta y_{jj}^{\text{min}}$ according to what is shown on the plot. This should also be made clearer in the text.
+\item Several times, the authors use the word ``original" to describe a jet without defining it explicitely. From the context, one somehow understands that this is a ``Born" jet but such a definition is highly ambiguous in particular at higher order. More information should be provided.
+\end{enumerate}
+\section*{Section IV}
+\begin{enumerate}
+\item This section focus on the study of jet-radius. To my knowledge, such a study has been performed for the first time in arXiv: 1703.05676 (which is not cited). The authors should include this reference and explain how their study goes beyond the known results.
+
+{\bf Update:} Indeed the first study of jet cone size effect was in 1703.05676. We add the reference now in the beginning of Section IV and explain the new contribution from our current study.
+
+\item ``In a previous study, we [...]". I think that ``some of us" would be more appropriate.
+
+{\bf Update:} Yes, this is now corrected.
+
+\end{enumerate}
+\section*{Section V}
+\begin{enumerate}
+\item A table with the cross section should be added as it present more information (and therefore help reproducibility of the work presented). This information should be available to the authors without extra runs.
+\item In arXiv: 1803.07943, a comparison of theoretical predictions for VBS is also performed. Given the similarities between VBF and VBS, it would be interesting to qualitatively compare the present findings with the ones presented there. In particular, it seems that the agreement between fixed-order predictions and parton-shower ones is better in VBF than in VBS. Also, the spread of NLO+PS predictions seems to be larger for VBS than for VBF. The authors should comment on this.
+\item On the plots, the ``Matching \& PS scheme variation" band should also be provided on the inset showing the ratio to NNLO (for example in Fig. 21, it is not visible in the absolute plots).
+\item In addition, the 7-scale variation should also be added on the same inset (probably for the NNLO predictions). It would put the differences observed in perspective.
+\item One can see noticeable differences between the various NLO+PS predictions in essentially all the observables. The authors should comments on this and explain how these differences could be explained (if possible).
+\item From this study and given that the predictions do not agree very well in some phase-space regions, what are the implications for experimental analysis? Should the experimental measurements should stay away from these regions? Or are these differences negligible given the experimental precision even at high-luminosity LHC?
+\item The definition of $d_{23}$ and $d_{34}$ is not given anywhere. This should be corrected.
+\item The “Matching \& PS scheme variation” band seems to increase for more exclusive cuts (for example on Fig. 22). Is it true? If yes, the author should comment on it.
+\end{enumerate}
+\section*{Section VI}
+\begin{enumerate}
+\item ``Precise theoretical predictions for both signal and background processes are of utmost importance in order to harness the full statistical power of LHC event samples and have therefore been computed up to N3LO accuracy." I believe that this statement is not correct as all pro- cesses meant here are not known up to N3LO (QCD) accuracy. This should be corrected.
+\item ``In this manuscript we have presented a detailed comparison of the two types of calculations, i.e. NLOPS and NNLO [..]." I think this is also not correct. To my view, Section V does not qualify (yet?) for a ``detailed" study.
+\item ``This paper follows a study with a similar spirit carried out with dijet, Z-boson + jet and Higgs boson + jet production at the LHC." Please provide the references.
+\end{enumerate}
+
+
+
+\end{document}
