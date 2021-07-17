@@ -52,6 +52,12 @@
 {\bf Update:} Yes, we use the same set of PDFs with the central group values everywhere in this study. This setup helps to quantify the pure different between fixed order and parton shower corrected predictions. This is now explained in this section when introducing the setup of the calculation. 
 
 \item The description of the Powheg predictions around Eq. (5) is a bit unclear and clarifications should be provided. In particular, it is not clear how this prediction differs from a complete NLO QCD+PS prediction. Does it differ by the virtual corrections to the decay only? If possible, an estimate of the approximation would be useful. Also, while Eq. (5) is correct when integrating over the whole phase space, it is not true in the presence of cuts (especially close to resonances). Some comments on it would also be welcome.
+
+{\bf Update:} The text has been modified and it should be more clear now that this corresponds to a complete NLOPS POWHEG prediction. Eq. (5) is valid for the differential (in the underlying Born kinematics) cross section, and it is equivalent to the virtual corrections plus real corrections (integrated over the radiation phase space). 
+Since the weight (i.e. the  $\tilde{B}$ function) of events generated according to the POWHEG prescription is identical to the NLO cross section, differential in the underlying Born kinematics (but intergrated over the phase space of additional radiation),  it is sufficient to add this term to the event weight.
+The last missing ingredient to have a complete NLOPS prediction in the POWHEG language is to use the real matrix element for $V\to q \bar{q} g$ to generate the hardest emission from the $V$ decay: this is provided directly by the Herwig7 event generator, which contains matrix element corrections for $Z$ and $W$ bosons decay.
+No approximation is made since at NLO there is no interference between radiation in production and in decay for this process. 
+ 
 \end{enumerate}
 
 \section*{Section III}
