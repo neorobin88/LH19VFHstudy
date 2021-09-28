@@ -1,0 +1,13 @@
+The data files have 17 columns with the following column definition:
+1, left bin edge
+2, mean value of the bin
+3, right bin edge
+4, histogram value at central scale muF=muR=ht_parton/2, normalised by bin width 
+5, numerical integration error for 4 also normalised by bin width
+6-7, repeating 4-5 at scale muF=muR=ht_parton
+8-9, repeating 4-5 at scale muF=muR=ht_parton/4
+10-11, repeating 4-5 at scale muF=ht_parton/2 muR=ht_parton
+12-13, repeating 4-5 at scale muF=ht_parton muR=ht_parton/2
+14-15, repeating 4-5 at scale muF=ht_parton/2 muR=ht_parton/4
+16-17, repeating 4-5 at scale muF=ht_parton/4 muR=ht_parton/2
+Histogram data is in fb unit with respect of the observable unit.
